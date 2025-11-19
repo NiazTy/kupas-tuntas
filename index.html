@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kupas Tuntas adalah laman uji pengetahuan sejarah lewat tebak-pahlawan displayaktif dan menyenangkan.">
+    <title>Kupas Tuntas - Bukan Sekadar Menebak, Tapi Kupas Sampai Tuntas!</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/logo/kutas-logo.png" type="image">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Output CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/custom/card-stacker.css"> <!-- CSS untuk card stacker -->
+
+    <!-- Jquery File -->
+    <script src="assets/js/core/jquery.js"></script>
+</head>
+<body class="bg-maroon">
+    <nav class="fixed top-0 left-0 z-50 w-full">
+        <div class="container mx-auto max-w-7xl">
+            <div class="flex items-center justify-between bg-white rounded-none shadow-md px-7 md:rounded-b-4xl md:shadow-white/50">
+                <!-- Left: Logo -->
+                 <div class="shrink-0">
+                    <a href="index.html">
+                        <img src="assets/images/logo/kupas-tuntas-white.png" alt="Kupas Tuntas Logo" class="h-16">
+                    </a>
+                 </div>
+                 <!-- Desktop Menu -->
+                 <!-- Right: Links -->
+                <div class="hidden py-6 space-x-6 text-xs font-medium md:flex font-display md:text-sm lg:text-base">
+                    <a href="index.html"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Beranda
+                    </a>
+                    <a href="#tentang-kupas-tuntas"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Tentang Kupas Tuntas
+                    </a>
+                    <a href="#belajar-sejarah-seru"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Belajar Sejarah Seru
+                    </a>
+                </div>
+                <!-- Left: CTA -->
+                <div>
+                    <a href="mulai-tebak.html"
+                    class="hidden md:inline-block bg-maroon text-white font-semibold px-6 py-3 
+                            rounded-full transition-all duration-300
+                            hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
+                        Mulai Quiz
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="p-2 rounded-md text-maroon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden pb-2 bg-white shadow-md font-display md:hidden max-w-7xl mx-autoflex-col rounded-b-4xl shadow-white/50">
+            <a href="index.html" class="block px-4 py-2 font-semibold text-maroon">Beranda</a>
+            <a href="#tentang-kupas-tuntas" class="block px-4 py-2 font-semibold text-maroon">Tentang Kupas Tuntas</a>
+            <a href="#belajar-sejarah-seru" class="block px-4 py-2 font-semibold text-maroon">Belajar Sejarah Seru</a>
+            <a href="mulai-tebak.html" class="block px-4 py-2 mx-4 my-3 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">Mulai Quiz</a>
+        </div>
+    </nav>
+    <!-- Navbar END -->
+    <!-- Main Content -->
+     <main class="">
+        <!-- Hero Section -->
+        <section id="hero" class="flex flex-row items-center justify-center w-full h-screen text-center">
+            <div class="absolute bottom-0 left-0 w-full h-40 bg-linear-to-t from-[#d3b484] to-transparent z-20"></div>
+            <div class="absolute inset-0 bg-maroon bg-opacity-70"></div>
+            <!-- Mas Pandu -->
+            <img src="assets/images/mas-pandu/mas-pandu-berpikir.png" alt="Mas Pandu sedang berpikir" class="hidden md:block absolute -left-24 bottom-0 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain podisplay-events-none z-10"/>
+            <div id="title" class="relative flex flex-col gap-5">
+                <img src="assets/images/logo/kupas-tuntas-maroon-with-crop.png" alt="KUPAS TUNTAS Maroon with Crop" class="object-contain h-64 podisplay-events-none"/>
+                <h1 class="text-2xl font-bold text-white font-display">
+                    <span class="">KUIS PAHLAWAN SERU:</span><br>
+                    <span class="">CARI TAHU DAN UNGKAP PAHLAWAN ASIK</span>
+                </h1>
+                <div class="z-30 flex flex-col justify-center gap-4 mx-16 md:mx-0 sm:flex-row">
+                    <!-- Tombol Kuning -->
+                    <a href="#belajar-sejarah-seru" class="bg-yellow-400 text-maroon font-semibold px-6 py-3 rounded-full hover:text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 hover:bg-yellow-500">Belajar Sekarang</a>
+                    <!-- Tombol Putih -->
+                    <a href="mulai-tebak.html" class="px-3 py-2 sm:px-5 sm:py-2.5 sm:text-base text-sm rounded-full border-2 border-white text-white font-semibold font-display hover:bg-white hover:text-maroon hover:shadow-md transition">Mulai Tebak</a>
+                </div>
+            </div>
+            <div id="pahlawan-card" class="hidden md:flex absolute bottom-32 font-display right-0 h-[360px] w-full max-w-md justify-center">
+                <!-- Card Stacker akan di-inject di sini -->
+                <div class="relative h-[360px] w-full max-w-md flex justify-center">
+                    <div class="bg-white card" data-card="0">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card="1">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card="2">
+                        <div class="card-img" data-img></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banyaknya Pahlawan Indonesia Section -->
+        <section id="banyaknya-pahlawan-indonesia" class="relative min-h-full -mt-20 overflow-hidden md:mt-0">
+            <div class="absolute inset-0 z-0 bg-center bg-no-repeat bg-cover" style="background: url('assets/images/misc/kertas-usang.png');"></div>
+            <div class="absolute inset-0 bg-[#d3b484]/70 z-0"></div>
+            <div class="absolute top-0 left-0 w-full h-40 bg-linear-to-b from-[#d3b484] to-transparent z-10"></div>
+            <div class="relative z-20 flex flex-col items-center w-full gap-8 px-4 py-16 lg:items-start lg:px-16">
+                <div class="w-full text-center lg:text-left">
+                    <h2 class="mb-4 text-3xl font-bold text-center font-display sm:text-4xl text-maroon">
+                        PERSEBARAN PAHLAWAN INDONESIA
+                    </h2>
+                </div>
+                <div class="flex justify-center w-full">
+                    <img
+                        src="assets/images/misc/peta-indonesia.png"
+                        alt="Peta Indonesia"
+                        class="object-contain w-full h-auto max-w-3xl">
+                </div>
+                <div class="flex-1 w-full max-w-3xl text-base md:text-left lg:text-left">
+                    <h2 class="mb-4 text-3xl font-bold text-center md:text-left font-display sm:text-4xl text-maroon">
+                        Tahukah Kamu?
+                    </h2>
+                    <p class="mb-6 text-lg font-display text-maroon sm:text-xl">
+                        Indonesia memiliki lebih dari <span class="font-bold">216 pahlawan nasional</span> ditahun 2025 yang diakui secara resmi
+                        oleh pemerintah. Mereka berasal dari berbagai latar belakang, mulai dari pejuang kemerdekaan, tokoh pendidikan,
+                        hingga pahlawan perempuan yang berani memperjuangkan hak-hak mereka.
+                    </p>
+                    <p class="text-lg font-display text-maroon sm:text-xl">
+                        Setiap pahlawan memiliki kisah inspiratif yang patut kita kenang dan pelajari. Melalui kuis ini, mari kita gali
+                        lebih dalam tentang perjuangan dan kontribusi mereka bagi bangsa Indonesia!
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Tentang Kupas Tuntas Section -->
+        <section id="tentang-kupas-tuntas" class="flex flex-col items-center justify-center w-full min-h-screen gap-8 px-4 py-16 bg-maroon/90">
+            <!-- Judul -->
+            <h2 id="TK-title" class="mb-10 text-4xl font-bold tracking-wide text-center text-white transition-all duration-700 translate-y-4 opacity-0 font-display">TENTANG KUPAS TUNTAS</h2>
+            <!-- Konten: teks + logo -->
+            <div id="TK-content" class="flex flex-col-reverse items-center w-full max-w-5xl gap-8 mx-auto transition-all duration-700 delay-150 translate-y-4 opacity-0 md:flex-row">
+                <p class="flex-1 text-lg leading-relaxed text-left text-white font-display sm:text-xl">
+                    <span class="font-semibold text-[#ffd28a]">Kupas Tuntas</span> atau <span class="font-semibold text-[#ffd28a]">Kuis Pahlawan Seru: Cari Tahu Dan Ungkap Pahlawan Asik</span> adalah 
+                    <span class="font-semibold">permainan tebak pahlawan interaktif</span> yang membuktikan bahwa </span>
+                    belajar sejarah bisa menjadi pengalaman yang <span class="font-semibold">seru dan menyenangkan</span>.
+                    Melalui tantangan singkat, kamu diajak mengenal lebih dekat para pahlawan Indonesia dan kontribusi mereka bagi bangsa.
+                </p>
+                <!-- Logo -->
+                <img src="assets/images/logo/kupas-tuntas-maroon-with-crop.png" alt="Logo Kupas Tuntas" class="object-contain h-28 sm:h-32 md:h-48 podisplay-events-none"/>
+            </div>
+        </section>
+        <!-- Belajar Sejarah Seru Section -->
+        <section id="belajar-sejarah-seru" class="flex flex-col items-center justify-center w-full min-h-screen px-4 py-16 bg-maroon/90">
+            <!-- Judul (Desktop) -->
+            <h2 id="BSS-title" class="mb-10 text-4xl font-bold tracking-wide text-center text-white transition-all duration-700 translate-y-4 opacity-0 font-display">BELAJAR SEJARAH SERU</h2>
+            <!-- Konten: teks -->
+            <div id="BSS-content" class="flex flex-col items-center w-full max-w-5xl gap-8 mx-auto transition-all duration-700 delay-150 translate-y-4 opacity-0 md:flex-row md:items-start">
+                <!-- Teks -->
+                <p class="flex-1 text-lg leading-relaxed text-left text-white font-display sm:text-xl">
+                    Di sini, kamu bisa menikmati berbagai video pembelajaran sejarah yang dikemas dengan cara yang seru, visual yang menarik, dan penjelasan yang mudah dipahami.
+                    Lewat konten pilihan dari <a href="https://youtube.com/playlist?list=PLCnD2jU_siVrTxiOGo-kbqGvFzEzONjdA&si=w8AM7Qp3SZk6wmoW" target="_blank" class="text-[#ffd28a]">Kok Bisa?</a>, kamu akan diajak menelusuri cerita, peristiwa, dan tokoh penting Indonesia dengan cara yang jauh dari kata membosankan.<br> 
+                </p>
+            </div>
+            <!-- video pembelajaran sejarah akan di-inject di sini -->
+            <div id="video-container" class="flex flex-col items-center w-full max-w-5xl gap-8 mx-auto mt-10 transition-all duration-700 delay-300 translate-y-4 opacity-0 md:flex-row md:items-start">
+                <!-- Video pembelajaran sejarah akan di-inject di sini oleh JavaScript -->
+            </div>
+            <div class="flex-1 pb-6 text-lg leading-relaxed text-center text-white font-display sm:text-xl md:text-left">
+                <p>Setelah nonton dan tambah wawasan… sudah siap untuk menebak?</p>
+            </div>
+            <a href="mulai-tebak.html" class="px-3 py-2 sm:px-5 sm:py-2.5 sm:text-base text-sm rounded-full border-2 border-white text-white font-semibold font-display hover:bg-white hover:text-maroon hover:shadow-md transition">Mulai Tebak</a>
+        </section>
+     </main>
+    <footer class="w-full px-4 py-8 bg-white md:px-16">
+        <div class="flex flex-col items-center gap-6 mx-auto text-center md:flex-row md:justify-between md:text-left">
+            <!-- Credit -->
+            <p class="order-2 font-semibold text-md md:order-1 text-maroon md:text-sm text-display">
+                © 2025 <a href="/" class="hover:underline">Tim Menumpas Semua Keraguan</a>
+            </p>
+            <!-- Navigation -->
+            <div class="flex flex-col items-start order-1 gap-2 md:order-2 text-maroon font-display text-display md:flex-row md:gap-6">
+                <a href="#hero" class="md:border-b md:border-[#787A91] text-md font-semibold md:text-sm">
+                    Beranda
+                </a>
+                <a href="#tentang-kupas-tuntas" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Tentang Kupas Tuntas
+                </a>
+                <a href="#belajar-sejarah-seru" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Belajar Sejarah Seru
+                </a>
+                <a href="#banyaknya-pahlawan-indonesia" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Persebaran Pahlawan Indonesia
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- Custom JS Files -->
+    <script src="assets/js/essentials/card-stacker.js"></script>
+    <script src="assets/js/essentials/index.js"></script>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        $(document).ready(function () {
+            var $menu = $("#mobile-menu");
+
+            $("#mobile-menu-toggle").on("click", function () {
+            if ($menu.is(":visible")) {
+                $menu.slideUp(200, function () {
+                $menu.addClass("hidden");
+                });
+            } else {
+                $menu
+                .removeClass("hidden")
+                .hide()
+                .slideDown(200);
+            }
+            });
+        });
+    </script>
+</body>
+</html>

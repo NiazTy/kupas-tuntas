@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kupas Tuntas adalah laman uji pengetahuan sejarah lewat tebak-pahlawan interaktif dan menyenangkan.">
+    <title>Kupas Tuntas - Bukan Sekadar Menebak, Tapi Kupas Sampai Tuntas!</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/logo/kutas-logo.png" type="image">
+
+    <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Output CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="assets/css/custom/tebak-gambar-pahlawan.css"> <!-- CSS untuk halaman tebak gambar pahlawan -->
+    <link rel="stylesheet" href="assets/css/custom/tebak-kejadian-sejarah.css"> 
+
+    <!-- Jquery File -->
+     <script src="assets/js/core/jquery.js"></script>
+</head>
+<body class="bg-maroon">
+    <nav class="fixed top-0 left-0 z-50 w-full">
+        <div class="container mx-auto max-w-7xl">
+            <div class="flex items-center justify-between bg-white rounded-none shadow-md px-7 md:rounded-b-4xl md:shadow-white/50">
+                <!-- Left: Logo -->
+                 <div class="shrink-0">
+                    <a href="index.html">
+                        <img src="assets/images/logo/kupas-tuntas-white.png" alt="Kupas Tuntas Logo" class="h-16">
+                    </a>
+                 </div>
+                 <!-- Desktop Menu -->
+                 <!-- Right: Links -->
+                <div class="hidden py-6 space-x-6 text-xs font-medium md:flex font-display md:text-sm lg:text-base">
+                    <a href="index.html"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Beranda
+                    </a>
+                    <a href="/#tentang-kupas-tuntas"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Tentang Kupas Tuntas
+                    </a>
+                    <a href="/#belajar-sejarah-seru"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Belajar Sejarah Seru
+                    </a>
+                </div>
+                <!-- Left: CTA -->
+                <div id="mulai-tebak-btn-desktop">
+                    <a href="mulai-tebak.html"
+                    class="hidden md:inline-block bg-maroon text-white font-semibold px-6 py-3 
+                            rounded-full transition-all duration-300
+                            hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
+                        Mulai Quiz
+                    </a>
+                </div>
+                <!-- Jika user sudah memulai quiz, tombol ini akan di hidden dan diganti dengan tombol reset nama -->
+                <div id="reset-nama-btn-desktop" class="hidden">
+                    <button class="hidden hover:cursor-pointer md:inline-block bg-maroon text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
+                        Reset Nama
+                    </button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="p-2 rounded-md text-maroon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden pb-2 bg-white shadow-md font-display md:hidden max-w-7xl mx-autoflex-col rounded-b-4xl shadow-white/50">
+            <a href="index.html" class="block px-4 py-2 font-semibold text-maroon">Beranda</a>
+            <a href="/#tentang-kupas-tuntas" class="block px-4 py-2 font-semibold text-maroon">Tentang Kupas Tuntas</a>
+            <a href="/#belajar-sejarah-seru" class="block px-4 py-2 font-semibold text-maroon">Belajar Sejarah Seru</a>
+            <a href="mulai-tebak.html" id="mulai-tebak-btn-mobile" class="block px-4 py-2 mx-4 my-3 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">Mulai Quiz</a>
+            <div id="reset-nama-btn-mobile" class="hidden mx-4 my-3">
+                <button class="w-full px-4 py-2 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">
+                    Reset Nama
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <!-- Jika pemain belum ada nama tampilkan halaman ini -->
+        <section id="no-name-section" class="flex flex-col items-center justify-center w-full min-h-screen gap-8 text-center">
+            <h1 class="text-2xl font-bold text-white font-display">Mohon maaf halaman ini tidak tersedia. Silahkan masuk ke halaman berikut.</h1>
+            <a href="mulai-tebak.html" class="px-3 py-2 sm:px-5 sm:py-2.5 sm:text-base text-sm rounded-full border-2 border-white text-white font-semibold font-display hover:bg-white hover:text-maroon hover:shadow-md transition">Mulai Tebak</a>
+        </section>
+        <!-- Tolong saya butuh tidur :( -->
+        <section id="game-section" class="flex items-center justify-center w-full min-h-screen px-4 my-10 text-center">
+            <div class="flex flex-col items-center w-full max-w-md gap-6 my-24 md:max-w-4xl">
+                <div class="flex flex-col w-full gap-2 p-6 shadow-lg bg-white/10 rounded-3xl">
+                    <h1 class="text-2xl font-bold leading-snug text-center text-white sm:text-3xl md:text-4xl font-display">
+                        Tebak Kejadian <span class="text-yellow-400">Sejarah</span> Indonesia
+                    </h1>
+                    <div class="flex flex-wrap justify-center gap-3 text-sm text-white sm:text-base font-display">
+                        <p>Soal: <span id="question-counter">1 / 1</span></p>
+                        <p>Skor: <span id="score-display">0</span></p>
+                        <p>Waktu: <span id="timer-display">02:00</span></p>
+                    </div>
+                </div>
+                <div class="sm:max-w-xl md:max-w-full font-display gap-4 px-1 flex flex-col items-center">
+                    <q id="q-title" class="text-center text-3xl font-bold text-yellow-400 font-display"></q>
+                    <p id="question" class="text-base text-justify text-white font-display sm:text-lg">
+                        <!-- Soal Inject -->
+                    </p>
+                </div>
+                <div id="answers" class="w-full h-[300px] sm:h-[380px] md:h-full text-white max-w-sm sm:max-w-xl md:max-w-4xl">
+                    <!-- Isi Jawaban Inject -->
+                </div>
+                <div id="buttons" class="flex flex-col w-full gap-3 sm:flex-row">
+                    <button id="btn-next-question"
+                        class="w-full px-5 py-2 mt-4 font-bold bg-white rounded-xl text-maroon font-display disabled:opacity-50 sm:w-auto">
+                        Soal Berikutnya
+                    </button>
+                </div>
+                 <!-- Hasil akhir: badge + tombol akhir -->
+                <div id="result-badge" class="hidden mt-6">
+                    <div class="flex flex-col items-center gap-2">
+                        <div id="badge-icon" class="badge-circle badge-basic">🏅</div>
+                        <p id="badge-title" class="text-lg font-bold text-white font-display"></p>
+                        <p id="badge-desc" class="max-w-md text-sm font-display text-white/80"></p>
+                    </div>
+                </div>
+                <div id="end-buttons" class="hidden w-full mt-4 sm:w-auto">
+                    <div class="flex flex-col justify-center w-full gap-3 sm:flex-row">
+                        <button id="btn-restart"
+                            class="w-full px-6 py-2 font-bold bg-white rounded-xl text-maroon font-display sm:w-auto">
+                            Mulai Ulang
+                        </button>
+                        <button id="btn-back"
+                            class="w-full px-6 py-2 font-bold text-white rounded-xl bg-maroon font-display sm:w-auto">
+                            Kembali
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Modal Hasil Jawaban -->
+        <div id="result-modal" class="fixed inset-0 z-50 items-center justify-center hidden px-4">
+            <!-- Overlay -->
+            <div id="result-overlay" class="absolute inset-0 bg-black/50"></div>
+            <!-- Card Modal -->
+            <div class="relative z-10 w-full max-w-md p-5 bg-white shadow-xl rounded-2xl">
+                <!-- Tombol X -->
+                <button id="result-modal-close"
+                        class="absolute text-2xl leading-none text-gray-500 hover:text-gray-800 top-3 right-4">
+                    &times;
+                </button>
+                <!-- Nama Pahlawan -->
+                <h2 id="modal-hero-name"
+                    class="mb-2 text-lg font-bold font-display text-maroon sm:text-xl">
+                    Nama Pahlawan
+                </h2>
+                <!-- Feedback (Benar / Salah) -->
+                <p id="modal-feedback"
+                class="mb-2 text-sm text-gray-800 font-display sm:text-base">
+                    Status jawaban…
+                </p>
+                <!-- Penjelasan Pahlawan -->
+                <p id="modal-explanation"
+                class="text-xs leading-relaxed text-gray-700 sm:text-sm">
+                    Penjelasan pahlawan…
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer class="w-full px-4 py-8 bg-white md:px-16">
+        <div class="flex flex-col items-center gap-6 mx-auto text-center md:flex-row md:justify-between md:text-left">
+            <!-- Credit -->
+            <p class="order-2 font-semibold text-md md:order-1 text-maroon md:text-sm text-display">
+                © 2025 <a href="/" class="hover:underline">Tim Menumpas Semua Keraguan</a>
+            </p>
+            <!-- Navigation -->
+            <div class="flex flex-col items-start order-1 gap-2 md:order-2 text-maroon font-display text-display md:flex-row md:gap-6">
+                <a href="#hero" class="md:border-b md:border-[#787A91] text-md font-semibold md:text-sm">
+                    Beranda
+                </a>
+                <a href="#tentang-kupas-tuntas" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Tentang Kupas Tuntas
+                </a>
+                <a href="#belajar-sejarah-seru" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Belajar Sejarah Seru
+                </a>
+                <a href="#banyaknya-pahlawan-indonesia" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Persebaran Pahlawan Indonesia
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- gameJS File -->
+     <script src="assets/js/gamesJS/mulai-tebak.js"></script>
+     <script src="assets/js/gamesJS/get-player-name.js"></script>
+
+    <!-- Tebak Gambar Pahlawan JS File -->
+    <script src="assets/js/gamesJS/tebak-kejadian-sejarah.js"></script>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        $(document).ready(function () {
+            var $menu = $("#mobile-menu");
+
+            $("#mobile-menu-toggle").on("click", function () {
+            if ($menu.is(":visible")) {
+                $menu.slideUp(200, function () {
+                $menu.addClass("hidden");
+                });
+            } else {
+                $menu
+                .removeClass("hidden")
+                .hide()
+                .slideDown(200);
+            }
+            });
+        });
+    </script>
+</body>
+</html>

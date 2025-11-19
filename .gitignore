@@ -1,0 +1,12 @@
+# JavaScript dependencies
+node_modules
+package.json
+package-lock.json
+
+# CSS dependencies
+input.css
+
+# Miscellaneous
+gakkep.html
+tes.html
+tes2.js

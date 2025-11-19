@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kupas Tuntas adalah laman uji pengetahuan sejarah lewat tebak-pahlawan interaktif dan menyenangkan.">
+    <title>Kupas Tuntas - Bukan Sekadar Menebak, Tapi Kupas Sampai Tuntas!</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/logo/kutas-logo.png" type="image">
+
+    <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Output CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="assets/css/custom/card-stacker-quiz.css"> <!-- CSS untuk card stacker -->
+
+    <!-- Jquery File -->
+     <script src="assets/js/core/jquery.js"></script>
+</head>
+<body class="bg-maroon">
+    <nav class="fixed top-0 left-0 z-50 w-full">
+        <div class="container mx-auto max-w-7xl">
+            <div class="flex items-center justify-between bg-white rounded-none shadow-md px-7 md:rounded-b-4xl md:shadow-white/50">
+                <!-- Left: Logo -->
+                 <div class="shrink-0">
+                    <a href="index.html">
+                        <img src="assets/images/logo/kupas-tuntas-white.png" alt="Kupas Tuntas Logo" class="h-16">
+                    </a>
+                 </div>
+                 <!-- Desktop Menu -->
+                 <!-- Right: Links -->
+                <div class="hidden py-6 space-x-6 text-xs font-medium md:flex font-display md:text-sm lg:text-base">
+                    <a href="index.html"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Beranda
+                    </a>
+                    <a href="/#tentang-kupas-tuntas"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Tentang Kupas Tuntas
+                    </a>
+                    <a href="/#belajar-sejarah-seru"
+                    class="relative text-maroon font-semibold transition-all duration-300
+                            hover:text-red-900
+                            hover:-translate-y-0.5
+                            before:content-[''] before:absolute before:w-0 before:h-0.5
+                            before:bg-red-900 before:bottom-0 before:left-0
+                            before:transition-all before:duration-300
+                            hover:before:w-full">
+                        Belajar Sejarah Seru
+                    </a>
+                </div>
+                <!-- Left: CTA -->
+                <div id="mulai-tebak-btn-desktop">
+                    <a href="mulai-tebak.html"
+                    class="hidden md:inline-block bg-maroon text-white font-semibold px-6 py-3 
+                            rounded-full transition-all duration-300
+                            hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
+                        Mulai Quiz
+                    </a>
+                </div>
+                <!-- Jika user sudah memulai quiz, tombol ini akan di hidden dan diganti dengan tombol reset nama -->
+                <div id="reset-nama-btn-desktop" class="hidden">
+                    <button class="hidden hover:cursor-pointer md:inline-block bg-maroon text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
+                        Reset Nama
+                    </button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="p-2 rounded-md text-maroon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden pb-2 bg-white shadow-md font-display md:hidden max-w-7xl mx-autoflex-col rounded-b-4xl shadow-white/50">
+            <a href="index.html" class="block px-4 py-2 font-semibold text-maroon">Beranda</a>
+            <a href="/#tentang-kupas-tuntas" class="block px-4 py-2 font-semibold text-maroon">Tentang Kupas Tuntas</a>
+            <a href="/#belajar-sejarah-seru" class="block px-4 py-2 font-semibold text-maroon">Belajar Sejarah Seru</a>
+            <a href="mulai-tebak.html" id="mulai-tebak-btn-mobile" class="block px-4 py-2 mx-4 my-3 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">Mulai Quiz</a>
+            <div id="reset-nama-btn-mobile" class="hidden mx-4 my-3">
+                <button class="w-full px-4 py-2 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">
+                    Reset Nama
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar END -->
+    <!-- Main Content -->
+     <main>
+        <!-- Ilustrasi mas pandu (mobile version) -->
+        <div id="mas-pandu-container" 
+            class="fixed z-50 hidden w-32 h-auto p-2 bottom-5 right-5 md:hidden animate-bounce-slow">
+            <img src="assets/images/mas-pandu/mas-pandu-berpikir.png" 
+                alt="Mas Pandu"
+                class="object-contain w-full h-auto pointer-events-none"/>
+        </div>
+        <!-- Name Section -->
+        <!-- Jika user belum memiliki data diri maka tampilkan, jika sudah ini akan di hidden -->
+        <section id="name" class="relative flex flex-col items-center w-full min-h-screen overflow-hidden text-center justify-center-safe md:justify-center bg-maroon/70 md:pt-28">
+            <div class="absolute inset-0 z-0 pointer-events-none bg-maroon/70"></div>
+            <!-- Ilustrasi Mas Pandu (desktop only) -->
+            <img src="assets/images/mas-pandu/mas-pandu-berpikir.png" alt="Mas Pandu sedang berpikir" class="hidden z-5 md:block absolute -bottom-5 -left-24 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain pointer-events-none"/>
+            <!-- Wrapper konten utama desktop only! -->
+            <div id="pahlawan-card" class="hidden md:flex font-display h-[360px] w-full max-w-md justify-center">
+                <!-- Card Stacker akan di-inject di sini -->
+                <div class="relative h-[360px] w-full max-w-md flex justify-center">
+                    <div class="bg-white card" data-card-quiz="0">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="1">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="2">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="3">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="4">
+                        <div class="card-img" data-img></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Wrapper konten utama mobile version -->
+             <div id="pahlawan-card" class="md:hidden flex font-display h-[360px] w-full max-w-md justify-center">
+                <!-- Card Stacker akan di-inject di sini -->
+                <div class="relative h-[360px] w-full max-w-md flex justify-center">
+                    <div class="bg-white card" data-card-quiz="0">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="1">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="2">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="3">
+                        <div class="card-img" data-img></div>
+                    </div>
+                    <div class="bg-white card" data-card-quiz="4">
+                        <div class="card-img" data-img></div>
+                    </div>
+                </div>
+            </div>
+            <div id="data-diri-pemain" class="relative z-30 flex flex-col items-center">
+                <h1 class="text-xl font-bold text-center text-white md:text-2xl font-display">
+                    Siapa Namamu, Wahai 
+                    <span id="nama-pemain" class="underline decoration-yellow-400 decoration-4">Pemain</span>?
+                </h1>
+                <div class="flex items-center gap-3 mt-6">
+                    <!-- Input Nama -->
+                    <input type="text" id="input-nama-pemain" placeholder="Masukkan namamu..." class="px-4 py-3 font-medium text-center transition-all bg-white rounded-full w-60 md:w-72 text-maroon focus:outline-none focus:ring-2 focus:ring-white focus:bg-maroon focus:text-white placeholder:text-maroon/70"/>
+                    <!-- Tombol Pesawat -->
+                    <button id="mulai-tebak-btn" class="bg-white text-maroon p-4 rounded-full transition-all duration-300 hover:bg-yellow-500 hover:text-white hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3 3l19 9-19 9 3-9zm0 0l7-3" /></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- Tampilkan jika sudah ada data diri (ini merupakan bagian dari mode permainan) -->
+        <section id="gamemode-section" class="relative items-center justify-center hidden w-full h-full overflow-hidden text-center bg-maroon/70">
+            <div class="w-full min-h-screen">
+                <div class="flex flex-col items-center justify-center gap-8 sm:flex-row">
+                    <div class="relative flex items-center min-h-screen bg-center bg-no-repeat bg-cover basis-1/3" style="background-image: url('assets/images/misc/kertas-usang.png');">
+                        <!-- GRADIENT / OVERLAY -->
+                        <div class="absolute inset-0 bg-[#d3b484]/70 z-0"></div>
+                        <!-- KONTEN -->
+                        <div class="relative z-10 flex flex-col w-full px-4 mt-24 md:px-16">
+                            <h1 id="gamemode-title" class="mb-6 text-3xl font-bold text-left text-maroon font-display md:text-4xl">Halo, <span id="player-name-display" class="underline decoration-yellow-400 decoration-4">Pemain</span>!</h1>
+                            <p class="mb-12 text-left font-display text-maroon text-md md:text-lg">Seberapa hebat kamu mengenal para pahlawan bangsa? Pilih mode permainan yang kamu inginkan dan buktikan pengetahuan sejarahmu!</p>
+                            <div id="gamemode-cards" class="flex flex-col items-start gap-8 mb-12 font-bold text-maroon font-display">
+                                <button id="TGP-btn" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:cursor-pointer bg-maroon">
+                                    Tebak Gambar Pahlawan
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                                <button id="MC-btn" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:cursor-pointer bg-maroon">
+                                    Mode Cerita
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                                <button id="TKS-btn" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:cursor-pointer bg-maroon">
+                                    Tebak Kejadian Sejarah
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Gamemode Dekripsi -->
+                    <div id="GM-desc" class="relative flex justify-center min-h-screen px-4 basis-1/3">
+                        <!-- Gamemode Section -->
+                        <div id="gamemode" class="flex flex-col items-center justify-around gap-6 mt-24 mb-12 text-center"></div>
+                    </div>
+                    <div id="mas-pandu" class="basis-1/3">
+                        <img src="assets/images/mas-pandu/mas-pandu-berpikir.png" alt="Mas Pandu sedang berpikir" class="hidden md:block absolute -right-5 bottom-0 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain podisplay-events-none z-10"/>
+                    </div>
+                </div>
+            </div>  
+        </section>
+     </main>
+     <footer class="w-full px-4 py-8 bg-white md:px-16">
+        <div class="flex flex-col items-center gap-6 mx-auto text-center md:flex-row md:justify-between md:text-left">
+            <!-- Credit -->
+            <p class="order-2 font-semibold text-md md:order-1 text-maroon md:text-sm text-display">
+                © 2025 <a href="/" class="hover:underline">Tim Menumpas Semua Keraguan</a>
+            </p>
+            <!-- Navigation -->
+            <div class="flex flex-col items-start order-1 gap-2 md:order-2 text-maroon font-display text-display md:flex-row md:gap-6">
+                <a href="/#hero" class="md:border-b md:border-[#787A91] text-md font-semibold md:text-sm">
+                    Beranda
+                </a>
+                <a href="/#tentang-kupas-tuntas" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Tentang Kupas Tuntas
+                </a>
+                <a href="/#belajar-sejarah-seru" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Belajar Sejarah Seru
+                </a>
+                <a href="/#banyaknya-pahlawan-indonesia" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Persebaran Pahlawan Indonesia
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- Custom JS Files -->
+    <script src="assets/js/essentials/card-stacker.js"></script>
+    <script src="assets/js/essentials/index.js"></script>
+
+    <!-- gameJS File -->
+     <script src="assets/js/gamesJS/mulai-tebak.js"></script>
+     <script src="assets/js/gamesJS/get-player-name.js"></script>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        $(document).ready(function () {
+            var $menu = $("#mobile-menu");
+
+            $("#mobile-menu-toggle").on("click", function () {
+            if ($menu.is(":visible")) {
+                $menu.slideUp(200, function () {
+                $menu.addClass("hidden");
+                });
+            } else {
+                $menu
+                .removeClass("hidden")
+                .hide()
+                .slideDown(200);
+            }
+            });
+        });
+    </script>
+</body>
+</html>

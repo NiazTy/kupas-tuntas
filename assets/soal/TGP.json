@@ -1,0 +1,362 @@
+[
+    { "heroId": "sultan-agung", "nama": "Sultan Agung",
+        "soal": "Aku adalah raja besar dari tanah Mataram. Dua kali aku mengirimkan serangan raksasa ke Batavia, memimpin ribuan pasukan dari Jawa untuk memukul mundur Belanda. Meski gagal merebut Batavia, perjuanganku tercatat sebagai serangan teratur pertama terhadap VOC.",
+        "penjelasan": "Sultan Agung Anyokrokusumo adalah Raja Mataram yang dua kali melancarkan serangan besar dan teratur ke Batavia pada tahun 1628 dan 1629. Serangan ini menjadi aksi militer terbesar Nusantara terhadap VOC pada abad itu. Ia juga terkenal sebagai pemimpin berwawasan luas dalam politik, ekonomi, dan kebudayaan."
+    },
+    { "heroId": "sultan-hasanuddin", "nama": "Sultan Hasanuddin",
+        "soal": "Belanda menjulukiku “Ayam Jantan dari Timur.” Aku memimpin kerajaan besar di kawasan Timur Nusantara dan menolak keras monopoli dagang VOC. Bahkan setelah Perjanjian Bongaya dipaksakan, aku bangkit kembali dan mempertahankan benteng terkuat kerajaanku hingga napas terakhir perjuangan.",
+        "penjelasan": "Sultan Hasanuddin dari Kerajaan Gowa dijuluki “Ayam Jantan dari Timur” oleh Belanda karena keberaniannya. Ia menolak keras monopoli VOC dan tetap melakukan perlawanan meski sudah ditekan melalui Perjanjian Bongaya. Benteng terkuat Gowa, Somba Opu, dipertahankannya sampai akhir."
+    },
+    { "heroId": "nyi-ageng-serang", "nama": "Nyi Ageng Serang",
+        "soal": "Aku memimpin perlawanan sambil duduk di tandu karena usiaku sudah lanjut. Namun aku punya strategi unik: pasukanku mengenakan daun keladi sebagai penyamaran. Dari jauh kami tampak seperti tanaman, namun ketika musuh mendekat, kami justru menerjang.",
+        "penjelasan": "Nyi Ageng Serang menggunakan taktik unik bernama “teknik daun lumbu”, pasukannya menyamar memakai daun keladi sehingga dari jauh tampak seperti tanaman. Meski sudah tua dan bertempur dengan tandu, ia tetap menjadi salah satu tokoh penting dalam Perang Diponegoro."
+    },
+    { "heroId": "kapitan-pattimura", "nama": "Kapitan Pattimura",
+        "soal": "Aku berasal dari Maluku. Seranganku dimulai pada 14 Mei 1817 dan mengguncang VOC karena kami mampu merebut beberapa benteng penting. Ketika tertangkap, Belanda menawariku kerja sama, tetapi aku memilih mati di tiang gantungan daripada tunduk pada penjajah.",
+        "penjelasan": "Kapitan Pattimura (Thomas Matulessy) memimpin pemberontakan Maluku melawan Belanda pada 14 Mei 1817. Ia merebut benteng-benteng penting dan menolak tawaran kerja sama VOC. Karena keberaniannya, ia dihukum mati di tiang gantungan pada 16 Desember 1817."
+    },
+    { "heroId": "tuanku-imam-bonjol", "nama": "Tuanku Imam Bonjol",
+        "soal": "Aku lahir di Pasaman dan terlibat dalam konflik antara kaum adat dan kaum paderi. Benteng tanah liat yang kupimpin di Bonjol berulang kali jatuh dan direbut kembali, hingga akhirnya aku ditipu dan dibuang jauh ke berbagai daerah sampai akhir hayatku.",
+        "penjelasan": "Tokoh penting dalam Perang Padri, ia memimpin kaum Paderi melawan kaum adat yang didukung Belanda. Benteng tanah liat Bonjol yang ia pimpin berulang kali jatuh dan direbut kembali. Imam Bonjol akhirnya ditangkap akibat tipu muslihat Belanda dan dibuang hingga wafat pada 1864."
+    },
+    { "heroId": "pangeran-diponegoro", "nama": "Pangeran Diponegoro",
+        "soal": "Rumahku di Tegalrejo diserang pada 1825, membuatku berpindah ke markas di Selarong. Para bangsawan, ulama, dan petani bergabung dalam perjuanganku. Belanda gagal menangkapku berkali-kali hingga mereka menipuku dengan undangan perundingan.",
+        "penjelasan": "Pangeran Diponegoro memulai perlawanan setelah rumahnya di Tegalrejo diserbu Belanda pada 1825. Ia memindahkan markas ke Selarong dan memimpin Perang Jawa pada 1825–1830. Belanda gagal menangkapnya berkali-kali hingga akhirnya menipunya lewat undangan perundingan di Magelang."
+    },
+    { "heroId": "martha-khristina-tiahahu", "nama": "Martha Khristina Tiahahu",
+        "soal": "Aku hanya seorang gadis muda berusia sekitar 17 tahun. Setelah ayahku dieksekusi, aku tetap mengangkat senjata dan menolak makan serta minum ketika ditawan. Aku wafat di dalam kapal menuju Jawa, dan jasadku dikebumikan oleh lautan.",
+        "penjelasan": "Gadis pejuang Maluku berusia sekitar 17 tahun ini ikut mengangkat senjata bersama ayahnya. Setelah tertangkap, ia menolak makan dan minum di kapal yang membawanya menuju Jawa. Ia wafat pada 2 Januari 1818 dan dimakamkan oleh lautan di sekitar Kepulauan Nusa Laut."
+    },
+    { "heroId": "paku-buwono-vi", "nama": "Sri Susuhunan Paku Buwono VI",
+        "soal": "Aku adalah seorang raja yang dianggap “mendua” oleh Belanda karena diam-diam membantu perjuangan Diponegoro. Ketika Belanda memaksaku menandatangani pengurangan kekuasaan, aku menolak dan melarikan diri. Namun akhirnya aku ditangkap dan dibuang jauh ke tanah pengasingan.",
+        "penjelasan": "Paku Buwono VI, raja Surakarta, diam-diam membantu perjuangan Diponegoro. Belanda menganggapnya berbahaya dan memaksanya menandatangani pengurangan kekuasaan. Ia menolak dan meninggalkan istana, namun akhirnya ditangkap dan diasingkan ke Ambon hingga wafat."
+    },
+    { "heroId": "pangeran-antasari", "nama": "Pangeran Antasari",
+        "soal": "Aku bukan bangsawan istana, tetapi darah pejuang mengalir dalam diriku. Aku memimpin perang panjang di tanah Banjar bersama para kepala daerah seperti Hulu Sungai, Martapura, dan Barito untuk mengusir Belanda. Sayangnya, wabah penyakit merenggutku sebelum rencana serangan besarku terlaksana.",
+        "penjelasan": "Pangeran Antasari adalah pemimpin Perang Banjar yang menggerakkan para kepala daerah di Kalimantan Selatan dan Tengah melawan Belanda. Ia menolak semua ajakan berunding dari Belanda. Saat merencanakan serangan besar pada 1862, ia terserang wabah cacar dan gugur sebagai pahlawan."
+    },
+    { "heroId": "sultan-thaha-syaifuddin", "nama": "Sultan Thaha Syaifuddin",
+        "soal": "Aku adalah seorang bangsawan Jambi yang dikenal taat beribadah, dekat dengan rakyat, dan bergerak dalam diam. Jejakku sengaja disamarkan agar musuh mengira aku sudah mati, namun aku tetap memimpin perlawanan di pedalaman hingga akhirnya gugur ditembak musuh.",
+        "penjelasan": "Sultan Thaha Syaifuddin adalah Sultan Jambi yang dikenal taat beragama dan dekat dengan rakyat. Ia memimpin perlawanan panjang sambil berpindah-pindah secara rahasia. Jejaknya disembunyikan sehingga Belanda sempat mengira ia sudah wafat. Ia gugur pada 26 April 1904 di daerah Muara Tebo."
+    },
+    { "heroId": "teungku-cik-di-tiro", "nama": "Teungku Cik Di Tiro",
+        "soal": "Aku seorang ulama dari Aceh yang menjadikan perang melawan Belanda sebagai bagian dari perjuangan agama. Dengan semangat perang sabil, pasukanku merebut satu per satu benteng Belanda hingga musuh memakai siasat licik untuk menghabisiku.",
+        "penjelasan": "Teungku Cik Di Tiro adalah ulama pejuang dari Aceh yang memimpin Perang Sabil melawan Belanda. Dengan seruan jihad, ia dan pasukannya berhasil merebut beberapa benteng dan pos penting Belanda. Belanda kemudian menggunakan tipu daya dengan meracun makanan yang akhirnya merenggut nyawanya pada 1891."
+    },
+    { "heroId": "sisingamangaraja-xii", "nama": "Sisingamangaraja XII",
+        "soal": "Aku adalah raja dan pemimpin adat di Tanah Batak. Ketika Belanda menancapkan kekuasaan di Tapanuli, aku memimpin perang yang panjang, berpindah dari satu tempat ke tempat lain hingga akhirnya terkepung dan gugur bersama keluargaku.",
+        "penjelasan": "Sisingamangaraja XII adalah raja Batak yang juga pemimpin agama Parmalim. Ia menolak kehadiran Belanda di Tanah Batak dan memimpin perlawanan sejak 1878, menyerang pos-pos Belanda di berbagai daerah. Pada 17 Juni 1907, ia terkepung dan gugur dalam pertempuran setelah puluhan tahun berjuang."
+    },
+    { "heroId": "cut-nyak-dien", "nama": "Cut Nyak Dien",
+        "soal": "Aku adalah seorang perempuan dari Aceh yang kehilangan suami dalam perang melawan Belanda. Bukannya berhenti, aku justru memimpin pasukan sendiri, berpindah dari satu hutan ke hutan lain meski usiaku tak lagi muda.",
+        "penjelasan": "Cut Nyak Dien adalah pahlawan perempuan Aceh yang meneruskan perjuangan setelah suaminya, Teuku Ibrahim Lamnga, gugur. Ia kemudian menikah dengan Teuku Umar dan tetap berjuang bahkan setelah Teuku Umar gugur pada 1899. Karena kondisi yang semakin lemah, ia akhirnya tertangkap dan diasingkan ke Sumedang hingga wafat pada 1908."
+    },
+    { "heroId": "teuku-umar", "nama": "Teuku Umar",
+        "soal": "Aku dikenal sebagai pejuang Aceh yang menggunakan siasat berpura-pura bekerja sama dengan Belanda. Dengan cara itu, aku berhasil mendapatkan senjata dan persenjataan, lalu berbalik menyerang mereka dalam skala besar.",
+        "penjelasan": "Teuku Umar adalah pejuang Aceh yang awalnya berpura-pura bekerja sama dengan Belanda untuk memperoleh kepercayaan, senjata, dan logistik. Setelah kuat, ia membelot dan menyerang Belanda dengan persenjataan yang telah ia kumpulkan. Ia gugur pada 1899 dalam sebuah pertempuran di Meulaboh."
+    },
+    { "heroId": "cut-meutia", "nama": "Cut Meutia",
+        "soal": "Aku adalah seorang perempuan pejuang dari Aceh. Setelah suamiku, pemimpin pasukan gerilya, tertangkap dan dihukum mati, aku meneruskan perlawanan bersama pasukan kecil di pedalaman hingga akhirnya gugur di medan tempur.",
+        "penjelasan": "Cut Meutia adalah pahlawan perempuan Aceh yang berjuang bersama suaminya Teuku Cik Tunong melawan Belanda. Setelah suaminya tertangkap dan dihukum mati, ia menikah dengan Pang Nanggroe dan melanjutkan perlawanan. Ia akhirnya gugur pada 1910 dalam pertempuran melawan pasukan Belanda."
+    },
+    { "heroId": "sultan-iskandar-muda", "nama": "Sultan Iskandar Muda",
+        "soal": "Aku adalah sultan yang membawa Kerajaan Aceh mencapai puncak kejayaannya. Lautan adalah sahabatku; armada perangnya kutempa kuat untuk menantang Portugis di Malaka dan menjadikan Aceh pusat perdagangan yang disegani.",
+        "penjelasan": "Sultan Iskandar Muda adalah penguasa Kerajaan Aceh yang memerintah pada awal abad ke-17. Ia membangun kekuatan militer dan armada laut yang kuat, serta menjadikan Aceh sebagai pusat perdagangan penting di kawasan Selat Malaka. Ia juga menyusun hukum yang dikenal sebagai Adat Makuta Alam dan beberapa kali menyerang Portugis di Malaka."
+    },
+    { "heroId": "sultan-mahmud-badaruddin-ii", "nama": "Sultan Mahmud Badaruddin II",
+        "soal": "Aku adalah penguasa Palembang yang tidak tinggal diam ketika Belanda ingin kembali menguasai sungai dan pelabuhan kotaku. Beberapa kali serangan besar kulancarkan hingga musuh memerlukan bantuan ekspedisi besar untuk menumbangkanku.",
+        "penjelasan": "Sultan Mahmud Badaruddin II adalah Sultan Palembang yang memimpin perlawanan terhadap usaha Belanda menguasai kembali Palembang pada awal abad ke-19. Ia beberapa kali memenangkan pertempuran melawan bala bantuan Belanda, namun akhirnya ditangkap lewat tipu muslihat dan diasingkan ke Ternate, tempat ia wafat pada 1852."
+    },
+    { "heroId": "radin-inten-ii", "nama": "Radin Inten II",
+        "soal": "Aku diangkat menjadi pemimpin Lampung di usia sangat muda. Ajakan untuk tunduk dan bersekolah ala Belanda kutolak, dan aku lebih memilih mengangkat senjata memimpin perang di daerah pegunungan hingga akhir hidupku.",
+        "penjelasan": "Radin Inten II adalah pemimpin perlawanan rakyat Lampung terhadap Belanda pada pertengahan abad ke-19. Diangkat sebagai pemimpin saat masih remaja, ia menolak bujukan dan tekanan Belanda dan memilih berjuang dari benteng-benteng di pedalaman. Ia gugur pada 1856 setelah dikhianati dan diserang secara mendadak."
+    },
+    { "heroId": "abdul-muis", "nama": "Abdul Muis",
+        "soal": "Aku bukan panglima perang, tetapi senjataku adalah pena dan pidato. Tulisan-tulisanku di surat kabar mengecam penghinaan terhadap bangsa Indonesia, dan aku juga berperan mendorong berdirinya sekolah teknik tinggi pertama di negeri ini.",
+        "penjelasan": "Abdul Muis adalah tokoh pergerakan nasional yang aktif sebagai wartawan dan politisi. Lewat tulisan-tulisannya, ia mengecam sikap merendahkan bangsa Indonesia oleh orang-orang Belanda. Ia juga berperan dalam mendorong berdirinya Technische Hoogeschool te Bandoeng, cikal bakal Institut Teknologi Bandung (ITB), dan kemudian terjun dalam pergerakan politik dan pemogokan buruh."
+    },
+    { "heroId": "albertus-sugiyopranoto", "nama": "M.G.R. Albertus Sugiyopranoto S.J",
+        "soal": "Aku adalah seorang imam Katolik yang pernah menjadi uskup di Jawa. Selain menggembalakan umat, aku juga dikenal mendukung perjuangan bangsa lewat pendidikan dan pelayanan sosial, hingga akhirnya dikenang sebagai pahlawan.",
+        "penjelasan": "M.G.R. Albertus Sugiyopranoto S.J adalah seorang uskup Katolik yang lahir di Solo dan kemudian menjadi Vikaris Apostolik Semarang. Ia aktif dalam pendidikan, karya sosial, dan membina umat di masa-masa sulit menjelang dan sesudah kemerdekaan. Atas jasa-jasanya dalam bidang kemanusiaan dan kebangsaan, ia dianugerahi gelar Pahlawan Nasional."
+    },
+    { "heroId": "oto-iskandar-di-nata", "nama": "R. Oto Iskandar di Nata",
+        "soal": "Aku aktif di parlemen kolonial dan berbagai organisasi kebangsaan. Setelah kemerdekaan diproklamasikan, aku dipercaya menjadi menteri, tetapi tak lama kemudian aku diculik dan dibunuh, jenazahku bahkan tak pernah ditemukan dengan pasti.",
+        "penjelasan": "Raden Oto Iskandar di Nata adalah tokoh pergerakan nasional yang aktif di Volksraad, GAPI, dan kemudian menjadi anggota PPKI. Setelah Proklamasi Kemerdekaan, ia diangkat sebagai Menteri Negara dalam kabinet pertama Indonesia. Pada akhir 1945, ia diculik dan dibunuh di daerah Mauk, Banten, sehingga dikenal dengan peristiwa “Hilangnya Oto Iskandar di Nata”."
+    },
+    { "heroId": "kusumah-atmaja", "nama": "Dr. Kusuma Atmaja",
+        "soal": "Aku adalah seorang ahli hukum yang meniti karier dari pengadilan kolonial hingga menjadi ketua mahkamah tertinggi di republik yang baru lahir. Aku ikut membela pentingnya hukum nasional yang adil bagi rakyat Indonesia.",
+        "penjelasan": "Dr. Kusumah Atmaja adalah pakar hukum yang menempuh pendidikan di Rechtsschool dan kemudian di Universitas Leiden. Ia pernah menjadi hakim di berbagai kota dan pada masa kemerdekaan diangkat sebagai Ketua Mahkamah Agung Republik Indonesia. Ia juga terlibat dalam perundingan-perundingan penting sebagai penasihat hukum bangsa."
+    },
+    { "heroId": "lumban-tobing", "nama": "Dr. F. Lumban Tobing",
+        "soal": "Aku adalah seorang dokter dari Tapanuli yang kemudian memimpin perjuangan di Sumatra utara. Ketika Belanda mencoba kembali berkuasa, aku memilih memimpin perang gerilya di hutan-hutan dan pegunungan.",
+        "penjelasan": "Dr. Ferdinand Lumban Tobing adalah dokter lulusan STOVIA yang kemudian menjadi tokoh perjuangan di Sumatra Utara. Setelah Proklamasi, ia diangkat menjadi Residen Tapanuli dan memimpin perlawanan terhadap Belanda melalui perang gerilya. Ia juga pernah menjabat sebagai menteri dalam kabinet-kabinet awal Republik Indonesia."
+    },
+    { "heroId": "teuku-nyak-arief", "nama": "Teuku Nyak Arief",
+        "soal": "Aku dikenal sebagai “Rencong Aceh”. Sebelum kemerdekaan, aku duduk di dewan rakyat dan menentang kebijakan penjajah. Setelah proklamasi, aku menjadi Residen Aceh yang pertama dan membantu menjaga Aceh tetap setia pada republik.",
+        "penjelasan": "Teuku Nyak Arief adalah tokoh Aceh yang sejak masa kolonial sudah aktif di Volksraad dan organisasi pergerakan. Pada masa Jepang dan awal kemerdekaan, ia menjabat sebagai Residen Aceh dan memainkan peran penting menjaga Aceh sebagai basis kuat Republik Indonesia. Ia wafat pada 1946 dan dihormati sebagai salah satu perintis kemerdekaan dari Aceh."
+    },
+    { "heroId": "raden-ajeng-kartini", "nama": "Raden Ajeng Kartini",
+        "soal": "Aku seorang bangsawan Jawa yang hidup dalam tradisi pingitan, namun pikiranku menjelajah jauh lewat buku dan surat-surat. Aku bercita-cita memajukan pendidikan perempuan dan kelak tulisanku dikenal dengan judul “Habis Gelap Terbitlah Terang.”",
+        "penjelasan": "R.A. Kartini adalah pelopor emansipasi perempuan Indonesia yang lahir di Jepara pada 1879. Terbatas oleh adat pingitan, ia menyalurkan gagasan-gagasannya tentang pendidikan dan kemajuan bagi perempuan melalui surat-surat kepada sahabat-sahabatnya di Belanda. Setelah wafat pada 1904, surat-surat itu diterbitkan dan menjadi inspirasi perjuangan pendidikan perempuan di Indonesia."
+    },
+    { "heroId": "muhammad-yamin", "nama": "Prof. Mr. Muhammad Yamin",
+        "soal": "Aku adalah seorang sastrawan, ahli hukum, dan politisi yang hadir dalam Kongres Pemuda. Aku ikut merumuskan Sumpah Pemuda dan kemudian mengusulkan dasar negara yang kelak dikenal sebagai Pancasila.",
+        "penjelasan": "Prof. Mr. Muhammad Yamin adalah tokoh pergerakan nasional kelahiran Sawahlunto yang aktif di Jong Sumatranen Bond dan Kongres Pemuda. Ia dikenal sebagai salah satu perumus Sumpah Pemuda 1928 dan kemudian terlibat dalam BPUPKI, mengajukan gagasan tentang dasar negara. Setelah kemerdekaan, ia menjabat sebagai menteri dalam beberapa kabinet."
+    },
+    { "heroId": "supomo", "nama": "Prof. Dr. R. Supomo",
+        "soal": "Aku adalah seorang ahli hukum adat yang duduk dalam BPUPKI. Dalam sidang-sidang itu, aku menyampaikan gagasan tentang negara persatuan yang kekeluargaan dan ikut merancang Undang-Undang Dasar 1945.",
+        "penjelasan": "Prof. Dr. R. Supomo adalah guru besar hukum yang banyak meneliti hukum adat di Indonesia. Ia menjadi anggota BPUPKI dan memainkan peran besar dalam perumusan UUD 1945, terutama mengenai bentuk negara dan konsep kekeluargaan. Ia kemudian juga berperan dalam dunia pendidikan tinggi dan diplomasi."
+    },
+    { "heroId": "wage-rudolf-supratman", "nama": "Wage Rudolf Supratman",
+        "soal": "Aku datang ke Kongres Pemuda dengan biola di tangan. Di sana untuk pertama kalinya kudendangkan lagu yang kelak menjadi kebangsaan, menggetarkan hati mereka yang hadir.",
+        "penjelasan": "Wage Rudolf Supratman adalah pencipta lagu “Indonesia Raya”. Ia memperkenalkan lagu ini pertama kali dalam Kongres Pemuda II pada 28 Oktober 1928 dengan iringan biola. Lagu tersebut kemudian menjadi lagu kebangsaan Republik Indonesia setelah kemerdekaan diproklamasikan."
+    },
+    { "heroId": "sukarjo-wiryopranoto", "nama": "Sukarjo Wiryopranoto",
+        "soal": "Aku aktif di dunia politik dan kewartawanan. Bersama tokoh lain aku mendirikan partai, memimpin surat kabar, dan kelak mewakili Indonesia di berbagai negara, termasuk di forum dunia.",
+        "penjelasan": "Sukarjo Wiryopranoto adalah tokoh pergerakan nasional yang ikut mendirikan Partai Indonesia Raya (Parindra) dan aktif dalam Gabungan Politik Indonesia (GAPI). Ia juga memimpin surat kabar dan setelah kemerdekaan menjadi diplomat, antara lain sebagai duta besar dan wakil tetap Indonesia di PBB."
+    },
+    { "heroId": "sutan-syahrir", "nama": "Sutan Syahrir",
+        "soal": "Aku adalah salah satu perintis pergerakan pemuda dan pernah memimpin partai kecil bernama Partai Sosialis Indonesia. Di masa awal republik, aku dipercaya menjadi perdana menteri pertama yang bernegosiasi dengan dunia internasional.",
+        "penjelasan": "Sutan Syahrir adalah tokoh pergerakan pemuda yang aktif dalam organisasi Jong Indonesia dan kemudian mendirikan Partai Sosialis Indonesia. Setelah Proklamasi, ia diangkat sebagai Perdana Menteri pertama Republik Indonesia dan memimpin delegasi dalam perundingan-perundingan dengan Belanda. Ia wafat di pengasingan medis di Swiss pada 1966."
+    },
+    { "heroId": "abdurahman-saleh", "nama": "Marsda TNI Prof. Dr. Abdurahman Saleh",
+        "soal": "Aku seorang dokter yang mencintai ilmu dan teknologi. Aku ikut menyiarkan kabar kemerdekaan lewat radio dan kemudian menjadi pelopor dalam dunia penerbangan Indonesia hingga gugur di udara.",
+        "penjelasan": "Prof. Dr. Abdurahman Saleh adalah dokter dan ahli fisiologi yang juga aktif di dunia radio dan penerbangan. Ia membantu menyiarkan berita Proklamasi Kemerdekaan dan kemudian bergabung dengan Angkatan Udara Republik Indonesia. Ia gugur pada 29 Juli 1947 ketika pesawat yang ditumpanginya ditembak Belanda saat membawa bantuan Palang Merah dari India."
+    },
+    { "heroId": "zainul-arifin", "nama": "Kyai H. Zainul Arifin",
+        "soal": "Aku adalah seorang ulama dan politisi yang pernah memimpin laskar Hizbullah. Di masa damai, aku duduk di parlemen dan bahkan memimpin lembaga legislatif pada masa demokrasi terpimpin.",
+        "penjelasan": "K.H. Zainul Arifin adalah tokoh Nahdlatul Ulama yang memimpin laskar Hizbullah pada masa revolusi fisik. Setelah perang, ia menjadi anggota DPR dan kemudian menjabat sebagai Ketua DPR-GR pada masa demokrasi terpimpin. Ia juga sempat menjadi Wakil Perdana Menteri dalam Kabinet Ali Sastroamidjojo."
+    },
+    { "heroId": "rasuna-said", "nama": "H. Rasuna Said",
+        "soal": "Aku seorang perempuan Minangkabau yang pandai berpidato dan tak gentar mengkritik penjajah. Karena kata-kataku, aku pernah dipenjara, namun setelah merdeka aku justru dipanggil untuk duduk di lembaga tinggi negara.",
+        "penjelasan": "H. Rasuna Said adalah tokoh pergerakan dari Sumatra Barat yang aktif di organisasi politik dan terkenal sebagai orator ulung. Ia pernah dipenjara oleh pemerintah kolonial karena pidato-pidatonya yang keras menentang penjajahan. Setelah kemerdekaan, ia menjadi anggota Dewan Perwakilan Rakyat dan kemudian Dewan Pertimbangan Agung."
+    },
+    { "heroId": "wahidin-sudirohusodo", "nama": "Dr. Wahidin Sudirohusodo",
+        "soal": "Aku seorang dokter yang berkeliling Jawa untuk menggalang dana beasiswa bagi anak-anak pribumi yang cerdas. Dari gagasan itu lahirlah sebuah organisasi modern pertama di Indonesia.",
+        "penjelasan": "Dr. Wahidin Sudirohusodo adalah dokter Jawa yang prihatin terhadap nasib pendidikan anak-anak pribumi. Ia berkeliling untuk mengumpulkan dana beasiswa sehingga memunculkan gagasan pembentukan organisasi yang kemudian diwujudkan para mahasiswa STOVIA menjadi Budi Utomo pada tahun 1908."
+    },
+    { "heroId": "ahmad-dahlan", "nama": "Kyai Haji Ahmad Dahlan",
+        "soal": "Aku seorang ulama pembaharu dari Yogyakarta. Aku mendirikan sebuah organisasi yang menggabungkan dakwah, pendidikan modern, dan pelayanan sosial, yang kelak memiliki sekolah di seluruh Nusantara.",
+        "penjelasan": "K.H. Ahmad Dahlan adalah pendiri Muhammadiyah, organisasi Islam yang berdiri pada 1912 di Yogyakarta. Ia menggabungkan ajaran Islam dengan pendidikan modern dan kegiatan sosial seperti pendirian sekolah, rumah sakit, dan panti asuhan. Pemikirannya banyak memengaruhi pembaharuan Islam di Indonesia."
+    },
+    { "heroId": "samanhudi", "nama": "Kyai Haji Samanhudi",
+        "soal": "Aku seorang saudagar batik dari Solo yang geram melihat ketidakadilan ekonomi. Aku mengumpulkan para pedagang pribumi ke dalam sebuah perkumpulan yang kelak menjadi salah satu kekuatan politik awal di tanah Jawa.",
+        "penjelasan": "K.H. Samanhudi adalah pendiri Sarekat Dagang Islam (SDI) yang awalnya bertujuan melindungi kepentingan pedagang batik pribumi dari persaingan tidak sehat. Organisasi ini kemudian berkembang menjadi Sarekat Islam, salah satu organisasi massa dan politik terbesar pada awal abad ke-20 di Indonesia."
+    },
+    { "heroId": "nyi-ahmad-dahlan", "nama": "Nyi Ahmad Dahlan",
+        "soal": "Aku adalah istri seorang ulama pembaharu, tetapi aku bukan hanya mendampingi. Aku memimpin organisasi perempuan yang mendorong kaum wanita untuk belajar dan berperan aktif di tengah masyarakat.",
+        "penjelasan": "Nyi Ahmad Dahlan (Siti Walidah) adalah istri K.H. Ahmad Dahlan dan tokoh pendiri organisasi perempuan Aisyiyah. Ia menggerakkan perempuan-perempuan Muhammadiyah untuk aktif dalam pendidikan, dakwah, dan kerja sosial, membuka jalan bagi peran perempuan Muslim dalam organisasi modern."
+    },
+    { "heroId": "suryo-pranoto", "nama": "Suryo Pranoto",
+        "soal": "Aku dikenal sebagai “Raja Mogok”. Aku berdiri di tengah buruh dan tani yang tertindas, mengorganisir pemogokan demi menuntut keadilan dari para majikan dan penguasa kolonial.",
+        "penjelasan": "Suryo Pranoto adalah tokoh pergerakan buruh yang aktif di awal abad ke-20 dan dikenal sebagai “Raja Mogok” karena sering memimpin pemogokan. Ia memperjuangkan hak-hak buruh dan petani melalui aksi-aksi kolektif untuk menekan pemerintah kolonial dan pemilik modal."
+    },
+    { "heroId": "maria-walanda-maramis", "nama": "Maria Walanda Maramis",
+        "soal": "Aku adalah perempuan dari Minahasa yang gigih memperjuangkan hak pendidikan bagi kaum perempuan dan ibu rumah tangga. Aku mendirikan organisasi untuk membina para ibu agar lebih maju dan terdidik.",
+        "penjelasan": "Maria Walanda Maramis adalah tokoh perempuan dari Minahasa yang mendirikan organisasi PIKAT (Percintaan Ibu Kepada Anak Temurunnya). Ia memperjuangkan pendidikan dan peningkatan pengetahuan ibu-ibu rumah tangga agar dapat membesarkan generasi yang lebih baik."
+    },
+    { "heroId": "hasyim-asyari", "nama": "K.H. Moh. Hasyim Asyari",
+        "soal": "Aku seorang kiai pendiri sebuah organisasi ulama besar di Indonesia. Di masa revolusi, aku mengeluarkan seruan jihad yang membakar semangat rakyat untuk mempertahankan kemerdekaan.",
+        "penjelasan": "K.H. Hasyim Asyari adalah pendiri Nahdlatul Ulama (NU), organisasi ulama dan santri terbesar di Indonesia. Pada masa revolusi fisik, ia mengeluarkan Resolusi Jihad yang mendorong umat Islam untuk mempertahankan kemerdekaan Indonesia dari usaha kolonial kembali."
+    },
+    { "heroId": "danudirja-setiabudi", "nama": "Dr. Danudirja Setiabudi",
+        "soal": "Namaku dulu lebih dikenal dengan nama Belanda. Aku seorang dokter dan aktivis yang terlibat dalam organisasi Indische Partij dan memperjuangkan persatuan Hindia Belanda melawan kolonialisme.",
+        "penjelasan": "Dr. Danudirja Setiabudi, yang sebelumnya dikenal sebagai Ernest Douwes Dekker, adalah tokoh pergerakan yang ikut mendirikan Indische Partij bersama Tjipto Mangunkusumo dan Suwardi Suryaningrat. Ia memperjuangkan persatuan semua golongan di Hindia Belanda untuk melawan kekuasaan kolonial."
+    },
+    { "heroId": "umar-said-cokroaminoto", "nama": "Haji Umar Said Cokroaminoto",
+        "soal": "Aku guru dari banyak tokoh pergerakan, dari nasionalis hingga kaum kiri. Di rumahku di Surabaya, para pemuda berdiskusi tentang masa depan Indonesia, sementara aku memimpin sebuah partai besar bernama Sarekat Islam.",
+        "penjelasan": "H.O.S. Cokroaminoto adalah pemimpin besar Sarekat Islam yang berpusat di Surabaya. Rumahnya menjadi tempat berkumpul dan belajar bagi banyak tokoh pergerakan, termasuk Soekarno, Semaoen, dan Kartosuwiryo. Ia dikenal sebagai “Guru para Pendiri Bangsa”."
+    },
+    { "heroId": "agus-salim", "nama": "Haji Agus Salim",
+        "soal": "Aku seorang diplomat ulung yang fasih banyak bahasa. Kumainkan peran penting dalam perundingan dengan dunia internasional untuk mengakui kemerdekaan Indonesia, sambil tetap hidup sederhana dan bersahaja.",
+        "penjelasan": "Haji Agus Salim adalah tokoh Sarekat Islam yang kemudian menjadi diplomat penting Republik Indonesia. Ia terlibat dalam berbagai perundingan internasional dan menjadi Menteri Luar Negeri. Dikenal cerdas, humoris, dan sederhana, ia dijuluki “The Grand Old Man”."
+    },
+    { "heroId": "raden-dewi-sartika", "nama": "Raden Dewi Sartika",
+        "soal": "Aku perempuan Sunda yang mendirikan sekolah untuk anak-anak perempuan di Priangan. Di tengah adat yang membatasi, aku membuka ruang bagi gadis-gadis untuk belajar membaca, menulis, dan keterampilan hidup.",
+        "penjelasan": "Raden Dewi Sartika adalah pelopor pendidikan perempuan di Jawa Barat. Ia mendirikan sekolah Keutamaan Istri di Bandung yang mengajarkan pengetahuan umum dan keterampilan rumah tangga kepada perempuan, memberi mereka kesempatan untuk maju."
+    },
+    { "heroId": "cipto-mangunkusumo", "nama": "Dr. Cipto Mangunkusumo",
+        "soal": "Aku seorang dokter yang bersuara lantang melawan ketidakadilan. Karena sikap keras terhadap pemerintah kolonial, aku berkali-kali diawasi, dibuang, dan diasingkan.",
+        "penjelasan": "Dr. Cipto Mangunkusumo adalah tokoh pergerakan nasional yang terlibat dalam organisasi Boedi Oetomo, Indische Partij, dan kemudian Partai Nasional Indonesia. Pandangannya yang radikal membuatnya beberapa kali diasingkan oleh pemerintah kolonial ke berbagai tempat."
+    },
+    { "heroId": "sutomo", "nama": "Dr. Sutomo",
+        "soal": "Aku adalah salah satu pendiri organisasi modern pertama yang lahir dari kalangan mahasiswa kedokteran STOVIA. Melalui organisasi itu, kami mulai membangkitkan kesadaran kebangsaan di kalangan pribumi.",
+        "penjelasan": "Dr. Sutomo adalah pendiri Budi Utomo bersama rekan-rekannya di STOVIA pada 1908. Organisasi ini menjadi pelopor pergerakan nasional yang teratur dan terdidik, meski awalnya berfokus pada suku Jawa dan Madura."
+    },
+    { "heroId": "ki-hajar-dewantara", "nama": "Ki Hajar Dewantara",
+        "soal": "Aku pernah diasingkan karena menulis kritik tajam terhadap perayaan kemerdekaan Belanda. Sekembalinya, aku mendirikan Taman Siswa dan memperjuangkan pendidikan nasional yang merdeka bagi anak-anak bangsaku.",
+        "penjelasan": "Ki Hajar Dewantara, yang lahir dengan nama Suwardi Suryaningrat, adalah tokoh pendidikan nasional yang mendirikan Perguruan Taman Siswa pada 1922. Ia sebelumnya aktif dalam pergerakan politik dan diasingkan ke Belanda karena tulisannya yang berjudul “Als ik een Nederlander was”."
+    },
+    { "heroId": "fakhruddin", "nama": "Kyai Haji Fahruddin",
+        "soal": "Aku adalah salah satu tokoh penting dalam organisasi pembaharuan Islam di Yogyakarta. Bersama para sahabat, aku mengurus pendidikan, dakwah, dan penguatan organisasi di masa-masa awal pertumbuhannya.",
+        "penjelasan": "K.H. Fahruddin adalah salah satu tokoh Muhammadiyah yang membantu K.H. Ahmad Dahlan mengembangkan organisasi, terutama dalam bidang pendidikan dan penguatan struktur cabang-cabangnya. Ia turut menjaga kesinambungan gerakan setelah wafatnya sang pendiri."
+    },
+    { "heroId": "ratulangi", "nama": "Dr. G.S.S.Y. Ratulangi",
+        "soal": "Aku berasal dari Minahasa dan dikenal dengan semboyan “Si Tou Timou Tumou Tou” tentang manusia yang memanusiakan sesama. Aku pernah menjadi gubernur pertama di tanah kelahiranku setelah Indonesia merdeka.",
+        "penjelasan": "Dr. Gerungan Saul Samuel Jacob Ratulangi adalah tokoh Minahasa yang aktif dalam pergerakan dan organisasi pendidikan. Setelah kemerdekaan, ia diangkat sebagai Gubernur Sulawesi yang pertama dan dikenal dengan pemikirannya tentang kemanusiaan dan pendidikan."
+    },
+    { "heroId": "supeno", "nama": "Supeno",
+        "soal": "Aku adalah seorang pejabat muda yang memilih ikut bergerilya di hutan daripada menyerah kepada Belanda. Aku tertangkap saat beristirahat di sebuah gubuk dan dieksekusi di tepi sungai.",
+        "penjelasan": "Supeno adalah Menteri Pembangunan dan Pemuda dalam Kabinet Hatta yang ikut bergerilya di Jawa Tengah ketika Belanda melancarkan agresi militer. Ia tertangkap dan dibunuh oleh serdadu Belanda di dekat Sungai Progo."
+    },
+    { "heroId": "abdul-wahid-hasyim", "nama": "KH. Abdul Wahid Hasyim",
+        "soal": "Aku putra seorang pendiri organisasi ulama besar di Indonesia. Aku duduk di BPUPKI dan ikut merumuskan dasar negara, serta menjabat Menteri Agama di masa awal republik.",
+        "penjelasan": "K.H. Abdul Wahid Hasyim adalah putra K.H. Hasyim Asyari. Ia menjadi anggota BPUPKI dan PPKI, berperan dalam perumusan dasar negara, terutama terkait hubungan agama dan negara. Ia kemudian menjabat sebagai Menteri Agama sebelum wafat karena kecelakaan lalu lintas."
+    },
+    { "heroId": "supriyadi", "nama": "Supriyadi",
+        "soal": "Aku seorang pemuda perwira PETA yang memimpin pemberontakan melawan tentara pendudukan. Namaku kemudian dikenang meski jasadku tak pernah ditemukan secara pasti.",
+        "penjelasan": "Supriyadi adalah pemimpin pemberontakan pasukan PETA di Blitar pada Februari 1945 melawan tentara Jepang. Pemberontakan itu gagal dan ia menghilang, namun keberaniannya dikenang sebagai bagian dari perlawanan menuju kemerdekaan."
+    },
+    { "heroId": "mh-thamrin", "nama": "Mohammad Husni Thamrin",
+        "soal": "Aku anggota dewan kolonial yang lantang membela kepentingan rakyat kecil di kota Batavia. Aku menolak kebijakan-kebijakan yang menindas dan akhirnya diawasi ketat hingga wafat dalam tahanan rumah.",
+        "penjelasan": "Mohammad Husni Thamrin adalah anggota Volksraad yang dikenal gigih memperjuangkan nasib rakyat Betawi dan Indonesia pada umumnya. Ia menentang kebijakan diskriminatif pemerintah kolonial dan akhirnya ditahan di rumah hingga wafat pada masa pendudukan Jepang."
+    },
+    { "heroId": "mas-mansur", "nama": "Kyai Haji Mas Mansur",
+        "soal": "Aku salah satu dari empat tokoh Islam yang memimpin organisasi besar di Jawa pada masa pendudukan. Aku juga aktif dalam badan-badan yang dibentuk penjajah, tetapi dengan tujuan menjaga kepentingan bangsa.",
+        "penjelasan": "K.H. Mas Mansur adalah salah satu pemimpin besar Muhammadiyah dan termasuk dalam empat serangkai tokoh nasional bersama Soekarno, Hatta, dan Ki Hajar Dewantara pada masa pendudukan Jepang. Ia duduk di berbagai badan seperti Putera untuk memperjuangkan kepentingan bangsa dari dalam sistem."
+    },
+    { "heroId": "jenderal-sudirman", "nama": "Jenderal Sudirman",
+        "soal": "Aku seorang guru yang kemudian menjadi panglima besar. Dalam keadaan sakit dan paru-paru terganggu, aku tetap memimpin perang gerilya, menembus hutan dan gunung demi mempertahankan republik.",
+        "penjelasan": "Jenderal Sudirman adalah Panglima Besar Tentara Nasional Indonesia yang memimpin perang gerilya setelah agresi militer Belanda. Meski menderita sakit paru-paru, ia tetap memimpin pasukannya bergerak dari satu basis ke basis lain untuk menunjukkan bahwa TNI dan pemerintah masih ada."
+    },
+    { "heroId": "urip-sumohardjo", "nama": "Letnan Jenderal Urip Sumohardjo",
+        "soal": "Aku seorang perwira yang berpengalaman dalam ketentaraan Belanda, kemudian mengabdikan diri pada tentara republik. Aku berperan menyusun organisasi dan doktrin awal tentara Indonesia.",
+        "penjelasan": "Letjen Urip Sumohardjo adalah perwira KNIL yang kemudian bergabung dengan TNI. Ia menjadi Kepala Staf Umum dan berperan penting dalam menyusun struktur dan strategi militer republik di masa-masa awal kemerdekaan."
+    },
+    { "heroId": "wz-johannes", "nama": "Prof. Dr. W.Z. Johannes",
+        "soal": "Aku seorang dokter dari Nusa Tenggara yang ahli dalam bidang radiologi. Aku membantu mengembangkan layanan medis modern di Indonesia, terutama dalam diagnosis penyakit.",
+        "penjelasan": "Prof. Dr. Willem Johan Frederik Johannes adalah dokter radiologi yang berjasa dalam pengembangan layanan radiologi dan pendidikan kedokteran di Indonesia. Ia dikenal karena dedikasinya pada dunia kesehatan di masa-masa sulit."
+    },
+    { "heroId": "rmta-suryo", "nama": "RMTA Suryo",
+        "soal": "Aku seorang residen di Jawa Timur yang menolak ultimatum penjajah untuk menyerah. Pilihanku adalah berdiri di pihak republik meski harus menghadapi ancaman kematian.",
+        "penjelasan": "RMTA Suryo adalah Residen Surabaya yang pada masa pertempuran 10 November 1945 memilih berdiri bersama rakyat dan pejuang untuk mempertahankan kota. Ia menolak ultimatum Sekutu dan kemudian gugur dalam perjuangan."
+    },
+    { "heroId": "dr-muwardi", "nama": "Dr. Muwardi",
+        "soal": "Aku seorang dokter yang menjaga keselamatan para pemimpin republik di masa revolusi. Karena itu, aku menjadi sasaran pembunuhan oleh pihak-pihak yang ingin mengguncang negara muda ini.",
+        "penjelasan": "Dr. Muwardi adalah dokter yang memimpin Barisan Banteng dan bertanggung jawab atas pengamanan para pemimpin Republik Indonesia, termasuk Soekarno dan Hatta, pada masa revolusi. Ia dibunuh pada 1948 dalam situasi politik yang tegang."
+    },
+    { "heroId": "gatot-subroto", "nama": "Jenderal Gatot Subroto",
+        "soal": "Aku seorang perwira yang ikut berjuang sejak masa revolusi dan kemudian berperan dalam penumpasan pemberontakan di berbagai daerah. Namaku kini diabadikan sebagai nama jalan dan fasilitas militer.",
+        "penjelasan": "Jenderal Gatot Subroto adalah perwira TNI yang aktif dalam perang kemerdekaan dan penumpasan pemberontakan DI/TII dan PRRI/Permesta. Ia juga menjabat sebagai Wakil Kepala Staf Angkatan Darat."
+    },
+    { "heroId": "juanda-kartawijaya", "nama": "Ir. H. Juanda Kartawijaya",
+        "soal": "Aku perdana menteri yang mengumumkan sebuah deklarasi penting tentang laut Indonesia. Aku menyatakan bahwa laut di antara pulau-pulau adalah bagian tak terpisahkan dari wilayah negara.",
+        "penjelasan": "Ir. H. Juanda Kartawijaya adalah Perdana Menteri Indonesia yang pada 1957 mengeluarkan Deklarasi Juanda. Deklarasi ini menyatakan bahwa laut di sekitar, di antara, dan yang menghubungkan pulau-pulau Indonesia adalah bagian dari wilayah NKRI, yang kelak diakui dalam hukum laut internasional."
+    },
+    { "heroId": "suharso", "nama": "Prof. Dr. Suharso",
+        "soal": "Aku seorang dokter bedah yang mendedikasikan hidup untuk para korban perang. Aku mendirikan rumah sakit rehabilitasi bagi para pejuang yang kehilangan anggota tubuh.",
+        "penjelasan": "Prof. Dr. Suharso adalah dokter bedah yang mendirikan Rehabilitasi Center di Solo untuk para veteran dan korban perang yang memerlukan perawatan dan pembuatan anggota tubuh palsu. Ia berjasa besar dalam bidang rehabilitasi medis di Indonesia."
+    },
+    { "heroId": "sahardjo", "nama": "Dr. Sahardjo",
+        "soal": "Aku seorang ahli hukum yang menjabat sebagai Menteri Kehakiman. Aku berusaha membangun sistem hukum yang lebih manusiawi dan sesuai dengan kepribadian bangsa Indonesia.",
+        "penjelasan": "Dr. Sahardjo adalah Menteri Kehakiman yang mengusulkan pembaruan dalam sistem pemasyarakatan dan hukum di Indonesia, menggantikan pendekatan kolonial dengan pendekatan yang lebih mendidik dan humanis."
+    },
+    { "heroId": "adi-sucipto", "nama": "Marsda TNI Mas Agustinus Adi Sucipto",
+        "soal": "Aku perintis Angkatan Udara Republik Indonesia yang gugur di udara saat menjalankan misi membawa bantuan dari luar negeri. Namaku kini diabadikan sebagai nama pangkalan udara.",
+        "penjelasan": "Mas Agustinus Adi Sucipto adalah perintis Angkatan Udara RI yang gugur pada 29 Juli 1947 ketika pesawat yang ditumpanginya ditembak Belanda di dekat Maguwo, Yogyakarta, sepulang dari misi mengambil bantuan Palang Merah dari India."
+    },
+    { "heroId": "i-gusti-ngurah-rai", "nama": "Kolonel I Gusti Ngurah Rai",
+        "soal": "Aku pemimpin pasukan di Bali yang memilih bertempur habis-habisan dalam perang Puputan Margarana. Kami melawan sampai titik darah penghabisan demi mempertahankan kehormatan dan kemerdekaan.",
+        "penjelasan": "Kolonel I Gusti Ngurah Rai adalah komandan pasukan Ciung Wanara di Bali yang memimpin perlawanan terhadap Belanda setelah Proklamasi. Ia gugur dalam pertempuran Puputan Margarana pada 20 November 1946 bersama banyak prajuritnya."
+    },
+    { "heroId": "arie-frederick-lasut", "nama": "Arie Frederick Lasut",
+        "soal": "Aku ahli pertambangan yang memilih berpihak pada republik. Karena menolak bekerja sama dengan Belanda, aku ditangkap dan dieksekusi secara rahasia.",
+        "penjelasan": "Arie Frederick Lasut adalah insinyur pertambangan yang mengelola tambang-tambang penting untuk Republik Indonesia. Ia menolak bekerjasama dengan Belanda sehingga akhirnya ditangkap dan ditembak mati pada 1949."
+    },
+    { "heroId": "iswahyudi", "nama": "Marsma TNI Anumerta R. Iswahyudi",
+        "soal": "Aku salah satu perintis penerbangan militer Indonesia. Aku gugur dalam sebuah penerbangan ketika pesawat yang kutumpangi jatuh dalam tugas negara.",
+        "penjelasan": "R. Iswahyudi adalah perwira Angkatan Udara RI yang gugur dalam kecelakaan pesawat saat menjalankan tugas penerbangan. Atas jasanya, ia dianugerahi gelar Pahlawan Nasional dan namanya diabadikan sebagai nama pangkalan udara."
+    },
+    { "heroId": "re-martadinata", "nama": "Laksamana RE. Martadinata",
+        "soal": "Aku perwira tinggi angkatan laut yang memimpin armada di masa-masa tegang. Aku gugur dalam kecelakaan helikopter ketika sedang menjalankan tugas.",
+        "penjelasan": "Laksamana R.E. Martadinata adalah Kepala Staf Angkatan Laut yang memimpin pembangunan TNI AL pada masa awal kemerdekaan. Ia gugur dalam kecelakaan helikopter pada 1966 dan dikenang sebagai salah satu perintis kekuatan laut Indonesia."
+    },
+    { "heroId": "basuki-rakhmat", "nama": "Jenderal Anumerta Basuki Rakhmat",
+        "soal": "Aku salah satu perwira yang hadir ketika naskah pengalihan kekuasaan dari presiden kepada pimpinan baru ditandatangani. Beberapa tahun kemudian, aku gugur dalam peristiwa kecelakaan pesawat.",
+        "penjelasan": "Jenderal Basuki Rakhmat adalah perwira Angkatan Darat yang turut berperan dalam proses politik pasca G30S, termasuk dalam pengesahan Supersemar. Ia gugur dalam kecelakaan pesawat pada 1969."
+    },
+    { "heroId": "abdul-halim-perdanakusuma", "nama": "Marsda TNI Anumerta Abdul Halim Perdanakusuma",
+        "soal": "Aku penerbang yang menerobos blokade udara untuk membawa bantuan bagi republik. Pesawat yang kutumpangi mengalami kecelakaan dan aku gugur jauh dari tanah air.",
+        "penjelasan": "Abdul Halim Perdanakusuma adalah penerbang Angkatan Udara Republik Indonesia yang berjuang membawa bantuan dari luar negeri melintasi blokade Belanda. Ia gugur ketika pesawatnya jatuh di Malaysia dan dimakamkan di sana sebelum kemudian dipindahkan."
+    },
+    { "heroId": "yos-sudarso", "nama": "Laksamana Muda Anumerta Yosaphat Sudarso",
+        "soal": "Aku komandan kapal yang terlibat dalam pertempuran laut mempertahankan Irian Barat. Kapalku tenggelam dihantam musuh dan aku memilih tenggelam bersama kapal.",
+        "penjelasan": "Laksamana Muda Yosaphat Sudarso adalah komandan KRI Macan Tutul dalam pertempuran Laut Aru melawan kapal-kapal Belanda pada 15 Januari 1962. Kapalnya tenggelam dan ia gugur sebagai kusuma bangsa."
+    },
+    { "heroId": "usman-ali", "nama": "Serda Usman bin Haji Muhammad Ali",
+        "soal": "Aku seorang prajurit yang menjalankan operasi rahasia pengeboman kapal musuh di Singapura. Aku tertangkap dan dijatuhi hukuman gantung oleh pengadilan asing.",
+        "penjelasan": "Sersan Dua Usman bin Haji Muhammad Ali adalah anggota KKO (Marinir) yang bersama rekannya Harun mengebom kapal milik Singapura pada masa konfrontasi Indonesia-Malaysia. Ia tertangkap dan dihukum mati di Singapura."
+    },
+    { "heroId": "harun-tahir", "nama": "Kopral Harun bin Said alias Tahir",
+        "soal": "Aku rekan seperjuangan dalam operasi rahasia yang sama. Seperti kawanku, aku pun menjalani hukuman mati di negeri asing karena tugas negara.",
+        "penjelasan": "Kopral Harun bin Said alias Tahir adalah anggota KKO yang bersama Usman melakukan operasi pengeboman di Singapura. Ia juga dihukum mati oleh pemerintah Singapura dan dihormati sebagai pahlawan."
+    },
+    { "heroId": "soekarno", "nama": "Dr. Ir. Soekarno",
+        "soal": "Aku adalah Proklamator dan Presiden pertama Republik Indonesia. Dari mimbar-mimbar rakyat hingga podium internasional, suaraku menyerukan kemerdekaan dan anti-kolonialisme.",
+        "penjelasan": "Dr. Ir. Soekarno adalah tokoh utama pergerakan nasional, Proklamator Kemerdekaan, dan Presiden pertama Republik Indonesia. Ia memimpin bangsa ini melalui masa revolusi hingga awal Orde Lama dan dikenal luas di dunia internasional."
+    },
+    { "heroId": "moh-hatta", "nama": "Drs. Mohammad Hatta",
+        "soal": "Aku wakil dari Proklamator yang menandatangani teks kemerdekaan bersama sahabatku. Sebelumnya, aku aktif di organisasi mahasiswa di Belanda dan memimpin pergerakan dari pengasingan.",
+        "penjelasan": "Drs. Mohammad Hatta adalah tokoh pergerakan nasional yang aktif di Perhimpunan Indonesia di Belanda. Ia bersama Soekarno memproklamasikan kemerdekaan Indonesia dan menjadi Wakil Presiden pertama Republik Indonesia."
+    },
+    { "heroId": "panji-soeroso", "nama": "Raden Panji Soeroso",
+        "soal": "Aku adalah pejabat dan pejuang yang beberapa kali menjabat menteri dan gubernur. Di masa pendudukan, aku tetap berjuang dari dalam struktur yang ada untuk kepentingan rakyat.",
+        "penjelasan": "Raden Panji Soeroso adalah tokoh pergerakan yang pernah menjadi anggota BPUPKI, gubernur, dan menteri dalam beberapa kabinet awal Indonesia. Ia juga aktif dalam organisasi buruh dan sosial."
+    },
+    { "heroId": "hamengku-buwono-ix", "nama": "Sri Sultan Hamengku Buwono IX",
+        "soal": "Aku seorang raja Jawa yang dengan sukarela menyatakan wilayah kekuasaanku bergabung dengan Republik. Kotaku menjadi ibu kota dan tempat presiden tinggal di masa-masa sulit revolusi.",
+        "penjelasan": "Sri Sultan Hamengku Buwono IX adalah raja Yogyakarta yang menyatakan dukungan penuh kepada Republik Indonesia setelah Proklamasi. Yogyakarta menjadi ibu kota sementara Republik dan istananya menjadi tempat tinggal Presiden Soekarno dan Wakil Presiden Hatta."
+    },
+    { "heroId": "frans-kaisiepo", "nama": "Frans Kaisiepo",
+        "soal": "Aku putra Papua yang memperjuangkan agar tanah kelahiranku bergabung dengan Republik Indonesia. Aku ikut dalam konferensi penting yang membicarakan masa depan Irian Barat.",
+        "penjelasan": "Frans Kaisiepo adalah tokoh Papua yang aktif memperjuangkan integrasi Irian Barat ke dalam Republik Indonesia. Ia terlibat dalam Konferensi Malino dan kemudian menjadi Gubernur Irian Jaya."
+    },
+    { "heroId": "silas-papare", "nama": "Silas Papare",
+        "soal": "Aku juga pejuang dari Papua yang membentuk organisasi untuk mendukung kemerdekaan Indonesia. Aku bekerja keras menggalang dukungan rakyat di tanahku.",
+        "penjelasan": "Silas Papare adalah tokoh pergerakan di Papua yang mendirikan Gerakan Kesatuan Aksi Papua dan mendukung integrasi Papua ke dalam Indonesia. Ia bekerja untuk menyadarkan masyarakat akan pentingnya persatuan dengan Republik."
+    },
+    { "heroId": "marthen-indey", "nama": "Marthen Indey",
+        "soal": "Aku seorang bekas anggota polisi Belanda di Papua yang berbalik mendukung Republik. Aku membantu mengibarkan bendera Merah Putih di tanah yang lama dikuasai asing.",
+        "penjelasan": "Marthen Indey adalah tokoh Papua yang pernah menjadi polisi KNIL namun kemudian berbalik mendukung kemerdekaan Indonesia. Ia terlibat dalam pengibaran bendera Merah Putih dan aktivitas perlawanan di Papua."
+    },
+    { "heroId": "ahmad-yani", "nama": "Jenderal Anumerta Ahmad Yani",
+        "soal": "Aku Menteri/Panglima Angkatan Darat yang diculik dari rumahku pada malam kelam 1 Oktober 1965. Jenazahku ditemukan di sebuah sumur tua bersama rekan-rekanku.",
+        "penjelasan": "Jenderal Ahmad Yani adalah Menteri Panglima Angkatan Darat yang menjadi salah satu korban utama peristiwa G30S/PKI. Ia diculik dan dibunuh, jasadnya ditemukan di Lubang Buaya dan kemudian dimakamkan di Taman Makam Pahlawan Kalibata."
+    },
+    { "heroId": "suprapto", "nama": "Letjen Anumerta Suprapto",
+        "soal": "Aku seorang perwira tinggi yang juga diculik dalam peristiwa G30S. Seperti kawan-kawanku, tubuhku dibuang ke sebuah sumur tua.",
+        "penjelasan": "Letjen Suprapto adalah salah satu perwira Angkatan Darat yang menjadi korban penculikan dan pembunuhan dalam peristiwa G30S/PKI pada 1965. Jenazahnya ditemukan di Lubang Buaya."
+    },
+    { "heroId": "s-parman", "nama": "Letjen Anumerta S. Parman",
+        "soal": "Aku perwira intelijen yang namaku turut tercatat dalam deretan korban G30S. Rumahku didatangi pasukan bersenjata pada dini hari itu.",
+        "penjelasan": "Letjen S. Parman adalah perwira intelijen Angkatan Darat yang diculik dan dibunuh oleh gerakan G30S/PKI. Ia dimakamkan sebagai Pahlawan Revolusi."
+    },
+    { "heroId": "mt-haryono", "nama": "Letjen Anumerta MT. Haryono",
+        "soal": "Aku seorang jenderal yang juga menjadi sasaran penculikan dini hari. Aku berusaha melawan ketika didatangi, namun akhirnya tetap menjadi korban.",
+        "penjelasan": "Letjen Mas Tirtodarmo Haryono adalah salah satu perwira tinggi Angkatan Darat yang gugur dalam peristiwa G30S/PKI. Ia juga dimakamkan sebagai Pahlawan Revolusi."
+    },
+    { "heroId": "di-panjaitan", "nama": "Mayjen Anumerta D.I. Panjaitan",
+        "soal": "Aku perwira dari Sumatra yang juga tak luput dari penculikan malam itu. Kisah gugurnya aku menjadi bagian dari tragedi nasional.",
+        "penjelasan": "Mayjen Donald Izacus Panjaitan adalah perwira Angkatan Darat yang menjadi korban G30S/PKI. Ia ditangkap, dibunuh, dan jenazahnya dibuang ke Lubang Buaya."
+    },
+    { "heroId": "katamso", "nama": "Brigjen Anumerta Katamso",
+        "soal": "Aku komandan di Yogyakarta yang diculik dan dibunuh dalam rangkaian peristiwa yang sama, meski jauh dari ibu kota.",
+        "penjelasan": "Brigjen Katamso Dharjowidjojo adalah Komandan Korem di Yogyakarta yang menjadi korban pembunuhan dalam rangkaian peristiwa G30S/PKI di daerah tersebut."
+    },
+    { "heroId": "sutoyo-siswomihardjo", "nama": "Mayjen Anumerta Sutoyo Siswomihardjo",
+        "soal": "Aku perwira korps hukum yang turut diculik dan dibunuh pada malam G30S. Seperti rekan-rekanku, aku dikenang sebagai Pahlawan Revolusi.",
+        "penjelasan": "Mayjen Sutoyo Siswomihardjo adalah perwira korps hukum Angkatan Darat yang menjadi salah satu korban G30S/PKI dan dimakamkan sebagai Pahlawan Revolusi."
+    },
+    { "heroId": "piere-tendean", "nama": "Kapten Anumerta Piere Tendean",
+    "soal": "Aku perwira muda yang menjadi ajudan seorang jenderal penting. Pada malam tragedi berdarah 30 September 1965, aku diculik oleh gerombolan pemberontak yang sebenarnya menyasar komandanku. Aku tetap teguh dan akhirnya gugur sebagai kusuma bangsa.",
+    "penjelasan": "Kapten Anumerta Piere Tendean adalah ajudan Jenderal A.H. Nasution. Dalam peristiwa G30S/PKI, ia ditangkap karena dikira Nasution. Ia kemudian dibunuh di Lubang Buaya. Namanya dikenang sebagai perwira muda pemberani yang berusaha melindungi komandannya."
+    },
+    { "heroId": "karel-satsuit-tubun", "nama": "Aipda Anumerta Karel Satsuit Tubun",
+        "soal": "Aku seorang anggota kepolisian yang tak sengaja berada di garis tembak ketika pemberontak menyerbu rumah seorang menteri. Aku berusaha melawan dan memberikan waktu bagi keluarga untuk menyelamatkan diri, meski nyawaku menjadi taruhannya.",
+        "penjelasan": "Aipda Karel Satsuit Tubun gugur saat berusaha melawan pasukan G30S/PKI yang sedang menculik Menteri Luar Negeri Subandrio. Ia tertembak di halaman rumah tersebut dan dihormati sebagai pahlawan revolusi."
+    },
+    { "heroId": "sugiyono", "nama": "Kolonel Anumerta Sugiyono",
+        "soal": "Aku seorang kolonel yang menjadi sasaran penculikan pada malam kelam 30 September 1965. Para pemberontak menyeretku keluar rumah, dan sejak itu aku tak pernah kembali hidup-hidup.",
+        "penjelasan": "Kolonel Anumerta Sugiyono Kusumowidagdo merupakan salah satu korban penculikan G30S/PKI. Jenazahnya ditemukan di Lubang Buaya bersama para perwira lainnya yang dibunuh dalam peristiwa tersebut."
+    }
+]
