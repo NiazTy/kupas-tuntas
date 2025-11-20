@@ -19,7 +19,6 @@
     <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- Custom CSS Files -->
-    <link rel="stylesheet" href="assets/css/custom/tebak-gambar-pahlawan.css"> <!-- CSS untuk halaman tebak gambar pahlawan -->
     <link rel="stylesheet" href="assets/css/custom/tebak-kejadian-sejarah.css"> 
 
     <!-- Jquery File -->
@@ -115,6 +114,8 @@
         </section>
         <!-- Tolong saya butuh tidur :( -->
         <section id="game-section" class="flex items-center justify-center w-full min-h-screen px-4 my-10 text-center">
+            <img id="mas-lucky" src="assets/images/mas-lucky/mas-lucky-menyapa.png" alt="Mas Lucky Sedang Menyapa" class="fixed z-100 h-64 w-[191px] right-0 bottom-0"/>
+            <audio id="mas-lucky-voice" preload="auto"></audio>
             <div class="flex flex-col items-center w-full max-w-md gap-6 my-24 md:max-w-4xl">
                 <div class="flex flex-col w-full gap-2 p-6 shadow-lg bg-white/10 rounded-3xl">
                     <h1 class="text-2xl font-bold leading-snug text-center text-white sm:text-3xl md:text-4xl font-display">
@@ -124,7 +125,7 @@
                         <p>Soal: <span id="question-counter">1 / 1</span></p>
                         <p>Skor: <span id="score-display">0</span></p>
                         <p>Waktu: <span id="timer-display">02:00</span></p>
-                    </div>
+                    </div>c
                 </div>
                 <div class="sm:max-w-xl md:max-w-full font-display gap-4 px-1 flex flex-col items-center">
                     <q id="q-title" class="text-center text-3xl font-bold text-yellow-400 font-display"></q>

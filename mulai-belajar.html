@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mulai belajar sejarah Indonesia lewat video dan perpustakaan mini di Kupas Tuntas.">
+    <title>Kupas Tuntas - Mulai Belajar Sejarah</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/logo/kutas-logo.png" type="image">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Output CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Jquery File -->
+    <script src="assets/js/core/jquery.js"></script>
+
+    <!-- Custom Marquee CSS -->
+    <style>
+        /* Track untuk marquee card video */
+        .marquee-track {
+            display: inline-flex;
+            gap: 1rem;
+            animation: scroll-marquee 30s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Mobile: matikan animasi, jadikan scroll horizontal biasa */
+        @media (max-width: 768px) {
+            #video-marquee-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .marquee-track {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-maroon">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 z-50 w-full">
+        <div class="container mx-auto max-w-7xl">
+            <div class="flex items-center justify-between bg-white rounded-none shadow-md px-7 md:rounded-b-4xl md:shadow-white/50">
+                <!-- Left: Logo -->
+                <div class="shrink-0">
+                    <a href="index.html">
+                        <img src="assets/images/logo/kupas-tuntas-white.png" alt="Kupas Tuntas Logo" class="h-16">
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden py-6 space-x-6 text-xs font-medium md:flex font-display md:text-sm lg:text-base">
+                    <a href="index.html"
+                       class="relative text-maroon font-semibold transition-all duration-300
+                              hover:text-red-900
+                              hover:-translate-y-0.5
+                              before:content-[''] before:absolute before:w-0 before:h-0.5
+                              before:bg-red-900 before:bottom-0 before:left-0
+                              before:transition-all before:duration-300
+                              hover:before:w-full">
+                        Beranda
+                    </a>
+                    <a href="index.html#tentang-kupas-tuntas"
+                       class="relative text-maroon font-semibold transition-all duration-300
+                              hover:text-red-900
+                              hover:-translate-y-0.5
+                              before:content-[''] before:absolute before:w-0 before:h-0.5
+                              before:bg-red-900 before:bottom-0 before:left-0
+                              before:transition-all before:duration-300
+                              hover:before:w-full">
+                        Tentang Kupas Tuntas
+                    </a>
+                    <a href="index.html#belajar-sejarah-seru"
+                       class="relative text-maroon font-semibold transition-all duration-300
+                              hover:text-red-900
+                              hover:-translate-y-0.5
+                              before:content-[''] before:absolute before:w-0 before:h-0.5
+                              before:bg-red-900 before:bottom-0 before:left-0
+                              before:transition-all before:duration-300
+                              hover:before:w-full">
+                        Belajar Sejarah Seru
+                    </a>
+                </div>
+                <!-- CTA -->
+                <div>
+                    <a href="mulai-tebak.html"
+                       class="hidden md:inline-block bg-maroon text-white font-semibold px-6 py-3 
+                              rounded-full transition-all duration-300
+                              hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
+                        Mulai Quiz
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="p-2 rounded-md text-maroon">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden pb-2 bg-white shadow-md font-display md:hidden max-w-7xl mx-auto flex-col rounded-b-4xl shadow-white/50">
+            <a href="index.html" class="block px-4 py-2 font-semibold text-maroon">Beranda</a>
+            <a href="index.html#tentang-kupas-tuntas" class="block px-4 py-2 font-semibold text-maroon">Tentang Kupas Tuntas</a>
+            <a href="index.html#belajar-sejarah-seru" class="block px-4 py-2 font-semibold text-maroon">Belajar Sejarah Seru</a>
+            <a href="mulai-tebak.html" class="block px-4 py-2 mx-4 my-3 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">Mulai Quiz</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Mulai Belajar -->
+        <section id="hero-belajar" class="relative flex flex-col items-center justify-center w-full min-h-screen text-center">
+            <div class="absolute inset-0 bg-maroon bg-opacity-80"></div>
+            <div class="absolute bottom-0 left-0 w-full h-40 bg-linear-to-t from-[#d3b484] to-transparent z-10"></div>
+
+            <div class="relative z-20 flex flex-col items-center gap-6 px-6 md:px-0">
+                <img src="assets/images/logo/kupas-tuntas-maroon-with-crop.png" alt="KUPAS TUNTAS" class="object-contain h-40 md:h-52 podisplay-events-none" />
+                <h1 class="text-3xl font-bold text-white md:text-4xl font-display">
+                    MULAI BELAJAR <span class="text-yellow-300">SEJARAH INDONESIA</span>
+                </h1>
+                <p class="max-w-2xl text-base text-white md:text-lg font-display">
+                    Di halaman ini, kamu bisa <span class="font-semibold text-[#ffd28a]">nonton video pembelajaran</span> dan
+                    menjelajahi <span class="font-semibold text-[#ffd28a]">perpustakaan mini sejarah</span>.
+                    Pelan-pelan pahami ceritanya, baru nanti kita kupas tuntas lewat kuis.
+                </p>
+                <div class="flex flex-col items-center gap-4 sm:flex-row">
+                    <a href="#video-belajar"
+                       class="bg-yellow-400 text-maroon font-semibold px-6 py-3 rounded-full hover:text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 hover:bg-yellow-500">
+                        Lihat Video Pembelajaran
+                    </a>
+                    <a href="#perpustakaan-mini"
+                       class="px-3 py-2 sm:px-5 sm:py-2.5 sm:text-base text-sm rounded-full border-2 border-white text-white font-semibold font-display hover:bg-white hover:text-maroon hover:shadow-md transition">
+                        Jelajahi Perpustakaan Mini
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mas Lucky -->
+            <img src="assets/images/mas-lucky/mas-lucky-menunjuk.png"
+                 alt="Mas Lucky sedang menyapa"
+                 class="hidden md:block absolute right-0 bottom-0 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain podisplay-events-none z-10" />
+        </section>
+
+        <!-- Video Pembelajaran Section -->
+        <section id="video-belajar" class="relative min-h-screen overflow-hidden -mt-20 md:mt-0">
+            <!-- Background kertas -->
+            <div class="absolute inset-0 z-0 bg-center bg-no-repeat bg-cover" style="background: url('assets/images/misc/kertas-usang.png');"></div>
+            <div class="absolute inset-0 bg-[#d3b484]/70 z-0"></div>
+            <div class="absolute top-0 left-0 w-full h-40 bg-linear-to-b from-[#d3b484] to-transparent z-10"></div>
+
+            <div class="relative z-20 flex flex-col items-center w-full gap-10 px-4 py-16 lg:px-16">
+                <div class="w-full max-w-5xl text-center lg:text-left">
+                    <h2 class="mb-4 text-3xl font-bold font-display sm:text-4xl text-maroon">
+                        VIDEO PEMBELAJARAN SEJARAH
+                    </h2>
+                    <p class="text-lg font-display text-maroon sm:text-xl">
+                        Mulai dari penjajahan, pergerakan nasional, hingga kemerdekaan Indonesia —
+                        video-video ini membantu kamu memahami <span class="font-semibold">alur cerita besar sejarah bangsa</span>
+                        dengan cara yang ringan, visual, dan mudah diikuti.
+                    </p>
+                </div>
+
+                <!-- Video Utama (Featured) -->
+                <div class="w-full max-w-5xl">
+                    <div class="relative w-full overflow-hidden rounded-3xl shadow-lg aspect-video">
+                        <iframe
+                            class="absolute inset-0 w-full h-full"
+                            src="https://www.youtube.com/embed/JmVS3ZpNw8g?si=wp4tQ6RoTGBL2lPp"
+                            title="Video Pembelajaran Sejarah"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="mt-4 text-sm italic text-center text-maroon font-display">
+                        *Video diambil dari konten edukatif YouTube. Tonton dulu dengan santai, tidak perlu buru-buru.
+                    </p>
+                </div>
+                <!-- MARQUEE CARD VIDEO -->
+                <div class="w-full max-w-5xl mt-6">
+                    <div id="video-marquee-container" class="bg-maroon py-8 rounded-4xl overflow-hidden">
+                        <div id="video-marquee-track" class="marquee-track">
+                            <!-- Card video akan di-generate via JavaScript -->
+                        </div>
+                    </div>
+                    <p class="mt-3 text-xs text-center font-display text-maroon/80">
+                        Arahkan kursor / sentuh kartu untuk berhenti sejenak, lalu klik / ketuk untuk membuka video di YouTube.
+                    </p>
+                </div>
+                <div class="max-w-3xl text-center">
+                    <p class="text-lg font-display text-maroon sm:text-xl">
+                        Setelah nonton beberapa video, kamu bisa lanjut ke <span class="font-semibold">perpustakaan mini</span>
+                        di bawah ini untuk membaca ringkasan dan kisah singkat pahlawan dan peristiwa penting.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perpustakaan Mini Section -->
+        <section id="perpustakaan-mini" class="relative min-h-screen overflow-hidden bg-maroon/90">
+            <div class="absolute inset-0 bg-maroon/90 z-0"></div>
+            <div class="relative z-20 flex flex-col items-center w-full gap-10 px-4 py-16 lg:px-16">
+                <div class="w-full max-w-5xl text-center lg:text-left">
+                    <h2 class="mb-4 text-3xl font-bold text-white font-display sm:text-4xl">
+                        PERPUSTAKAAN MINI SEJARAH
+                    </h2>
+                    <p class="text-lg text-white font-display sm:text-xl">
+                        Di perpustakaan mini ini, kamu bisa membaca <span class="font-semibold text-[#ffd28a]">ringkasan singkat</span>
+                        tentang tokoh, peristiwa, dan konsep penting dalam sejarah Indonesia.
+                        Anggap saja ini “catatan kecil” sebelum kamu diuji di permainan Kupas Tuntas.
+                    </p>
+                </div>
+                <!-- Grid Kartu Perpustakaan -->
+                <div class="grid w-full max-w-5xl gap-6 md:grid-cols-3">
+                    <!-- Kartu 1 -->
+                    <article class="flex flex-col h-full p-5 bg-white/10 border border-white/10 rounded-3xl shadow-lg backdrop-blur-sm">
+                        <h3 class="mb-2 text-lg font-semibold text-[#ffd28a] font-display">
+                            Pergerakan Nasional
+                        </h3>
+                        <p class="flex-1 mb-3 text-sm text-white font-display">
+                            Dari Budi Utomo, Sarekat Islam, hingga Sumpah Pemuda — masa ini menandai
+                            lahirnya kesadaran bahwa kita adalah satu bangsa: Indonesia.
+                        </p>
+                        <button
+                            class="self-start px-4 py-2 mt-2 text-sm font-semibold text-maroon bg-yellow-400 rounded-full hover:bg-yellow-500 hover:-translate-y-0.5 hover:shadow-md transition"
+                            data-ringkasan-id="pergerakan-nasional">
+                            Baca Ringkasan
+                        </button>
+                    </article>
+                    <!-- Kartu 2 -->
+                    <article class="flex flex-col h-full p-5 bg-white/10 border border-white/10 rounded-3xl shadow-lg backdrop-blur-sm">
+                        <h3 class="mb-2 text-lg font-semibold text-[#ffd28a] font-display">
+                            Proklamasi Kemerdekaan
+                        </h3>
+                        <p class="flex-1 mb-3 text-sm text-white font-display">
+                            Tidak berhenti di teks proklamasi saja. Ada perdebatan, tekanan, dan dinamika
+                            yang mengiringi detik-detik kemerdekaan Indonesia.
+                        </p>
+                        <button
+                            class="self-start px-4 py-2 mt-2 text-sm font-semibold text-maroon bg-yellow-400 rounded-full hover:bg-yellow-500 hover:-translate-y-0.5 hover:shadow-md transition"
+                            data-ringkasan-id="proklamasi-kemerdekaan">
+                            Baca Ringkasan
+                        </button>
+                    </article>
+                    <!-- Kartu 3 -->
+                    <article class="flex flex-col h-full p-5 bg-white/10 border border-white/10 rounded-3xl shadow-lg backdrop-blur-sm">
+                        <h3 class="mb-2 text-lg font-semibold text-[#ffd28a] font-display">
+                            Pahlawan Pendidikan
+                        </h3>
+                        <p class="flex-1 mb-3 text-sm text-white font-display">
+                            Mengenal tokoh seperti Ki Hajar Dewantara dan pahlawan lain yang
+                            berjuang lewat dunia pendidikan, bukan hanya lewat senjata.
+                        </p>
+                        <button
+                            class="self-start px-4 py-2 mt-2 text-sm font-semibold text-maroon bg-yellow-400 rounded-full hover:bg-yellow-500 hover:-translate-y-0.5 hover:shadow-md transition"
+                            data-ringkasan-id="pahlawan-pendidikan">
+                            Baca Ringkasan
+                        </button>
+                    </article>
+                </div>
+
+                <!-- Ajakan ke Quiz -->
+                <div class="flex flex-col items-center gap-4 mt-4 text-center">
+                    <p class="max-w-2xl text-lg text-white font-display sm:text-xl">
+                        Sudah merasa lebih paham jalan cerita sejarah Indonesia?
+                        Saatnya uji pemahamanmu di kuis <span class="font-semibold text-[#ffd28a]">Kupas Tuntas</span>!
+                    </p>
+                    <div class="flex flex-col gap-4 sm:flex-row">
+                        <a href="mulai-tebak.html"
+                           class="px-4 py-2 sm:px-6 sm:py-3 sm:text-base text-sm rounded-full border-2 border-white text-maroon bg-white font-semibold font-display hover:bg-transparent hover:text-white hover:shadow-md transition">
+                            Mulai Tebak Sekarang
+                        </a>
+                        <a href="#video-belajar"
+                           class="px-4 py-2 sm:px-6 sm:py-3 sm:text-base text-sm rounded-full border-2 border-white text-white font-semibold font-display hover:bg-white hover:text-maroon hover:shadow-md transition">
+                            Kembali Nonton Video
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Ringkasan Perpustakaan Mini -->
+        <div id="ringkasan-modal" class="fixed inset-0 z-50 items-center justify-center hidden bg-black/60">
+            <div class="relative w-full max-w-lg mx-4 bg-maroon rounded-3xl shadow-xl">
+                <!-- Tombol Close -->
+                <button id="ringkasan-close"
+                        class="absolute text-white transition top-3 right-3 hover:text-yellow-300">
+                    ✕
+                </button>
+                <div class="p-6 space-y-4 text-white font-display">
+                    <h3 id="ringkasan-title" class="text-xl font-semibold"></h3>
+                    <p id="ringkasan-body" class="text-sm leading-relaxed whitespace-pre-line"></p>
+                    <div class="flex justify-end mt-4">
+                        <button id="ringkasan-ok-btn"
+                                class="px-4 py-2 text-sm font-semibold text-maroon bg-yellow-400 rounded-full hover:bg-yellow-500 hover:-translate-y-0.5 hover:shadow-md transition">
+                            Mengerti
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full px-4 py-8 bg-white md:px-16">
+        <div class="flex flex-col items-center gap-6 mx-auto text-center md:flex-row md:justify-between md:text-left">
+            <!-- Credit -->
+            <p class="order-2 font-semibold text-md md:order-1 text-maroon md:text-sm text-display">
+                © 2025 <a href="/" class="hover:underline">Tim Menumpas Semua Keraguan</a>
+            </p>
+            <!-- Navigation -->
+            <div class="flex flex-col items-start order-1 gap-2 md:order-2 text-maroon font-display text-display md:flex-row md:gap-6">
+                <a href="index.html#hero" class="md:border-b md:border-[#787A91] text-md font-semibold md:text-sm">
+                    Beranda
+                </a>
+                <a href="index.html#tentang-kupas-tuntas" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Tentang Kupas Tuntas
+                </a>
+                <a href="index.html#belajar-sejarah-seru" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Belajar Sejarah Seru
+                </a>
+                <a href="index.html#banyaknya-pahlawan-indonesia" class="font-semibold opacity-50 text-md hover:opacity-100 md:text-sm">
+                    Persebaran Pahlawan Indonesia
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script: Mobile Menu + Video Marquee + Modal Ringkasan -->
+    <script>
+        // Data card video (bisa kamu ganti link & judulnya)
+        const videoData = [
+            {
+                title: "Asal-usul Nama Indonesia",
+                desc: "Kenapa negara kita disebut “Indonesia”? Dari mana istilah itu muncul dan siapa yang pertama kali mempopulerkannya?",
+                url: "https://www.youtube.com/results?search_query=asal+usul+nama+indonesia",
+                tag: "Konsep Bangsa"
+            },
+            {
+                title: "Proses Panjang Menuju Proklamasi",
+                desc: "Bukan hanya 17 Agustus 1945. Ada banyak peristiwa penting yang mengantar Indonesia menuju kemerdekaan.",
+                url: "https://www.youtube.com/results?search_query=sejarah+proklamasi+kemerdekaan+indonesia",
+                tag: "Kemerdekaan"
+            },
+            {
+                title: "Perlawanan Pahlawan Daerah",
+                desc: "Mengenal pahlawan dari berbagai daerah yang kisahnya sering luput dari buku pelajaran di kelas.",
+                url: "https://www.youtube.com/results?search_query=pahlawan+daerah+indonesia",
+                tag: "Pahlawan Daerah"
+            },
+            {
+                title: "Sumpah Pemuda dan Persatuan",
+                desc: "Bagaimana Sumpah Pemuda menjadi titik penting lahirnya semangat satu tanah air, bangsa, dan bahasa.",
+                url: "https://www.youtube.com/results?search_query=sumpah+pemuda",
+                tag: "Pergerakan Nasional"
+            },
+            {
+                title: "Perjalanan Panjang Bendera Merah Putih",
+                desc: "Dari simbol perjuangan hingga menjadi bendera resmi negara. Apa makna di balik Merah Putih?",
+                url: "https://www.youtube.com/results?search_query=sejarah+bendera+merah+putih",
+                tag: "Simbol Negara"
+            }
+        ];
+
+        // Data ringkasan perpustakaan mini
+        const ringkasanData = {
+            "pergerakan-nasional": {
+                title: "Pergerakan Nasional",
+                body:
+`Pergerakan nasional adalah masa ketika rakyat Nusantara mulai menyadari bahwa penjajahan tidak bisa dilawan secara sendiri-sendiri. 
+
+Organisasi seperti Budi Utomo (1908), Sarekat Islam, dan Indische Partij menjadi wadah awal kaum terpelajar untuk berkumpul, berdiskusi, dan menyusun strategi perjuangan.
+
+Puncak semangat persatuan itu tampak dalam peristiwa Sumpah Pemuda tahun 1928, ketika para pemuda dari berbagai daerah berikrar: satu nusa, satu bangsa, dan satu bahasa – Indonesia. 
+
+Dari sinilah identitas “bangsa Indonesia” mulai terbentuk secara kuat.`
+            },
+            "proklamasi-kemerdekaan": {
+                title: "Proklamasi Kemerdekaan Indonesia",
+                body:
+`Proklamasi kemerdekaan Indonesia dibacakan oleh Soekarno pada 17 Agustus 1945 di Jakarta. Namun, peristiwa ini bukan terjadi secara tiba-tiba.
+
+Sebelumnya, ada perdebatan antara golongan tua dan golongan muda tentang waktu dan cara memproklamasikan kemerdekaan. Peristiwa Rengasdengklok menjadi salah satu momen penting ketika para pemuda “mendesak” Soekarno-Hatta agar segera memproklamasikan kemerdekaan tanpa campur tangan Jepang.
+
+Naskah proklamasi disusun di rumah Laksamana Tadashi Maeda, lalu diketik oleh Sayuti Melik dengan beberapa perubahan kecil. 
+
+Setelah proklamasi, perjuangan belum selesai. Berbagai daerah bangkit mempertahankan kemerdekaan melalui pertempuran dan diplomasi melawan Belanda yang ingin kembali berkuasa.`
+            },
+            "pahlawan-pendidikan": {
+                title: "Pahlawan Pendidikan Indonesia",
+                body:
+`Pahlawan pendidikan adalah tokoh-tokoh yang berjuang lewat ilmu pengetahuan, sekolah, dan kesadaran kritis – bukan hanya lewat senjata.
+
+Salah satu tokoh penting adalah Ki Hajar Dewantara. Ia mendirikan Taman Siswa pada tahun 1922, sebuah lembaga pendidikan yang memberi kesempatan belajar bagi rakyat pribumi dengan suasana merdeka dan mendidik kepribadian bangsa.
+
+Melalui semboyan “Ing ngarso sung tulodo, ing madyo mangun karso, tut wuri handayani”, Ki Hajar menegaskan bahwa pendidik bukan sekadar mengajar, tetapi juga menjadi teladan, penggerak, dan pendorong dari belakang.
+
+Perjuangan pahlawan pendidikan mengingatkan kita bahwa kemerdekaan sejati hanya dapat dijaga jika masyarakatnya terdidik, berpikir kritis, dan mencintai bangsanya.`
+            }
+        };
+
+        $(document).ready(function () {
+            // Mobile menu
+            var $menu = $("#mobile-menu");
+
+            $("#mobile-menu-toggle").on("click", function () {
+                if ($menu.is(":visible")) {
+                    $menu.slideUp(200, function () {
+                        $menu.addClass("hidden");
+                    });
+                } else {
+                    $menu
+                        .removeClass("hidden")
+                        .hide()
+                        .slideDown(200);
+                }
+            });
+
+            // Generate card video untuk marquee
+            const $track = $("#video-marquee-track");
+
+            videoData.forEach(function (video) {
+                const $card = $(`
+                    <a href="${video.url}" target="_blank" rel="noopener"
+                       class="block w-64 shrink-0 p-4 bg-white rounded-2xl shadow-md backdrop-blur-sm
+                              hover:-translate-y-1 hover:shadow-lg transition-transform duration-300">
+                        <p class="mb-1 text-[0.7rem] uppercase tracking-wide font-semibold text-maroon/70 font-display">
+                            ${video.tag || "Video Pembelajaran"}
+                        </p>
+                        <h3 class="mb-1 text-base font-semibold font-display text-maroon">
+                            ${video.title}
+                        </h3>
+                        <p class="mb-2 text-sm font-display text-maroon/80">
+                            ${video.desc}
+                        </p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-maroon font-display">
+                            Tonton sekarang
+                            <span aria-hidden="true">↗</span>
+                        </span>
+                    </a>
+                `);
+                $track.append($card);
+            });
+
+            // Gandakan isi track untuk efek loop marquee yang halus (khusus desktop)
+            const itemsHtml = $track.html();
+            $track.append(itemsHtml);
+
+            // ============================
+            // Modal Ringkasan Perpustakaan
+            // ============================
+            const $ringkasanModal = $("#ringkasan-modal");
+            const $ringkasanTitle = $("#ringkasan-title");
+            const $ringkasanBody  = $("#ringkasan-body");
+
+            function openRingkasan(id) {
+                const data = ringkasanData[id];
+                if (!data) return;
+
+                $ringkasanTitle.text(data.title);
+                $ringkasanBody.text(data.body);
+
+                $ringkasanModal.removeClass("hidden").addClass("flex");
+                $("body").addClass("overflow-hidden");
+            }
+
+            function closeRingkasan() {
+                $ringkasanModal.addClass("hidden").removeClass("flex");
+                $("body").removeClass("overflow-hidden");
+            }
+
+            // Klik tombol "Baca Ringkasan"
+            $("[data-ringkasan-id]").on("click", function () {
+                const id = $(this).data("ringkasan-id");
+                openRingkasan(id);
+            });
+
+            // Tombol close & OK
+            $("#ringkasan-close, #ringkasan-ok-btn").on("click", function () {
+                closeRingkasan();
+            });
+
+            // Klik di luar kotak modal
+            $ringkasanModal.on("click", function (e) {
+                if (e.target === this) {
+                    closeRingkasan();
+                }
+            });
+
+            // ESC untuk tutup
+            $(document).on("keydown", function (e) {
+                if (e.key === "Escape") {
+                    closeRingkasan();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

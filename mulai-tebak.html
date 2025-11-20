@@ -121,7 +121,7 @@
         <section id="name" class="relative flex flex-col items-center w-full min-h-screen overflow-hidden text-center justify-center-safe md:justify-center bg-maroon/70 md:pt-28">
             <div class="absolute inset-0 z-0 pointer-events-none bg-maroon/70"></div>
             <!-- Ilustrasi Mas Pandu (desktop only) -->
-            <img src="assets/images/mas-pandu/mas-pandu-berpikir.png" alt="Mas Pandu sedang berpikir" class="hidden z-5 md:block absolute -bottom-5 -left-24 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain pointer-events-none"/>
+            <img src="assets/images/mas-lucky/mas-lucky-menyapa.png" alt="Mas Pandu sedang berpikir" class="hidden z-5 md:block absolute -bottom-5 left-0 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain pointer-events-none"/>
             <!-- Wrapper konten utama desktop only! -->
             <div id="pahlawan-card" class="hidden md:flex font-display h-[360px] w-full max-w-md justify-center">
                 <!-- Card Stacker akan di-inject di sini -->
@@ -197,12 +197,6 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
                                 </button>
-                                <button id="MC-btn" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:cursor-pointer bg-maroon">
-                                    Mode Cerita
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
                                 <button id="TKS-btn" class="flex items-center gap-2 px-4 py-2 text-white rounded-lg hover:cursor-pointer bg-maroon">
                                     Tebak Kejadian Sejarah
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,11 +212,45 @@
                         <div id="gamemode" class="flex flex-col items-center justify-around gap-6 mt-24 mb-12 text-center"></div>
                     </div>
                     <div id="mas-pandu" class="basis-1/3">
-                        <img src="assets/images/mas-pandu/mas-pandu-berpikir.png" alt="Mas Pandu sedang berpikir" class="hidden md:block absolute -right-5 bottom-0 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain podisplay-events-none z-10"/>
+                        <img src="assets/images/mas-lucky/mas-lucky-berpikir2.png" alt="Mas Pandu sedang berpikir" class="hidden md:block absolute -right-2 bottom-0 h-[65%] sm:h-[70%] md:h-[80%] max-w-[50%] sm:max-w-[45%] object-contain podisplay-events-none z-10"/>
                     </div>
                 </div>
             </div>  
         </section>
+        <!-- MODAL HTP -->
+        <div id="htp-modal" class="fixed inset-0 z-50 items-center justify-center hidden bg-black/60">
+        <!-- Card modal -->
+        <div class="relative w-full max-w-xl mx-4 bg-white rounded-2xl shadow-xl overflow-hidden">
+            <!-- Tombol X -->
+            <button id="htp-close" class="absolute text-gray-600 top-3 right-3 hover:text-black">
+            ✕
+            </button>
+            <!-- Isi modal -->
+            <div class="flex flex-col w-full p-4 space-y-3">
+                <!-- Judul / nama gamemode -->
+                <h2 id="htp-gamemode-title" class="text-lg font-bold text-maroon font-display">
+                    <!-- Diisi via JS -->
+                </h2>
+                <!-- Video -->
+                <div class="w-full overflow-hidden rounded-xl aspect-video">
+                    <iframe
+                    id="htp-iframe"
+                    class="w-full h-full"
+                    src=""
+                    title="Video Cara Bermain"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Teks di bawah video -->
+                <p id="htp-gamemode-label" class="mt-1 text-sm font-semibold text-center text-gray-700 font-display">
+                    <!-- contoh: "Tebak Gambar Pahlawan" -->
+                </p>
+            </div>
+        </div>
+        </div>
      </main>
      <footer class="w-full px-4 py-8 bg-white md:px-16">
         <div class="flex flex-col items-center gap-6 mx-auto text-center md:flex-row md:justify-between md:text-left">

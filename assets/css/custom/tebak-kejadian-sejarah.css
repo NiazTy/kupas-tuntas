@@ -1,23 +1,86 @@
+/* Fade in dari bawah */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .animate-fade-in-up {
-  animation: fadeInUp 0.25s ease-out forwards;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
-@keyframes popIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
-}
-.animate-pop {
-  animation: popIn 0.2s ease-out forwards;
-}
-
+/* Fade out ke bawah */
 @keyframes fadeOutDown {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(8px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
 }
+
 .animate-fade-out-down {
-  animation: fadeOutDown 0.2s ease-in forwards;
+  animation: fadeOutDown 0.25s ease-in forwards;
 }
+
+/* Pop (feedback, modal) */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  70% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-pop {
+  animation: popIn 0.4s ease-out forwards;
+}
+
+/* Shake (jawaban salah) */
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-4px); }
+  40%  { transform: translateX(4px); }
+  60%  { transform: translateX(-3px); }
+  80%  { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Tombol pulse halus (Mulai Ulang & Kembali) */
+@keyframes buttonPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.btn-pulse:hover {
+  animation: buttonPulse 0.4s ease-in-out;
+}
+
+/* Badge hasil */
+#result-badge {
+  text-align: center;
+}
+
+.badge-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+}
+.badge-gold   { background: linear-gradient(135deg, #facc15, #f97316); color: #7c2d12; }
+.badge-silver { background: linear-gradient(135deg, #e5e7eb, #9ca3af); color: #111827; }
+.badge-bronze { background: linear-gradient(135deg, #f97316, #92400e); color: #fef3c7; }
+.badge-basic  { background: linear-gradient(135deg, #e5e7eb, #d1d5db); color: #374151; }

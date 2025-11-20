@@ -61,3 +61,15 @@
     background-size: cover;
     background-position: center;
 }
+
+/* Animasi transisi konten deskripsi gamemode */
+#gamemode {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+#gamemode.gm-hidden {
+  opacity: 0;
+  transform: translateY(12px); /* geser turun sedikit waktu menghilang */
+}

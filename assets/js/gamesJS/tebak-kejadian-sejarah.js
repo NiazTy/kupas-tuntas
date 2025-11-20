@@ -1,16 +1,132 @@
 const TKS_JSON_PATH = "../../assets/soal/TKS.json";
-const QUIZ_DURATION = 120;
-const MAX_QUESTIONS = 5;
+const TKS_QUIZ_DURATION = 120;
+const TKS_MAX_QUESTIONS = 5;
 
-let allQuestions = [];
-let currentIndex = 0;
-let score = 0;
-let remainingTime = QUIZ_DURATION;
-let timerInterval = null;
-let quizFinished = false;
-let modalOpen = false;
+let tksAllQuestions = [];
+let tksCurrentIndex = 0;
+let tksScore = 0;
+let tksRemainingTime = TKS_QUIZ_DURATION;
+let tksTimerInterval = null;
+let tksQuizFinished = false;
+let tksModalOpen = false;
 
-function shuffleArray(arr) {
+const MAS_LUCKY_BASE_PATH_TKS    = "../../assets/images/mas-lucky/";
+const MAS_LUCKY_VO_BASE_PATH_TKS = "../../assets/audio/";
+const MAS_LUCKY_JSON_PATH_TKS    = "../../assets/soal/mas-lucky.json";
+
+let masLuckyListTks = [];
+
+const MAS_LUCKY_STATE_TKS = {
+  default: {
+    matchSource: "mas-lucky-menyapa.png",
+    vo: null
+  },
+  thinking: {
+    matchSource: "mas-lucky-berpikir1.png",
+    vo: "mas-lucky-berpikir-vo.m4a"
+  },
+  correct: {
+    matchSource: "mas-lucky-mengapresiasi.png",
+    vo: "mas-lucky-mengapresiasi-vo.m4a"
+  },
+  wrong: {
+    matchSource: "mas-lucky-kecewa.png",
+    vo: "mas-lucky-kecewa-vo.m4a"
+  },
+  shocked: {
+    matchSource: "mas-lucky-terkejut.png",
+    vo: "mas-lucky-terkejut-vo.mp3"
+  },
+  perfect: {
+    matchSource: "mas-lucky-mengapresiasi.png",
+    vo: "mas-lucky-perfect-vo.mp3"
+  }
+};
+
+function tksLoadMasLuckyFromJson() {
+  return $.getJSON(MAS_LUCKY_JSON_PATH_TKS)
+    .done(function (data) {
+      if (!Array.isArray(data)) {
+        console.error("mas-lucky.json harus berupa array!");
+        masLuckyListTks = [];
+        return;
+      }
+      masLuckyListTks = data;
+      console.log("TKS: Mas Lucky config loaded:", masLuckyListTks);
+    })
+    .fail(function (err) {
+      console.error("TKS: Gagal load mas-lucky.json:", err);
+      masLuckyListTks = [];
+    });
+}
+
+function tksResolveMasLuckyState(stateKey) {
+  const stateCfg = MAS_LUCKY_STATE_TKS[stateKey] || MAS_LUCKY_STATE_TKS.default;
+  const fallback = {
+    alt: stateKey,
+    source: stateCfg.matchSource || "",
+    vo: stateCfg.vo || null
+  };
+
+  if (!masLuckyListTks.length || !stateCfg.matchSource) {
+    return fallback;
+  }
+
+  const found = masLuckyListTks.find(item => item.source === stateCfg.matchSource);
+
+  if (!found) {
+    console.warn("TKS: Config Mas Lucky untuk state", stateKey, "tidak ditemukan di JSON. Fallback.");
+    return fallback;
+  }
+
+  return {
+    alt: found.alt,
+    source: found.source,
+    vo: stateCfg.vo || null
+  };
+}
+
+function tksPlayMasLuckyVoice(voFile) {
+  const audioEl = document.getElementById("mas-lucky-voice");
+  if (!audioEl || !voFile) return;
+
+  audioEl.pause();
+  audioEl.currentTime = 0;
+  audioEl.src = MAS_LUCKY_VO_BASE_PATH_TKS + voFile;
+
+  audioEl.play().catch(() => {
+  });
+}
+
+function tksSetMasLucky(stateKey, options = {}) {
+  const data = tksResolveMasLuckyState(stateKey);
+  const $img = $("#mas-lucky");
+
+  if ($img.length) {
+    $img
+      .attr("src", MAS_LUCKY_BASE_PATH_TKS + (data.source || ""))
+      .attr("alt", data.alt || "");
+
+    tksResetAnimationClasses($img);
+    tksRestartAnimation($img, "animate-pop");
+  }
+
+  const shouldPlayVoice = options.playVoice !== false;
+
+  if (shouldPlayVoice && data.vo) {
+    tksPlayMasLuckyVoice(data.vo);
+  }
+}
+
+function tksFormatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  const mm = m < 10 ? "0" + m : m;
+  const ss = s < 10 ? "0" + s : s;
+  return mm + ":" + ss;
+}
+
+function tksShuffleArray(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -19,28 +135,20 @@ function shuffleArray(arr) {
   return a;
 }
 
-function formatTime(sec) {
-  const m = Math.floor(sec / 60);
-  const s = sec % 60;
-  const mm = m < 10 ? "0" + m : m;
-  const ss = s < 10 ? "0" + s : s;
-  return mm + ":" + ss;
-}
-
-function restartAnimation($el, className) {
+function tksRestartAnimation($el, className) {
   $el.removeClass(className);
   $el.each(function () { void this.offsetWidth; });
   $el.addClass(className);
 }
 
-function resetAnimationClasses($el) {
+function tksResetAnimationClasses($el) {
   $el.removeClass("animate-fade-in-up animate-fade-out-down animate-pop animate-shake");
   $el.css("opacity", "");
   $el.css("transform", "");
   $el.css("animation-delay", "");
 }
 
-function normalizeText(str) {
+function tksNormalizeText(str) {
   return (str || "")
     .toLowerCase()
     .replace(/[.,!?]/g, "")
@@ -48,9 +156,9 @@ function normalizeText(str) {
     .trim();
 }
 
-function isAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
-  const u = normalizeText(userAnswer);
-  const k = normalizeText(keyAnswer || "");
+function tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
+  const u = tksNormalizeText(userAnswer);
+  const k = tksNormalizeText(keyAnswer || "");
 
   if (!u) return false;
 
@@ -62,7 +170,7 @@ function isAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
 
   if (Array.isArray(kataKunci) && kataKunci.length > 0) {
     keyWords = kataKunci
-      .map(kw => normalizeText(kw))
+      .map(kw => tksNormalizeText(kw))
       .filter(Boolean);
   } else if (k) {
     keyWords = k.split(" ").filter(w => w.length > 3);
@@ -70,19 +178,18 @@ function isAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
 
   if (keyWords.length === 0) return false;
 
-  const matched = keyWords.filter(kw => u.includes(kw));
-
+  const matched   = keyWords.filter(kw => u.includes(kw));
   const minNeeded = Math.max(1, Math.floor(keyWords.length * 0.4));
 
   return matched.length >= minNeeded;
 }
 
-function renderKeywordIndicator(userAnswer, kataKunci = []) {
-  const user = normalizeText(userAnswer);
+function tksRenderKeywordIndicator(userAnswer, kataKunci = []) {
+  const user = tksNormalizeText(userAnswer);
 
   const rawKeywords = Array.isArray(kataKunci) ? kataKunci : [];
   const normalizedKeywords = rawKeywords
-    .map(kw => normalizeText(kw))
+    .map(kw => tksNormalizeText(kw))
     .filter(Boolean);
 
   const $box = $("#tks-keywords");
@@ -105,65 +212,68 @@ function renderKeywordIndicator(userAnswer, kataKunci = []) {
   });
 }
 
-function startTimerLoop() {
-  if (timerInterval) clearInterval(timerInterval);
+function tksStartTimerLoop() {
+  if (tksTimerInterval) clearInterval(tksTimerInterval);
 
-  timerInterval = setInterval(function() {
-    if (quizFinished || modalOpen) {
+  tksTimerInterval = setInterval(function () {
+    if (tksQuizFinished || tksModalOpen) {
       return;
     }
 
-    remainingTime--;
-    $("#timer-display").text(formatTime(remainingTime));
+    tksRemainingTime--;
+    $("#timer-display").text(tksFormatTime(tksRemainingTime));
 
-    if (remainingTime <= 0) {
-      clearInterval(timerInterval);
-      endGame("Waktu habis! ⏰");
+    // wakyu habis
+    if (tksRemainingTime <= 0) {
+      clearInterval(tksTimerInterval);
+      tksSetMasLucky("shocked", { playVoice: true });
+
+      tksEndGame("Waktu habis! ⏰");
     }
   }, 1000);
 }
 
-function pauseTimer() {
-  if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
+function tksPauseTimer() {
+  if (tksTimerInterval) {
+    clearInterval(tksTimerInterval);
+    tksTimerInterval = null;
   }
 }
 
-function resumeTimer() {
-  if (quizFinished) return;
-  if (!timerInterval) {
-    startTimerLoop();
+function tksResumeTimer() {
+  if (tksQuizFinished) return;
+  if (!tksTimerInterval) {
+    tksStartTimerLoop();
   }
 }
 
-function openResultModal({ title, feedbackText, explanationText }) {
-  modalOpen = true;
-  pauseTimer();
+function tksOpenResultModal({ title, feedbackText, explanationText }) {
+  tksModalOpen = true;
+  tksPauseTimer();
 
   $("#modal-hero-name").text(title || "Kejadian Sejarah");
   $("#modal-feedback").text(feedbackText || "");
   $("#modal-explanation").text(explanationText || "");
 
-  const $modal   = $("#result-modal");
-  const $card    = $modal.find(".rounded-2xl");
+  const $modal = $("#result-modal");
+  const $card  = $modal.find(".rounded-2xl");
 
   $modal.removeClass("hidden").addClass("flex");
-  resetAnimationClasses($card);
-  restartAnimation($card, "animate-fade-in-up");
+  tksResetAnimationClasses($card);
+  tksRestartAnimation($card, "animate-fade-in-up");
 }
 
-function closeResultModal() {
+function tksCloseResultModal() {
   const $modal = $("#result-modal");
   $modal.addClass("hidden").removeClass("flex");
-  modalOpen = false;
+  tksModalOpen = false;
 
-  if (!quizFinished) {
-    resumeTimer();
+  if (!tksQuizFinished) {
+    tksResumeTimer();
   }
 }
 
-function getAchievement(score, total) {
+function tksGetAchievement(score, total) {
   if (total === 10 && score === 10) {
     return {
       title: "Kesatria Sejarah",
@@ -201,82 +311,85 @@ function getAchievement(score, total) {
   };
 }
 
-function initGame() {
+function tksInitGame() {
   $.getJSON(TKS_JSON_PATH)
-    .done(function(data) {
+    .done(function (data) {
       if (!Array.isArray(data)) {
         console.error("Format TKS.json harus berupa array!");
         return;
       }
 
-      let loadedQuestions = shuffleArray(data);
+      let loadedQuestions = tksShuffleArray(data);
 
-      if (loadedQuestions.length > MAX_QUESTIONS) {
-        loadedQuestions = loadedQuestions.slice(0, MAX_QUESTIONS);
+      if (loadedQuestions.length > TKS_MAX_QUESTIONS) {
+        loadedQuestions = loadedQuestions.slice(0, TKS_MAX_QUESTIONS);
       }
 
-      allQuestions = loadedQuestions;
+      tksAllQuestions = loadedQuestions;
 
       console.log("Total soal TKS di file:", data.length);
-      console.log("Soal TKS yang dipakai:", allQuestions.length);
+      console.log("Soal TKS yang dipakai:", tksAllQuestions.length);
 
-      if (allQuestions.length === 0) {
+      if (tksAllQuestions.length === 0) {
         $("#question").text("Belum ada soal untuk mode ini.");
         return;
       }
 
-      // reset status game
-      score = 0;
-      quizFinished = false;
-      modalOpen = false;
-      currentIndex = 0;
-      remainingTime = QUIZ_DURATION;
+      tksScore = 0;
+      tksQuizFinished = false;
+      tksModalOpen = false;
+      tksCurrentIndex = 0;
+      tksRemainingTime = TKS_QUIZ_DURATION;
 
-      $("#score-display").text(score);
-      $("#timer-display").text(formatTime(remainingTime));
+      $("#score-display").text(tksScore);
+      $("#timer-display").text(tksFormatTime(tksRemainingTime));
       $("#q-title").text("");
       $("#question").text("");
       $("#answers").empty();
       $("#result-badge").addClass("hidden");
       $("#end-buttons").addClass("hidden");
 
-      // tombol next: sembunyi dulu
       $("#btn-next-question")
         .addClass("hidden")
         .prop("disabled", true)
         .text("Soal Berikutnya");
 
-      startTimerLoop();
-      renderQuestion(0);
+      tksSetMasLucky("default", { playVoice: false });
+
+      tksStartTimerLoop();
+      tksRenderQuestion(0);
     })
-    .fail(function(err) {
+    .fail(function (err) {
       console.error("Gagal load TKS.json:", err);
     });
 }
 
-function renderQuestion(index) {
-  currentIndex = index;
+function tksRenderQuestion(index) {
+  tksCurrentIndex = index;
   let hasAnswered = false;
 
-  const total = allQuestions.length;
-  const q     = allQuestions[index];
+  // Mas Lucky mikir + VO
+  tksSetMasLucky("thinking", { playVoice: true });
+
+  const total = tksAllQuestions.length;
+  const q     = tksAllQuestions[index];
 
   if (!q) {
     console.warn("Soal TKS tidak ditemukan di index:", index);
     return;
   }
 
-  resetAnimationClasses($("#q-title"));
-  resetAnimationClasses($("#question"));
-  resetAnimationClasses($("#answers"));
+  tksResetAnimationClasses($("#q-title"));
+  tksResetAnimationClasses($("#question"));
+  tksResetAnimationClasses($("#answers"));
 
   $("#question-counter").text((index + 1) + " / " + total);
 
-  const questionText = q["soal"] || "";
-  const titleText    = q["judul-soal"] || "";
+  const questionText = q["soal"]          || "";
+  const titleText    = q["judul-soal"]    || "";
   const keyAnswer    = q["kunci-jawaban"] || "";
-  const explanation  = q["penjelasan"] || "";
-  const clue         = q["clue"] || "";
+  const explanation  = q["penjelasan"]    || "";
+  const clue         = q["clue"]          || "";
   const kataKunci    = Array.isArray(q["kata-kunci"]) ? q["kata-kunci"] : [];
 
   $("#q-title").text(titleText);
@@ -284,7 +397,7 @@ function renderQuestion(index) {
 
   const isLast = (index === total - 1);
 
-  // -------- AREA JAWABAN (teks) --------
+  // -------- AREA JAWABAN --------
   const $answers = $("#answers");
   $answers
     .empty()
@@ -314,9 +427,8 @@ function renderQuestion(index) {
 
   // -------- AREA TOMBOL --------
   const $buttons = $("#buttons");
-  const $nextBtn = $("#btn-next-question"); // ini sudah ada di HTML dan TIDAK dihapus
+  const $nextBtn = $("#btn-next-question");
 
-  // hapus tombol clue & submit lama, tapi jangan hapus btn-next-question
   $buttons.find("#tks-show-clue, #tks-submit").remove();
 
   const $clueBtn = $("<button>")
@@ -333,35 +445,32 @@ function renderQuestion(index) {
     )
     .html('<span>✅</span><span>Kunci Jawaban</span>');
 
-  // siapin tombol Next
   $nextBtn
     .addClass("hidden")
     .removeClass("opacity-50")
     .prop("disabled", true)
     .text(isLast ? "Selesai" : "Soal Berikutnya");
 
-  // susunan tombol: clue, submit, lalu next
   $buttons
     .addClass("flex flex-col w-full gap-3 sm:flex-row");
 
-  // sisipkan di depan Next (jadi Next selalu di paling kanan / bawah)
   $clueBtn.insertBefore($nextBtn);
   $submitBtn.insertBefore($nextBtn);
 
-  restartAnimation($("#q-title"), "animate-fade-in-up");
-  restartAnimation($("#question"), "animate-fade-in-up");
-  restartAnimation($answers, "animate-fade-in-up");
-  restartAnimation($buttons, "animate-fade-in-up");
+  tksRestartAnimation($("#q-title"), "animate-fade-in-up");
+  tksRestartAnimation($("#question"), "animate-fade-in-up");
+  tksRestartAnimation($answers, "animate-fade-in-up");
+  tksRestartAnimation($buttons, "animate-fade-in-up");
 
-  // -------- EVENT: LIHAT CLUE --------
-  $clueBtn.on("click", function() {
+  // EVENT: LIHAT CLUE
+  $clueBtn.on("click", function () {
     $clueText.removeClass("hidden");
-    restartAnimation($clueText, "animate-fade-in-up");
+    tksRestartAnimation($clueText, "animate-fade-in-up");
   });
 
-  // -------- EVENT: KUNCI JAWABAN --------
-  $submitBtn.on("click", function() {
-    if (hasAnswered || quizFinished || modalOpen) return;
+  // EVENT: KUNCI JAWABAN
+  $submitBtn.on("click", function () {
+    if (hasAnswered || tksQuizFinished || tksModalOpen) return;
 
     const userAnswer = $input.val().trim();
     if (!userAnswer) {
@@ -371,27 +480,30 @@ function renderQuestion(index) {
 
     hasAnswered = true;
 
-    const correct = isAnswerCorrect(userAnswer, keyAnswer, kataKunci);
-    let feedbackText = "";
+    const correct      = tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci);
+    let feedbackText   = "";
 
     if (correct) {
-      score++;
-      $("#score-display").text(score);
+      tksScore++;
+      $("#score-display").text(tksScore);
       feedbackText = "Jawaban kamu sudah tepat! 🎉";
+
+      tksSetMasLucky("correct", { playVoice: true });
     } else {
       feedbackText = "Belum tepat. Jawaban yang dimaksud: " + keyAnswer;
+
+      tksSetMasLucky("wrong", { playVoice: true });
     }
 
     $feedback.text(feedbackText);
-    restartAnimation($feedback, "animate-pop");
+    tksRestartAnimation($feedback, "animate-pop");
 
-    renderKeywordIndicator(userAnswer, kataKunci);
+    tksRenderKeywordIndicator(userAnswer, kataKunci);
 
-    // munculkan tombol next
     $nextBtn.removeClass("hidden").prop("disabled", false);
-    restartAnimation($nextBtn, "animate-pop");
+    tksRestartAnimation($nextBtn, "animate-pop");
 
-    openResultModal({
+    tksOpenResultModal({
       title: titleText,
       feedbackText: feedbackText,
       explanationText: explanation
@@ -399,25 +511,24 @@ function renderQuestion(index) {
   });
 }
 
-function endGame(reasonText) {
-  quizFinished = true;
-  pauseTimer();
-  closeResultModal();
+function tksEndGame(reasonText) {
+  tksQuizFinished = true;
+  tksPauseTimer();
+  tksCloseResultModal();
 
-  const total = allQuestions.length;
-  const achievement = getAchievement(score, total);
+  const total       = tksAllQuestions.length;
+  const achievement = tksGetAchievement(tksScore, total);
 
   const header   = reasonText;
-  const skorText = "Skor akhir kamu: " + score + " dari " + total + " soal.";
+  const skorText = "Skor akhir kamu: " + tksScore + " dari " + total + " soal.";
 
   $("#q-title").text("");
   $("#question").html(header + "<br>" + skorText);
-  resetAnimationClasses($("#question"));
-  restartAnimation($("#question"), "animate-fade-in-up");
+  tksResetAnimationClasses($("#question"));
+  tksRestartAnimation($("#question"), "animate-fade-in-up");
 
   $("#answers").empty();
 
-  // hapus tombol clue & submit, sembunyikan Next
   $("#buttons").find("#tks-show-clue, #tks-submit").remove();
   $("#btn-next-question").addClass("hidden").prop("disabled", true);
 
@@ -430,13 +541,24 @@ function endGame(reasonText) {
       .addClass(achievement.badgeClass || "badge-basic");
 
     $("#result-badge").removeClass("hidden");
-    restartAnimation($("#result-badge"), "animate-fade-in-up");
+    tksRestartAnimation($("#result-badge"), "animate-fade-in-up");
+  }
+
+  const ratio = total > 0 ? tksScore / total : 0;
+  if (total === 10 && tksScore === 10) {
+    tksSetMasLucky("perfect", { playVoice: true });
+  } else if (ratio >= 0.8) {
+    tksSetMasLucky("correct", { playVoice: false });
+  } else if (ratio >= 0.5) {
+    tksSetMasLucky("thinking", { playVoice: false });
+  } else {
+    tksSetMasLucky("wrong", { playVoice: false });
   }
 
   $("#end-buttons").removeClass("hidden");
 
   try {
-    localStorage.setItem("tks_lastScore", String(score));
+    localStorage.setItem("tks_lastScore", String(tksScore));
     localStorage.setItem("tks_lastTotal", String(total));
     if (achievement) {
       localStorage.setItem("tks_lastTitle", achievement.title);
@@ -446,45 +568,42 @@ function endGame(reasonText) {
   }
 }
 
-$(document).ready(function() {
-  initGame();
+$(document).ready(function () {
+  tksLoadMasLuckyFromJson().always(function () {
+    tksInitGame();
 
-  // tombol next soal
-  $("#btn-next-question").on("click", function() {
-    if (quizFinished) return;
+    $("#btn-next-question").on("click", function () {
+      if (tksQuizFinished) return;
 
-    // kalau modal masih kebuka, tutup dulu
-    if (modalOpen) {
-      closeResultModal();
-    }
+      if (tksModalOpen) {
+        tksCloseResultModal();
+      }
 
-    const total = allQuestions.length;
+      const total = tksAllQuestions.length;
 
-    if (currentIndex < total - 1) {
-      renderQuestion(currentIndex + 1);
-    } else {
-      endGame("Kuis selesai! ✅");
-    }
-  });
+      if (tksCurrentIndex < total - 1) {
+        tksRenderQuestion(tksCurrentIndex + 1);
+      } else {
+        tksEndGame("Kuis selesai! ✅");
+      }
+    });
 
-  // modal close
-  $("#result-modal-close").on("click", function() {
-    closeResultModal();
-  });
+    $("#result-modal-close").on("click", function () {
+      tksCloseResultModal();
+    });
 
-  $("#result-overlay").on("click", function() {
-    closeResultModal();
-  });
+    $("#result-overlay").on("click", function () {
+      tksCloseResultModal();
+    });
 
-  // tombol mulai ulang
-  $("#btn-restart").on("click", function () {
-    $("#end-buttons").addClass("hidden");
-    $("#result-badge").addClass("hidden");
-    initGame();
-  });
+    $("#btn-restart").on("click", function () {
+      $("#end-buttons").addClass("hidden");
+      $("#result-badge").addClass("hidden");
+      tksInitGame();
+    });
 
-  // tombol kembali
-  $("#btn-back").on("click", function () {
-    window.location.href = "index.html"; // sesuaikan kalau perlu
+    $("#btn-back").on("click", function () {
+      window.location.href = "index.html";
+    });
   });
 });

@@ -4,17 +4,126 @@ const HEROES_JSON_PATH = "../assets/soal/pahlawan.json";
 const QUIZ_DURATION = 120;
 const MAX_QUESTIONS = 10;
 
-let allQuestions = [];
-let allHeroes = [];
-let heroMapById = {};
+let allQuestions   = [];
+let allHeroes      = [];
+let heroMapById    = {};
 
-let currentIndex = 0;
-let hasAnswered = false;
-let score = 0;
-let remainingTime = QUIZ_DURATION;
-let timerInterval = null;
-let quizFinished = false;
-let modalOpen = false;
+let currentIndex   = 0;
+let hasAnswered    = false;
+let score          = 0;
+let remainingTime  = QUIZ_DURATION;
+let timerInterval  = null;
+let quizFinished   = false;
+let modalOpen      = false;
+
+const MAS_LUCKY_BASE_PATH    = "assets/images/mas-lucky/";
+const MAS_LUCKY_VO_BASE_PATH = "assets/audio/";
+const MAS_LUCKY_JSON_PATH    = "assets/soal/mas-lucky.json"; 
+
+let masLuckyList = [];
+
+const MAS_LUCKY_STATE = {
+  default: {
+    matchSource: "mas-lucky-menyapa.png",
+    vo: null
+  },
+  thinking: {
+    matchSource: "mas-lucky-berpikir1.png",
+    vo: "mas-lucky-berpikir-vo.m4a"
+  },
+  correct: {
+    matchSource: "mas-lucky-mengapresiasi.png",
+    vo: "mas-lucky-mengapresiasi-vo.m4a"
+  },
+  wrong: {
+    matchSource: "mas-lucky-kecewa.png",
+    vo: "mas-lucky-kecewa-vo.m4a"
+  },
+  shocked: {
+    matchSource: "mas-lucky-terkejut.png",
+    vo: "mas-lucky-terkejut-vo.mp3"
+  },
+  perfect: {
+    matchSource: "mas-lucky-mengapresiasi.png",
+    vo: "mas-lucky-perfect-vo.mp3"
+  }
+};
+
+function loadMasLuckyFromJson() {
+  return $.getJSON(MAS_LUCKY_JSON_PATH)
+    .done(function (data) {
+      if (!Array.isArray(data)) {
+        console.error("mas-lucky.json harus berupa array!");
+        masLuckyList = [];
+        return;
+      }
+      masLuckyList = data;
+      console.log("Mas Lucky config loaded:", masLuckyList);
+    })
+    .fail(function (err) {
+      console.error("Gagal load mas-lucky.json:", err);
+      masLuckyList = [];
+    });
+}
+
+function resolveMasLuckyState(stateKey) {
+  const stateCfg = MAS_LUCKY_STATE[stateKey] || MAS_LUCKY_STATE.default;
+  const fallback = {
+    alt: stateKey,
+    source: stateCfg.matchSource || "",
+    vo: stateCfg.vo || null
+  };
+
+  if (!masLuckyList.length || !stateCfg.matchSource) {
+    return fallback;
+  }
+
+  const found = masLuckyList.find(item => item.source === stateCfg.matchSource);
+
+  if (!found) {
+    console.warn("Config Mas Lucky untuk state", stateKey, "tidak ditemukan di JSON. Fallback.");
+    return fallback;
+  }
+
+  return {
+    alt: found.alt,
+    source: found.source,
+    vo: stateCfg.vo || null
+  };
+}
+
+function playMasLuckyVoice(voFile) {
+  const audioEl = document.getElementById("mas-lucky-voice");
+  if (!audioEl || !voFile) return;
+
+  audioEl.pause();
+  audioEl.currentTime = 0;
+  audioEl.src = MAS_LUCKY_VO_BASE_PATH + voFile;
+
+  audioEl.play().catch(() => {
+    // kalau autoplay diblok, ga apa-apa
+  });
+}
+
+function setMasLucky(stateKey, options = {}) {
+  const data = resolveMasLuckyState(stateKey);
+  const $img = $("#mas-lucky");
+
+  if ($img.length) {
+    $img
+      .attr("src", MAS_LUCKY_BASE_PATH + (data.source || ""))
+      .attr("alt", data.alt || "");
+
+    resetAnimationClasses($img);
+    restartAnimation($img, "animate-pop");
+  }
+
+  const shouldPlayVoice = options.playVoice !== false;
+
+  if (shouldPlayVoice && data.vo) {
+    playMasLuckyVoice(data.vo);
+  }
+}
 
 function shuffleArray(arr) {
   const a = arr.slice();
@@ -28,7 +137,7 @@ function shuffleArray(arr) {
 }
 
 function getRandomOtherHeroes(correctId, count) {
-  const others = allHeroes.filter(function(h) {
+  const others = allHeroes.filter(function (h) {
     return h.id !== correctId;
   });
   const shuffled = shuffleArray(others);
@@ -45,7 +154,7 @@ function formatTime(sec) {
 
 function restartAnimation($el, className) {
   $el.removeClass(className);
-  $el.each(function() { void this.offsetWidth; });
+  $el.each(function () { void this.offsetWidth; });
   $el.addClass(className);
 }
 
@@ -59,7 +168,7 @@ function resetAnimationClasses($el) {
 function startTimerLoop() {
   if (timerInterval) clearInterval(timerInterval);
 
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     if (quizFinished || modalOpen) {
       return;
     }
@@ -69,6 +178,10 @@ function startTimerLoop() {
 
     if (remainingTime <= 0) {
       clearInterval(timerInterval);
+
+      // waktu habis → Mas Lucky kaget + VO
+      setMasLucky("shocked", { playVoice: true });
+
       endGame("Waktu habis! ⏰");
     }
   }, 1000);
@@ -119,9 +232,9 @@ function getAchievement(score, total) {
   if (total === 10 && score === 10) {
     return {
       title: "Kesatria Sejarah",
-      desc:  "Kamu menaklukkan semua soal tanpa tersisa. Ingatan sejarahmu tajam bak pedang para pejuang!",
+      desc: "Kamu menaklukkan semua soal tanpa tersisa. Ingatan sejarahmu tajam bak pedang para pejuang!",
       badgeClass: "badge-gold",
-      icon: "🛡️"
+      icon: "🛡️",
     };
   }
 
@@ -130,26 +243,26 @@ function getAchievement(score, total) {
   if (ratio >= 0.8) {
     return {
       title: "Penjaga Arsip Bangsa",
-      desc:  "Kamu sangat mengenal para pahlawan. Tinggal sedikit lagi menuju gelar Kesatria Sejarah!",
+      desc: "Kamu sangat mengenal para pahlawan. Tinggal sedikit lagi menuju gelar Kesatria Sejarah!",
       badgeClass: "badge-silver",
-      icon: "📜"
+      icon: "📜",
     };
   }
 
   if (ratio >= 0.5) {
     return {
       title: "Sahabat Pahlawan",
-      desc:  "Kamu cukup akrab dengan kisah para pahlawan. Terus asah rasa ingin tahumu!",
+      desc: "Kamu cukup akrab dengan kisah para pahlawan. Terus asah rasa ingin tahumu!",
       badgeClass: "badge-bronze",
-      icon: "🤝"
+      icon: "🤝",
     };
   }
 
   return {
     title: "Penjelajah Waktu Pemula",
-    desc:  "Setiap kisah besar selalu dimulai dari langkah pertama. Yuk coba lagi dan kenali lebih banyak pahlawan!",
+    desc: "Setiap kisah besar selalu dimulai dari langkah pertama. Yuk coba lagi dan kenali lebih banyak pahlawan!",
     badgeClass: "badge-basic",
-    icon: "⏳"
+    icon: "⏳",
   };
 }
 
@@ -157,7 +270,7 @@ function initGame() {
   $.when(
     $.getJSON(QUESTIONS_JSON_PATH),
     $.getJSON(HEROES_JSON_PATH)
-  ).done(function(qRes, hRes) {
+  ).done(function (qRes, hRes) {
     let loadedQuestions = qRes[0];
     allHeroes           = hRes[0];
 
@@ -179,7 +292,7 @@ function initGame() {
     console.log("Total pahlawan:", allHeroes.length);
 
     heroMapById = {};
-    allHeroes.forEach(function(h) {
+    allHeroes.forEach(function (h) {
       heroMapById[h.id] = h;
     });
 
@@ -206,22 +319,26 @@ function initGame() {
     $("#btn-next-question").removeClass("hidden").prop("disabled", true);
     $("#game-section").removeClass("hidden");
 
+    setMasLucky("default", { playVoice: false });
+
     startTimerLoop();
     renderQuestion(0);
-  }).fail(function(err) {
-    console.error("Gagal load JSON:", err);
+  }).fail(function (err) {
+    console.error("Gagal load JSON soal/pahlawan:", err);
   });
 }
 
 function transitionToQuestion(newIndex) {
   if (quizFinished) return;
-
   renderQuestion(newIndex);
 }
 
 function renderQuestion(index) {
   currentIndex = index;
   hasAnswered  = false;
+
+  // Mas Lucky ikut mikir + VO thinking
+  setMasLucky("thinking", { playVoice: true });
 
   const total = allQuestions.length;
   const q     = allQuestions[index];
@@ -236,13 +353,12 @@ function renderQuestion(index) {
     console.warn("Hero tidak ditemukan untuk heroId:", q.heroId);
   }
 
-  // reset animasi & visibilitas sebelum isi konten baru
+  // reset animasi
   resetAnimationClasses($("#question"));
   resetAnimationClasses($("#card-stacker-quiz"));
   resetAnimationClasses($("#feedback"));
   resetAnimationClasses($("#explanation"));
 
-  // update indikator soal
   $("#question-counter").text((index + 1) + " / " + total);
 
   // 3 hero lain untuk opsi salah
@@ -251,20 +367,17 @@ function renderQuestion(index) {
   // 4 opsi (1 benar + 3 salah), lalu diacak
   const options = shuffleArray(
     [{ hero: heroBenar, isCorrect: true }].concat(
-      wrongHeroes.map(function(h) {
+      wrongHeroes.map(function (h) {
         return { hero: h, isCorrect: false };
       })
     )
   );
 
-  // isi teks soal
   $("#question").text(q.soal || "");
 
-  // kosongkan feedback & penjelasan
   $("#feedback").text("");
   $("#explanation").text("");
 
-  // state tombol next
   const isLast = (index === total - 1);
   $("#btn-next-question")
     .prop("disabled", true)
@@ -273,7 +386,6 @@ function renderQuestion(index) {
   const $container = $("#card-stacker-quiz");
   $container.empty();
 
-  // Mobile Slider
   const $mobileWrapper = $("<div>")
     .addClass("w-full overflow-x-auto md:hidden");
 
@@ -281,23 +393,21 @@ function renderQuestion(index) {
     .attr("id", "card-track-mobile")
     .addClass("flex flex-nowrap gap-4 w-max snap-x snap-mandatory px-2");
 
-  // Dekstop only
   const $desktopRow = $("<div>")
     .attr("id", "card-row-desktop")
     .addClass("hidden md:flex w-full justify-center gap-4");
 
-  // Buat dua versi kartu untuk setiap opsi:
-  options.forEach(function(opt) {
+  options.forEach(function (opt) {
     if (!opt.hero) return;
     const hero = opt.hero;
 
-    // Mobile Only
     const $cardWrapperMobile = $("<div>")
       .addClass(
         "snap-center flex-shrink-0 w-[30%] sm:w-[15%] cursor-pointer"
       );
 
     const $cardMobile = $("<div>")
+
       .addClass(
         "option-card option-card-mobile relative overflow-hidden rounded-2xl bg-white shadow-lg transition-transform duration-200 hover:-translate-y-1"
       )
@@ -306,7 +416,7 @@ function renderQuestion(index) {
     const $imgMobile = $("<img>")
       .attr("src", hero.photo)
       .attr("alt", hero.nama || "")
-      .addClass("w-full object-cover aspect-[3/4] max-h-[280px]"); // 3x4 style
+      .addClass("w-full object-cover aspect-[3/4] max-h-[280px]");
 
     const $labelMobile = $("<div>")
       .addClass("px-2 py-2 text-center text-sm font-display text-maroon")
@@ -316,7 +426,6 @@ function renderQuestion(index) {
     $cardWrapperMobile.append($cardMobile);
     $mobileTrack.append($cardWrapperMobile);
 
-    // -Desktop-only
     const $cardWrapperDesktop = $("<div>")
       .addClass("w-[20%] max-w-[180px] cursor-pointer");
 
@@ -343,31 +452,26 @@ function renderQuestion(index) {
   $mobileWrapper.append($mobileTrack);
   $container.append($mobileWrapper, $desktopRow);
 
-  // animasi fade-in untuk soal
-  restartAnimation($("#question"), "animate-fade-in-up");
-
- // animasi fade-in untuk soal per elemen
+  // animasi fade-in
   const $q = $("#question");
   resetAnimationClasses($q);
   restartAnimation($q, "animate-fade-in-up");
 
-  // animasi fade-in untuk container kartu, bukan per kartu
   const $cardsContainer = $("#card-stacker-quiz");
   resetAnimationClasses($cardsContainer);
   restartAnimation($cardsContainer, "animate-fade-in-up");
 
   // event klik kartu
-  $(".option-card").off("click").on("click", function() {
+  $(".option-card").off("click").on("click", function () {
     if (hasAnswered || quizFinished) return;
     hasAnswered = true;
 
-    const isCorrect = $(this).attr("data-correct") === "1";
+    const isCorrect   = $(this).attr("data-correct") === "1";
     const correctName = q.nama || (heroBenar ? heroBenar.nama : "");
 
-    $(".option-card").each(function() {
+    $(".option-card").each(function () {
       const cardCorrect = $(this).attr("data-correct") === "1";
-      $(this)
-        .removeClass("ring-4 ring-green-400 opacity-60");
+      $(this).removeClass("ring-4 ring-green-400 opacity-60");
 
       if (cardCorrect) {
         $(this).addClass("ring-4 ring-green-400");
@@ -384,12 +488,16 @@ function renderQuestion(index) {
 
       $("#score-display").text(score);
       feedbackText = "Jawaban benar! 🎉";
+
+      setMasLucky("correct", { playVoice: true });
     } else {
       feedbackText = "Masih salah. Jawaban yang tepat: " + correctName;
 
       const $clicked = $(this);
       resetAnimationClasses($clicked);
       restartAnimation($clicked, "animate-shake");
+
+      setMasLucky("wrong", { playVoice: true });
     }
 
     $("#feedback").text(feedbackText);
@@ -406,7 +514,7 @@ function renderQuestion(index) {
     openResultModal({
       heroName: correctName,
       feedbackText: feedbackText,
-      explanationText: q.penjelasan || ""
+      explanationText: q.penjelasan || "",
     });
   });
 }
@@ -416,10 +524,10 @@ function endGame(reasonText) {
   pauseTimer();
   closeResultModal();
 
-  const total = allQuestions.length;
+  const total       = allQuestions.length;
   const achievement = getAchievement(score, total);
 
-  const header = reasonText;
+  const header  = reasonText;
   const skorText = "Skor akhir kamu: " + score + " dari " + total + " soal.";
 
   $("#question").html(header + "<br>" + skorText);
@@ -444,6 +552,18 @@ function endGame(reasonText) {
     restartAnimation($("#result-badge"), "animate-fade-in-up");
   }
 
+  const ratio = total > 0 ? score / total : 0;
+
+  if (total === 10 && score === 10) {
+    setMasLucky("perfect", { playVoice: true });
+  } else if (ratio >= 0.8) {
+    setMasLucky("correct", { playVoice: false });
+  } else if (ratio >= 0.5) {
+    setMasLucky("thinking", { playVoice: false });
+  } else {
+    setMasLucky("wrong", { playVoice: false });
+  }
+
   $("#end-buttons").removeClass("hidden");
 
   try {
@@ -457,37 +577,39 @@ function endGame(reasonText) {
   }
 }
 
-$(document).ready(function() {
-  initGame();
-
-  $("#btn-next-question").on("click", function() {
-    if (quizFinished || modalOpen) return;
-
-    const total = allQuestions.length;
-
-    if (currentIndex < total - 1) {
-      transitionToQuestion(currentIndex + 1);
-    } else {
-      endGame("Kuis selesai! ✅");
-    }
-  });
-
-  $("#result-modal-close").on("click", function() {
-    closeResultModal();
-  });
-
-  $("#result-overlay").on("click", function() {
-    closeResultModal();
-  });
-
-  $("#btn-restart").on("click", function () {
-    $("#end-buttons").addClass("hidden");
-    $("#result-badge").addClass("hidden");
-    $("#btn-next-question").removeClass("hidden");
+$(document).ready(function () {
+  loadMasLuckyFromJson().always(function () {
     initGame();
-  });
 
-  $("#btn-back").on("click", function () {
-    window.location.href = "mulai-tebak.html";
+    $("#btn-next-question").on("click", function () {
+      if (quizFinished || modalOpen) return;
+
+      const total = allQuestions.length;
+
+      if (currentIndex < total - 1) {
+        transitionToQuestion(currentIndex + 1);
+      } else {
+        endGame("Kuis selesai! ✅");
+      }
+    });
+
+    $("#result-modal-close").on("click", function () {
+      closeResultModal();
+    });
+
+    $("#result-overlay").on("click", function () {
+      closeResultModal();
+    });
+
+    $("#btn-restart").on("click", function () {
+      $("#end-buttons").addClass("hidden");
+      $("#result-badge").addClass("hidden");
+      $("#btn-next-question").removeClass("hidden");
+      initGame();
+    });
+
+    $("#btn-back").on("click", function () {
+      window.location.href = "mulai-tebak.html";
+    });
   });
 });
