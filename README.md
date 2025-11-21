@@ -40,22 +40,6 @@ Proyek ini dibangun menggunakan:
 
 ---
 
-## 🧭 Struktur Direktori
-
-```
-├── assets/
-│   ├── images/
-│   ├── icons/
-│   └── videos/
-├── styles/
-│   └── tailwind.css
-├── scripts/
-│   └── main.js
-└── index.html
-```
-
----
-
 ## 🚀 Cara Menjalankan
 
 1. Clone repository ini:
