@@ -1,0 +1,31 @@
+/* Track untuk marquee card video */
+.marquee-track {
+    display: inline-flex;
+    gap: 1rem;
+    animation: scroll-marquee 30s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile: matikan animasi, jadikan scroll horizontal biasa */
+@media (max-width: 768px) {
+    #video-marquee-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .marquee-track {
+        animation: none;
+    }
+}

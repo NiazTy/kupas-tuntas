@@ -1,5 +1,5 @@
 const TKS_JSON_PATH = "../../assets/soal/TKS.json";
-const TKS_QUIZ_DURATION = 120;
+const TKS_QUIZ_DURATION = 210;
 const TKS_MAX_QUESTIONS = 5;
 
 let tksAllQuestions = [];
@@ -10,9 +10,9 @@ let tksTimerInterval = null;
 let tksQuizFinished = false;
 let tksModalOpen = false;
 
-const MAS_LUCKY_BASE_PATH_TKS    = "../../assets/images/mas-lucky/";
+const MAS_LUCKY_BASE_PATH_TKS = "../../assets/images/mas-lucky/";
 const MAS_LUCKY_VO_BASE_PATH_TKS = "../../assets/audio/";
-const MAS_LUCKY_JSON_PATH_TKS    = "../../assets/soal/mas-lucky.json";
+const MAS_LUCKY_JSON_PATH_TKS = "../../assets/soal/mas-lucky.json";
 
 let masLuckyListTks = [];
 
@@ -23,23 +23,27 @@ const MAS_LUCKY_STATE_TKS = {
   },
   thinking: {
     matchSource: "mas-lucky-berpikir1.png",
-    vo: "mas-lucky-berpikir-vo.m4a"
+    vo: "mas-lucky-berpikir-vo.wav"
   },
   correct: {
     matchSource: "mas-lucky-mengapresiasi.png",
-    vo: "mas-lucky-mengapresiasi-vo.m4a"
+    vo: "mas-lucky-mengapresiasi-vo.wav"
   },
   wrong: {
     matchSource: "mas-lucky-kecewa.png",
-    vo: "mas-lucky-kecewa-vo.m4a"
+    vo: "mas-lucky-kecewa-vo.wav"
   },
   shocked: {
     matchSource: "mas-lucky-terkejut.png",
-    vo: "mas-lucky-terkejut-vo.mp3"
+    vo: "mas-lucky-terkejut-vo.wav"
   },
   perfect: {
     matchSource: "mas-lucky-mengapresiasi.png",
-    vo: "mas-lucky-perfect-vo.mp3"
+    vo: "mas-lucky-perfect-vo.wav"
+  },
+  timeOut: {
+    matchSource: "mas-lucky-berpikir1.png",
+    vo: "mas-lucky-waktu-habis.wav"
   }
 };
 
@@ -162,25 +166,34 @@ function tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
 
   if (!u) return false;
 
-  if (k && (u === k || u.includes(k) || k.includes(u))) {
+  if (k && u === k) {
     return true;
   }
 
   let keyWords = [];
+  let requireAllKeywords = false;
 
   if (Array.isArray(kataKunci) && kataKunci.length > 0) {
     keyWords = kataKunci
       .map(kw => tksNormalizeText(kw))
       .filter(Boolean);
+
+    requireAllKeywords = true;
   } else if (k) {
-    keyWords = k.split(" ").filter(w => w.length > 3);
+    keyWords = k
+      .split(" ")
+      .filter(w => w.length > 3);
   }
 
   if (keyWords.length === 0) return false;
 
-  const matched   = keyWords.filter(kw => u.includes(kw));
-  const minNeeded = Math.max(1, Math.floor(keyWords.length * 0.4));
+  const matched = keyWords.filter(kw => u.includes(kw));
 
+  if (requireAllKeywords) {
+    return matched.length === keyWords.length;
+  }
+
+  const minNeeded = Math.max(1, Math.floor(keyWords.length * 0.4));
   return matched.length >= minNeeded;
 }
 
@@ -198,7 +211,7 @@ function tksRenderKeywordIndicator(userAnswer, kataKunci = []) {
   if (!normalizedKeywords.length) return;
 
   normalizedKeywords.forEach((normKw, idx) => {
-    const match    = user.includes(normKw);
+    const match = user.includes(normKw);
     const original = rawKeywords[idx] || normKw;
 
     const $chip = $("<span>")
@@ -226,7 +239,7 @@ function tksStartTimerLoop() {
     // wakyu habis
     if (tksRemainingTime <= 0) {
       clearInterval(tksTimerInterval);
-      tksSetMasLucky("shocked", { playVoice: true });
+      tksSetMasLucky("timeOut", { playVoice: true });
 
       tksEndGame("Waktu habis! ⏰");
     }
@@ -277,7 +290,7 @@ function tksGetAchievement(score, total) {
   if (total === 10 && score === 10) {
     return {
       title: "Kesatria Sejarah",
-      desc:  "Kamu menaklukkan semua soal tanpa tersisa. Ingatan sejarahmu tajam bak pedang para pejuang!",
+      desc:  "Kamu menaklukkan semua soal tanpa tersisa. Ingatan sejarahmu tajam bak bambu runcing para pejuang!",
       badgeClass: "badge-gold",
       icon: "🛡️"
     };
@@ -296,7 +309,7 @@ function tksGetAchievement(score, total) {
 
   if (ratio >= 0.5) {
     return {
-      title: "Sahabat Pahlawan",
+      title: "Sahabat Sejarahwan",
       desc:  "Kamu cukup akrab dengan kisah perjuangan. Terus asah rasa ingin tahumu!",
       badgeClass: "badge-bronze",
       icon: "🤝"
@@ -372,7 +385,7 @@ function tksRenderQuestion(index) {
   tksSetMasLucky("thinking", { playVoice: true });
 
   const total = tksAllQuestions.length;
-  const q     = tksAllQuestions[index];
+  const q = tksAllQuestions[index];
 
   if (!q) {
     console.warn("Soal TKS tidak ditemukan di index:", index);
@@ -436,14 +449,14 @@ function tksRenderQuestion(index) {
     .addClass(
       "w-full px-4 py-2 font-semibold rounded-xl bg-yellow-400 text-maroon font-display flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform"
     )
-    .html('<span>💡</span><span>Lihat Clue</span>');
+    .html('<span>Lihat Clue</span>');
 
   const $submitBtn = $("<button>")
     .attr("id", "tks-submit")
     .addClass(
       "w-full px-4 py-2 font-bold bg-white rounded-xl text-maroon font-display flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform"
     )
-    .html('<span>✅</span><span>Kunci Jawaban</span>');
+    .html('<span>Cek Jawaban</span>');
 
   $nextBtn
     .addClass("hidden")
@@ -474,14 +487,14 @@ function tksRenderQuestion(index) {
 
     const userAnswer = $input.val().trim();
     if (!userAnswer) {
-      alert("Isi dulu jawabanmu ya 😊");
+      alert("Isi dulu jawabanmu ya");
       return;
     }
 
     hasAnswered = true;
 
-    const correct      = tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci);
-    let feedbackText   = "";
+    const correct = tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci);
+    let feedbackText = "";
 
     if (correct) {
       tksScore++;
@@ -519,11 +532,12 @@ function tksEndGame(reasonText) {
   const total       = tksAllQuestions.length;
   const achievement = tksGetAchievement(tksScore, total);
 
-  const header   = reasonText;
+  const header = reasonText;
   const skorText = "Skor akhir kamu: " + tksScore + " dari " + total + " soal.";
 
-  $("#q-title").text("");
-  $("#question").html(header + "<br>" + skorText);
+  $("#q-title").hide();
+  $("#question").text("");
+  $("#headerFinish").html(header + "<br>" + skorText);
   tksResetAnimationClasses($("#question"));
   tksRestartAnimation($("#question"), "animate-fade-in-up");
 
@@ -546,7 +560,7 @@ function tksEndGame(reasonText) {
 
   const ratio = total > 0 ? tksScore / total : 0;
   if (total === 10 && tksScore === 10) {
-    tksSetMasLucky("perfect", { playVoice: true });
+    tksSetMasLucky("shocked", { playVoice: true });
   } else if (ratio >= 0.8) {
     tksSetMasLucky("correct", { playVoice: false });
   } else if (ratio >= 0.5) {

@@ -1,24 +1,24 @@
 const QUESTIONS_JSON_PATH = "../assets/soal/TGP.json";
 const HEROES_JSON_PATH = "../assets/soal/pahlawan.json";
 
-const QUIZ_DURATION = 120;
+const QUIZ_DURATION = 180;
 const MAX_QUESTIONS = 10;
 
-let allQuestions   = [];
-let allHeroes      = [];
-let heroMapById    = {};
+let allQuestions = [];
+let allHeroes = [];
+let heroMapById = {};
 
-let currentIndex   = 0;
-let hasAnswered    = false;
-let score          = 0;
-let remainingTime  = QUIZ_DURATION;
-let timerInterval  = null;
-let quizFinished   = false;
-let modalOpen      = false;
+let currentIndex = 0;
+let hasAnswered = false;
+let score = 0;
+let remainingTime = QUIZ_DURATION;
+let timerInterval = null;
+let quizFinished = false;
+let modalOpen = false;
 
-const MAS_LUCKY_BASE_PATH    = "assets/images/mas-lucky/";
+const MAS_LUCKY_BASE_PATH = "assets/images/mas-lucky/";
 const MAS_LUCKY_VO_BASE_PATH = "assets/audio/";
-const MAS_LUCKY_JSON_PATH    = "assets/soal/mas-lucky.json"; 
+const MAS_LUCKY_JSON_PATH = "assets/soal/mas-lucky.json"; 
 
 let masLuckyList = [];
 
@@ -29,23 +29,23 @@ const MAS_LUCKY_STATE = {
   },
   thinking: {
     matchSource: "mas-lucky-berpikir1.png",
-    vo: "mas-lucky-berpikir-vo.m4a"
+    vo: "mas-lucky-berpikir-vo.wav"
   },
   correct: {
     matchSource: "mas-lucky-mengapresiasi.png",
-    vo: "mas-lucky-mengapresiasi-vo.m4a"
+    vo: "mas-lucky-mengapresiasi-vo.wav"
   },
   wrong: {
     matchSource: "mas-lucky-kecewa.png",
-    vo: "mas-lucky-kecewa-vo.m4a"
+    vo: "mas-lucky-kecewa-vo.wav"
   },
   shocked: {
     matchSource: "mas-lucky-terkejut.png",
-    vo: "mas-lucky-terkejut-vo.mp3"
+    vo: "mas-lucky-terkejut-vo.wav"
   },
   perfect: {
     matchSource: "mas-lucky-mengapresiasi.png",
-    vo: "mas-lucky-perfect-vo.mp3"
+    vo: "mas-lucky-perfect-vo.wav"
   }
 };
 
@@ -335,13 +335,12 @@ function transitionToQuestion(newIndex) {
 
 function renderQuestion(index) {
   currentIndex = index;
-  hasAnswered  = false;
-
-  // Mas Lucky ikut mikir + VO thinking
+  hasAnswered = false;
+  
   setMasLucky("thinking", { playVoice: true });
 
   const total = allQuestions.length;
-  const q     = allQuestions[index];
+  const q = allQuestions[index];
 
   if (!q) {
     console.warn("Soal tidak ditemukan di index:", index);
@@ -361,7 +360,6 @@ function renderQuestion(index) {
 
   $("#question-counter").text((index + 1) + " / " + total);
 
-  // 3 hero lain untuk opsi salah
   const wrongHeroes = getRandomOtherHeroes(q.heroId, 3);
 
   // 4 opsi (1 benar + 3 salah), lalu diacak
@@ -483,10 +481,9 @@ function renderQuestion(index) {
     let feedbackText = "";
 
     if (isCorrect) {
-      let bonus = Math.floor(Math.random() * 10);
-      score += bonus;
+      score++;
 
-      $("#score-display").text(score);
+      $("#score-display").text(score * 100 / total);
       feedbackText = "Jawaban benar! 🎉";
 
       setMasLucky("correct", { playVoice: true });
@@ -524,10 +521,10 @@ function endGame(reasonText) {
   pauseTimer();
   closeResultModal();
 
-  const total       = allQuestions.length;
+  const total = allQuestions.length;
   const achievement = getAchievement(score, total);
 
-  const header  = reasonText;
+  const header = reasonText;
   const skorText = "Skor akhir kamu: " + score + " dari " + total + " soal.";
 
   $("#question").html(header + "<br>" + skorText);
@@ -555,7 +552,7 @@ function endGame(reasonText) {
   const ratio = total > 0 ? score / total : 0;
 
   if (total === 10 && score === 10) {
-    setMasLucky("perfect", { playVoice: true });
+    setMasLucky("shocked", { playVoice: true });
   } else if (ratio >= 0.8) {
     setMasLucky("correct", { playVoice: false });
   } else if (ratio >= 0.5) {

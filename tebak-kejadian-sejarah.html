@@ -74,7 +74,7 @@
                     class="hidden md:inline-block bg-maroon text-white font-semibold px-6 py-3 
                             rounded-full transition-all duration-300
                             hover:bg-red-700 hover:shadow-lg hover:-translate-y-0.5">
-                        Mulai Quiz
+                        Mulai Tebak
                     </a>
                 </div>
                 <!-- Jika user sudah memulai quiz, tombol ini akan di hidden dan diganti dengan tombol reset nama -->
@@ -98,7 +98,7 @@
             <a href="index.html" class="block px-4 py-2 font-semibold text-maroon">Beranda</a>
             <a href="/#tentang-kupas-tuntas" class="block px-4 py-2 font-semibold text-maroon">Tentang Kupas Tuntas</a>
             <a href="/#belajar-sejarah-seru" class="block px-4 py-2 font-semibold text-maroon">Belajar Sejarah Seru</a>
-            <a href="mulai-tebak.html" id="mulai-tebak-btn-mobile" class="block px-4 py-2 mx-4 my-3 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">Mulai Quiz</a>
+            <a href="mulai-tebak.html" id="mulai-tebak-btn-mobile" class="block px-4 py-2 mx-4 my-3 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">Mulai Tebak</a>
             <div id="reset-nama-btn-mobile" class="hidden mx-4 my-3">
                 <button class="w-full px-4 py-2 font-semibold text-center text-white transition duration-300 rounded-full bg-maroon hover:bg-red-700">
                     Reset Nama
@@ -113,7 +113,7 @@
             <a href="mulai-tebak.html" class="px-3 py-2 sm:px-5 sm:py-2.5 sm:text-base text-sm rounded-full border-2 border-white text-white font-semibold font-display hover:bg-white hover:text-maroon hover:shadow-md transition">Mulai Tebak</a>
         </section>
         <!-- Tolong saya butuh tidur :( -->
-        <section id="game-section" class="flex items-center justify-center w-full min-h-screen px-4 my-10 text-center">
+        <section id="game-section" class="flex items-center justify-center w-full min-h-screen px-4 mt-10 text-center">
             <img id="mas-lucky" src="assets/images/mas-lucky/mas-lucky-menyapa.png" alt="Mas Lucky Sedang Menyapa" class="fixed z-100 h-64 w-[191px] right-0 bottom-0"/>
             <audio id="mas-lucky-voice" preload="auto"></audio>
             <div class="flex flex-col items-center w-full max-w-md gap-6 my-24 md:max-w-4xl">
@@ -125,20 +125,19 @@
                         <p>Soal: <span id="question-counter">1 / 1</span></p>
                         <p>Skor: <span id="score-display">0</span></p>
                         <p>Waktu: <span id="timer-display">02:00</span></p>
-                    </div>c
+                    </div>
                 </div>
                 <div class="sm:max-w-xl md:max-w-full font-display gap-4 px-1 flex flex-col items-center">
                     <q id="q-title" class="text-center text-3xl font-bold text-yellow-400 font-display"></q>
-                    <p id="question" class="text-base text-justify text-white font-display sm:text-lg">
-                        <!-- Soal Inject -->
-                    </p>
+                    <p id="question" class="text-base text-justify text-white font-display sm:text-lg"><!-- Soal Inject --></p>
+                    <p id="headerFinish" class="text-center text-3xl font-bold text-white font-display"></p>
                 </div>
-                <div id="answers" class="w-full h-[300px] sm:h-[380px] md:h-full text-white max-w-sm sm:max-w-xl md:max-w-4xl">
+                <div id="answers" class="w-full h-full text-white max-w-sm sm:max-w-xl md:max-w-4xl">
                     <!-- Isi Jawaban Inject -->
                 </div>
                 <div id="buttons" class="flex flex-col w-full gap-3 sm:flex-row">
                     <button id="btn-next-question"
-                        class="w-full px-5 py-2 mt-4 font-bold bg-white rounded-xl text-maroon font-display disabled:opacity-50 sm:w-auto">
+                        class="w-full px-4 py-2 font-bold bg-white rounded-xl hover:cursor-pointer text-maroon font-display flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
                         Soal Berikutnya
                     </button>
                 </div>
@@ -157,7 +156,7 @@
                             Mulai Ulang
                         </button>
                         <button id="btn-back"
-                            class="w-full px-6 py-2 font-bold text-white rounded-xl bg-maroon font-display sm:w-auto">
+                            class="w-full px-6 py-2 font-bold text-white rounded-xl bg-maroon font-display hover:cursor-pointer sm:w-auto">
                             Kembali
                         </button>
                     </div>

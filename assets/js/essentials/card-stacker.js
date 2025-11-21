@@ -10,8 +10,8 @@ const data = [
 
 let currentIndex = 0;
 
-const $cards = $("[data-card]");  // versi 3 kartu
-const $cardsQuiz = $("[data-card-quiz]");  // versi 5 kartu
+const $cards = $("[data-card]");
+const $cardsQuiz = $("[data-card-quiz]");
 
 function getDataIndex(offset) {
   const len = data.length;
