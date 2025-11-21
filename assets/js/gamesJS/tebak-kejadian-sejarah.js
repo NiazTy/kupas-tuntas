@@ -171,14 +171,11 @@ function tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
   }
 
   let keyWords = [];
-  let requireAllKeywords = false;
 
   if (Array.isArray(kataKunci) && kataKunci.length > 0) {
     keyWords = kataKunci
       .map(kw => tksNormalizeText(kw))
       .filter(Boolean);
-
-    requireAllKeywords = true;
   } else if (k) {
     keyWords = k
       .split(" ")
@@ -189,8 +186,10 @@ function tksIsAnswerCorrect(userAnswer, keyAnswer, kataKunci = []) {
 
   const matched = keyWords.filter(kw => u.includes(kw));
 
-  if (requireAllKeywords) {
-    return matched.length === keyWords.length;
+  if (Array.isArray(kataKunci) && kataKunci.length > 0) {
+    const totalKeywords = keyWords.length;
+    const minNeeded = totalKeywords === 1 ? 1 : 2;
+    return matched.length >= minNeeded;
   }
 
   const minNeeded = Math.max(1, Math.floor(keyWords.length * 0.4));
@@ -236,7 +235,6 @@ function tksStartTimerLoop() {
     tksRemainingTime--;
     $("#timer-display").text(tksFormatTime(tksRemainingTime));
 
-    // wakyu habis
     if (tksRemainingTime <= 0) {
       clearInterval(tksTimerInterval);
       tksSetMasLucky("timeOut", { playVoice: true });
@@ -381,7 +379,6 @@ function tksRenderQuestion(index) {
   tksCurrentIndex = index;
   let hasAnswered = false;
 
-  // Mas Lucky mikir + VO
   tksSetMasLucky("thinking", { playVoice: true });
 
   const total = tksAllQuestions.length;
@@ -399,18 +396,17 @@ function tksRenderQuestion(index) {
   $("#question-counter").text((index + 1) + " / " + total);
 
   const questionText = q["soal"]          || "";
-  const titleText    = q["judul-soal"]    || "";
-  const keyAnswer    = q["kunci-jawaban"] || "";
-  const explanation  = q["penjelasan"]    || "";
-  const clue         = q["clue"]          || "";
-  const kataKunci    = Array.isArray(q["kata-kunci"]) ? q["kata-kunci"] : [];
+  const titleText = q["judul-soal"]    || "";
+  const keyAnswer = q["kunci-jawaban"] || "";
+  const explanation = q["penjelasan"]    || "";
+  const clue = q["clue"]          || "";
+  const kataKunci = Array.isArray(q["kata-kunci"]) ? q["kata-kunci"] : [];
 
   $("#q-title").text(titleText);
   $("#question").text(questionText);
 
   const isLast = (index === total - 1);
 
-  // -------- AREA JAWABAN --------
   const $answers = $("#answers");
   $answers
     .empty()
@@ -438,7 +434,6 @@ function tksRenderQuestion(index) {
 
   $answers.append($clueText, $input, $feedback, $keywordBox);
 
-  // -------- AREA TOMBOL --------
   const $buttons = $("#buttons");
   const $nextBtn = $("#btn-next-question");
 
@@ -475,13 +470,11 @@ function tksRenderQuestion(index) {
   tksRestartAnimation($answers, "animate-fade-in-up");
   tksRestartAnimation($buttons, "animate-fade-in-up");
 
-  // EVENT: LIHAT CLUE
   $clueBtn.on("click", function () {
     $clueText.removeClass("hidden");
     tksRestartAnimation($clueText, "animate-fade-in-up");
   });
 
-  // EVENT: KUNCI JAWABAN
   $submitBtn.on("click", function () {
     if (hasAnswered || tksQuizFinished || tksModalOpen) return;
 
@@ -529,7 +522,7 @@ function tksEndGame(reasonText) {
   tksPauseTimer();
   tksCloseResultModal();
 
-  const total       = tksAllQuestions.length;
+  const total = tksAllQuestions.length;
   const achievement = tksGetAchievement(tksScore, total);
 
   const header = reasonText;
@@ -613,6 +606,8 @@ $(document).ready(function () {
     $("#btn-restart").on("click", function () {
       $("#end-buttons").addClass("hidden");
       $("#result-badge").addClass("hidden");
+      tksEndGame("");
+      $("#headerFinish").html("");
       tksInitGame();
     });
 

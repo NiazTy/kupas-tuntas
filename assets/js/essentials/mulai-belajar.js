@@ -61,8 +61,6 @@ const ringkasanData = {
 };
 
 $(document).ready(function () {
-    // Inisialisasi komponen lain di sini jika perlu
-    // Generate card video untuk marquee
     const $track = $("#video-marquee-track");
 
     videoData.forEach(function (video) {
@@ -88,13 +86,9 @@ $(document).ready(function () {
         $track.append($card);
     });
 
-    // Gandakan isi track untuk efek loop marquee yang halus (khusus desktop)
     const itemsHtml = $track.html();
     $track.append(itemsHtml);
 
-    // ============================
-    // Modal Ringkasan Perpustakaan
-    // ============================
     const $ringkasanModal = $("#ringkasan-modal");
     const $ringkasanTitle = $("#ringkasan-title");
     const $ringkasanBody  = $("#ringkasan-body");
