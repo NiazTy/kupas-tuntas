@@ -1,6 +1,35 @@
-# 🏛️ Kupas Tuntas — Belajar Sejarah Jadi Seru!
+<div align="center" id="trendradar">
 
-Selamat datang di **Kupas Tuntas**, sebuah proyek interaktif yang menghadirkan cara baru untuk belajar sejarah Indonesia. Melalui kuis tebak pahlawan, video pembelajaran, serta tampilan visual yang dinamis, Kupas Tuntas hadir untuk membuat proses belajar sejarah menjadi menyenangkan, mudah dipahami, dan pastinya tidak membosankan.
+<a href="https://github.com/NiazTy/kupas-tuntas" title="Kupas Tuntas">
+  <img src="/assets/images/logo/kupas-tuntas-maroon-with-crop.png" alt="Kupas Tuntas Logo" width="80%">
+</a>
+
+KUIS PAHLAWAN DAN SEJARAH SERU: <strong>CARI TAHU, TANGKAP, DAN UNGKAP </strong>DENGAN ASIK
+
+[![GitHub Stars](https://img.shields.io/github/stars/NiazTy/kupas-tuntas?style=flat-square&logo=github&color=yellow)](https://github.com/NiazTy/kupas-tuntas/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/NiazTy/kupas-tuntas?style=flat-square&logo=github&color=blue)](https://github.com/NiazTy/kupas-tuntas/network/members)
+[![License](https://img.shields.io/badge/license-MIT--3.0-blue.svg?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/badge/version-v3.4.0-blue.svg)](https://github.com/NiazTy/kupas-tuntas)
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Deployment-4285F4?style=flat-square&logo=github&logoColor=white)](https://kupas-tuntas.niaz.my.id)
+
+</div>
+
+# 🏛️ Kupas Tuntas — Belajar Sejarah Jadi Asik!
+
+Selamat datang di **Kupas Tuntas**, sebuah proyek interaktif yang menghadirkan cara baru untuk belajar sejarah Indonesia. Melalui permainan interaktif kuis tebak pahlawan dan kuis tebak kejadian, serta video pembelajaran dengan didukung tampilan visual yang dinamis, Kupas Tuntas hadir untuk membuat proses belajar sejarah menjadi menyenangkan, mudah dipahami, dan pastinya tidak membosankan.
+
+---
+
+# ☁️ Tampilan Website Kupas Tuntas
+
+<div align="center" id="trendradar">
+
+<a href="https://github.com/NiazTy/kupas-tuntas" title="Kupas Tuntas Home">
+  <img src="/assets/images/misc/kupas-tuntas-home.png" alt="Kupas Tuntas Home" width="80%">
+</a>
+
+</div>
 
 ---
 
@@ -14,11 +43,15 @@ Kupas Tuntas dirancang untuk:
 
 ---
 
-## 📚 Fitur Utama
+## ✨ Fitur Utama
 
-### 🔍 Tebak Pahlawan
+### 🔍 Tebak Gambar Pahlawan
 
 Berisi serangkaian kuis interaktif di mana pengguna menebak pahlawan berdasarkan gambar, clue, atau cerita pendek.
+
+### 🎍 Tebak Kejadian Sejarah
+
+Berisi serangkaian kuis interaktif di mana pengguna menebak kejadian berdasarkan clue, dan deskripsi kejadian.
 
 ### 🎥 Video Belajar Sejarah
 
@@ -37,6 +70,7 @@ Proyek ini dibangun menggunakan:
 * **HTML** — struktur halaman
 * **Tailwind CSS** — styling cepat & responsif
 * **JavaScript** — interaksi dan animasi
+* **Jquery** — untuk membantu mempermudah dan mempercepat pengembangan situs
 
 ---
 
@@ -54,7 +88,7 @@ Proyek ini dibangun menggunakan:
    ```
 3. Buka **index.html** di browser pilihan Anda.
 
-Tidak diperlukan build khusus — semuanya berjalan secara **static**.
+Tidak diperlukan build khusus — semuanya berjalan secara **statis**.
 
 ---
 

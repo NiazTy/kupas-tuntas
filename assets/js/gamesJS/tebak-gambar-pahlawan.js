@@ -46,6 +46,10 @@ const MAS_LUCKY_STATE = {
   perfect: {
     matchSource: "mas-lucky-mengapresiasi.png",
     vo: "mas-lucky-perfect-vo.wav"
+  },
+  timeOut: {
+    matchSource: "mas-lucky-berpikir1.png",
+    vo: "mas-lucky-waktu-habis.wav"
   }
 };
 
@@ -178,10 +182,7 @@ function startTimerLoop() {
 
     if (remainingTime <= 0) {
       clearInterval(timerInterval);
-
-      // waktu habis → Mas Lucky kaget + VO
-      setMasLucky("shocked", { playVoice: true });
-
+      setMasLucky("timeOut", { playVoice: true });
       endGame("Waktu habis! ⏰");
     }
   }, 1000);
@@ -483,7 +484,7 @@ function renderQuestion(index) {
     if (isCorrect) {
       score++;
 
-      $("#score-display").text(score * 100 / total);
+      $("#score-display").text(score / total);
       feedbackText = "Jawaban benar! 🎉";
 
       setMasLucky("correct", { playVoice: true });
