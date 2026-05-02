@@ -1,0 +1,4 @@
+<template>
+  <slot />
+  <NavigationFooter />
+</template>

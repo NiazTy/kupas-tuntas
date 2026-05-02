@@ -1,0 +1,4 @@
+<template>
+  <NavigationHeader />
+  <slot />
+</template>
