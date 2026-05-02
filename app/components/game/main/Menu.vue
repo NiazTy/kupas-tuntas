@@ -41,7 +41,7 @@ defineProps<{
                 <!-- Bagian Bawah: Badge + CTA -->
                 <div class="flex flex-col items-center gap-2 justify-center flex-1">
                     <div class="flex flex-col items-center justify-center flex-1 gap-2">
-                        <ButtonMenu size="h-10" :button="'beranda'" @click="useRouter().push('/')" />
+                        <ButtonMenu size="h-10" :button="'mulai-bermain'" @click="useRouter().push('/game/play')" />
                         <ButtonMenu size="h-10" :button="'kredit'" @click="useRouter().push('/game/credits')" />
                     </div>
                 </div>
