@@ -13,6 +13,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.11.3",
     "@tailwindcss/vite": "^4.2.4",
+    "@vercel/analytics": "^2.0.1",
     "lucide-vue-next": "^1.0.0",
     "mitt": "^3.0.1",
     "nuxt": "^4.4.2",

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   imports: {
     dirs: [ "~/composables/*/index.{ts,js,mjs,mts}"]
   },
-  modules: [ "@pinia/nuxt" ],
+  modules: [ "@pinia/nuxt", "@vercel/analytics" ],
   components: [
     {
       path: "~/components/ui",
