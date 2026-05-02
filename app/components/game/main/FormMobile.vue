@@ -2,6 +2,8 @@
 
 <script setup lang="ts">
 import { gameModes } from "~/data/game/modes"
+import { Lock } from "lucide-vue-next"
+
 import type { Partner } from "~/data/types/partners"
 
 defineProps<{
@@ -23,12 +25,12 @@ const mode = defineModel<string>("mode")
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-[#0d0a06] flex flex-col items-center justify-center overflow-hidden px-6 py-16">
+  <div class="relative min-h-screen bg-[#0d0a06] flex flex-col items-center justify-center overflow-hidden px-6 py-1">
     <Ornament2 />
     <div class="relative z-10 w-full max-w-xl">
       <div class="relative">
         <img :src="asset" alt="" class="absolute inset-0 object-fill w-full h-full pointer-events-none select-none" />
-        <div class="relative z-10 flex flex-col px-10 py-12 gap-6">
+        <div class="relative z-10 flex flex-col px-10 py-12 gap-3">
           <!-- Header -->
           <div class="flex flex-col items-center gap-1 text-center border-b-2 border-[#8b6914]/40 pb-5">
             <p class="text-[#5a3e0a]/50 font-bold text-[9px] tracking-[0.45em] uppercase font-snpro">
@@ -58,7 +60,9 @@ const mode = defineModel<string>("mode")
                 :class="hasExistingData ? 'opacity-60 cursor-not-allowed select-none' : ''"
                 @input="emit('update:name', ($event.target as HTMLInputElement).value)"
               />
-              <span v-if="hasExistingData" class="text-[#8b6914]/50 text-xs mb-1">🔒</span>
+              <span v-if="hasExistingData" class="text-[#8b6914]/50 mb-1">
+               <lock class="w-4 h-4" />
+              </span>
             </div>
             <p v-if="hasExistingData" class="text-[8px] font-snpro text-[#5a3e0a]/40 tracking-widest uppercase mt-0.5">
               Mohon untuk undur diri sebelum melakukan perubahan nama
@@ -115,14 +119,14 @@ const mode = defineModel<string>("mode")
               <p class="text-[9px] font-bold font-snpro text-[#5a3e0a]/40 italic mt-1">{{ name || "................................." }}</p>
             </div>
             <div class="flex flex-col items-center gap-3">
-              <div class="relative w-20 h-20 -mb-2 -rotate-6 opacity-70">
+              <div class="absolute bottom-48 right-5 w-20 h-20 -mb-2 -rotate-6 opacity-70">
                 <div class="absolute inset-0 rounded-full border-2 border-[#810000]/60 flex items-center justify-center">
                   <div class="w-14 h-14 rounded-full border border-[#810000]/40 flex items-center justify-center">
                     <p class="text-[#810000] text-[7px] tracking-wider text-center leading-tight font-snpro uppercase font-bold">KUPAS<br/>TUNTAS<br/>2025</p>
                   </div>
                 </div>
               </div>
-              <div class="flex gap-2">
+              <div class="flex flex-col gap-2">
                 <button
                   v-if="hasExistingData"
                   @click="emit('reset')"
@@ -144,7 +148,7 @@ const mode = defineModel<string>("mode")
           <!-- Footer -->
           <div class="flex items-center justify-center gap-3 pt-2 border-t border-[#8b6914]/20">
             <div class="h-px w-8 bg-[#8b6914]/20" />
-            <p class="text-[8px] tracking-[0.3em] font-bold uppercase font-snpro text-[#5a3e0a]">Formulir ini bersifat resmi dan rahasia</p>
+            <p class="text-[8px] tracking-[0.3em] text-center font-bold uppercase font-snpro text-[#5a3e0a]">Formulir ini bersifat resmi dan rahasia</p>
             <div class="h-px w-8 bg-[#8b6914]/20" />
           </div>
         </div>

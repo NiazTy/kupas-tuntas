@@ -229,7 +229,7 @@ function toLeaderboard() {
                 </div>
             </div>
         </div>
-        <div class="flex gap-3 justify-center">
+        <div class="flex flex-col md:flex-row gap-3 justify-center">
             <button
                 @click="playAgain"
                 class="relative px-10 hover:cursor-pointer py-3 text-xs font-snpro tracking-widest uppercase text-[#0d0a06] bg-[#d3b484] hover:bg-[#c4a070] transition-all group"
