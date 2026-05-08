@@ -1,18 +1,6 @@
-/**
- * composables/useAssetManager.ts
- *
- * Composable untuk preload aset gambar sebelum user masuk ke halaman.
- * Aman dipakai di halaman manapun — state di-reset setiap startLoading() dipanggil.
- */
-
-import { ref } from 'vue'
-
 interface AssetManagerOptions {
-  /** Timeout per aset dalam ms sebelum dianggap gagal (default: 8000) */
   timeout?: number
-  /** Jika true, loading tetap selesai meski ada aset yang gagal (default: true) */
   continueOnError?: boolean
-  /** Delay minimum sebelum loading dianggap selesai, ms (default: 0) */
   minDuration?: number
 }
 
@@ -61,7 +49,6 @@ export function useAssetManager(assets: string[], options: AssetManagerOptions =
       }
 
       assets.forEach((src) => {
-        const img = new Image()
         let settled = false
 
         const timer = setTimeout(() => {
@@ -71,22 +58,42 @@ export function useAssetManager(assets: string[], options: AssetManagerOptions =
           if (continueOnError) onAssetDone()
         }, timeout)
 
-        img.onload = () => {
+        const finish = (failed: boolean) => {
           if (settled) return
           settled = true
           clearTimeout(timer)
-          onAssetDone()
+          if (failed) {
+            failedAssets.value.push(src)
+            if (continueOnError) onAssetDone()
+          } else {
+            onAssetDone()
+          }
         }
 
-        img.onerror = () => {
-          if (settled) return
-          settled = true
-          clearTimeout(timer)
-          failedAssets.value.push(src)
-          if (continueOnError) onAssetDone()
-        }
+        const isAudio = src.endsWith(".wav") || src.endsWith(".mp3") || src.endsWith(".ogg")
 
-        img.src = src
+        if (isAudio) {
+          const audio = new Audio()
+          audio.oncanplaythrough = () => finish(false)
+          audio.onerror = () => finish(true)
+          audio.src = src
+          audio.load()
+        } else {
+          const img = new Image()
+          img.src = src
+
+          if (typeof img.decode === "function") {
+            img.decode()
+              .then(() => finish(false))
+              .catch(() => {
+                finish(true)
+              })
+          } else {
+            const fallbackImg = img as any
+            fallbackImg.onload = () => finish(false)
+            fallbackImg.onerror = () => finish(true)
+          }
+        }
       })
     })
   }

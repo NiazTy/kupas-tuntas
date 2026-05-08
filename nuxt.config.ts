@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Kupas Tuntas - By Dikalasenja", 
+      title: "Kupas Tuntas - By Dikalasenja",
       htmlAttrs: {
         lang: "en",
       },
@@ -14,20 +14,27 @@ export default defineNuxtConfig({
     },
   },
   imports: {
-    dirs: [ "~/composables/*/index.{ts,js,mjs,mts}"]
+    dirs: ["~/composables/*/index.{ts,js,mjs,mts}"]
   },
-  modules: [ "@pinia/nuxt", "@vercel/analytics" ],
+  modules: ["@pinia/nuxt", "@vercel/analytics"],
   components: [
     {
       path: "~/components/ui",
       pathPrefix: true
-    }, 
+    },
     "~/components"
   ],
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  css: [ "./app/assets/css/main.css" ],
+  css: ["./app/assets/css/main.css"],
   vite: {
-    plugins: [ tailwindcss() ],
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: [
+        "@vue/devtools-core",
+        "@vue/devtools-kit",
+        "lucide-vue-next",
+      ]
+    }
   },
 });
