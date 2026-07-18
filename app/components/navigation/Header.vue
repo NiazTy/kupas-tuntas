@@ -31,7 +31,7 @@
                             transitionDelay: `${index * 80}ms`,
                             opacity: open ? 1 : 0,
                             transform: open ? 'translateX(0)' : 'translateX(-20px)',
-                        }"k
+                        }"
                     >
                         <NuxtLink :to="menu.to" class="flex items-center gap-3 px-6 py-3 hover:bg-[#d3b484]/5 transition">
                             <component :is="menu.Icon" class="w-4 h-4 text-[#d3b484]/60" />
@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-import { Home, WholeWord, BookOpenText, GamepadDirectional, Music4, VolumeX } from 'lucide-vue-next';
+import { Home, WholeWord, BookOpenText, Info, GamepadDirectional, Music4, VolumeX } from 'lucide-vue-next';
 import { gameAssets } from "~/data/assets"
 
 const open = ref(false);
@@ -83,6 +83,7 @@ const menus = [
     { name: "Beranda", to: "/", Icon: Home },
     { name: "Tentang", to: "/#about", Icon: WholeWord },
     { name: "Belajar Sejarah Seru", to: "/mulai-belajar", Icon: BookOpenText },
+    { name: "Kredit", to: "/game/credits", Icon: Info },
 ];
 
 const music = useMusicStore()

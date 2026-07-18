@@ -7,7 +7,7 @@ const gameStore = useGameStore()
 const emit = defineEmits(["close"])
 const partner = computed(() => gameStore.partners)
 
-const dianaThinking = gameAssets.pictures.partners.diana.find(p => p.includes("thinking")) ?? gameAssets.pictures.partners.diana[4]
+const dianaThinking = gameAssets.pictures.partners.nara.find(p => p.includes("thinking")) ?? gameAssets.pictures.partners.nara[4]
 </script>
 
 <template>
@@ -43,7 +43,7 @@ const dianaThinking = gameAssets.pictures.partners.diana.find(p => p.includes("t
               <!-- Karakter -->
               <div class="w-32 pointer-events-none select-none shrink-0 md:w-36">
                 <img
-                  :src="partner?.images[0]?.img || dianaThinking"
+                  :src="partner?.images.find(img => img.id === 'netral')?.img ?? partner?.images[0]?.img ?? dianaThinking"
                   alt=""
                   class="object-contain object-bottom w-full h-full"
                 />

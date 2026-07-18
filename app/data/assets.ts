@@ -2,13 +2,18 @@
  * gameAssets.ts
  * ⚠️  File ini di-generate otomatis oleh scripts/generate-assets.mjs
  * ⚠️  Jangan edit manual — jalankan ulang script jika ada aset baru.
- * Generated: Jumat, 01 Mei 2026 pukul 22.22.07
+ * Generated: Selasa, 14 Juli 2026 pukul 18.46.26
  */
 
 export const gameAssets = {
   bGM: [
     "/BGM/PolarLights.wav",
-  ],
+    "/BGM/forgotten.mp3",
+    ],
+  sFX: [
+    "/SFX/paper-slide.wav",
+    "/SFX/paper-slode.wav",
+    ],
   pictures: {
     archiveFiles: {
       fact: [
@@ -18,11 +23,11 @@ export const gameAssets = {
         "/pictures/archiveFiles/fact/su-1.png",
         "/pictures/archiveFiles/fact/su-2.png",
         "/pictures/archiveFiles/fact/su-3.png",
-      ],
+        ],
       noted: [
         "/pictures/archiveFiles/noted/bala-catatan.png",
         "/pictures/archiveFiles/noted/su-1-catatan.png",
-      ],
+        ],
       people: [
         "/pictures/archiveFiles/people/bala-ismail-marzuki.jpg",
         "/pictures/archiveFiles/people/bala-kolonel-AH-nasution.jpg",
@@ -32,7 +37,7 @@ export const gameAssets = {
         "/pictures/archiveFiles/people/su-1-letkol-suharto.jpg",
         "/pictures/archiveFiles/people/su-1-sri-sultan-HB-IX.jpg",
         "/pictures/archiveFiles/people/su-1-sudirman.jpg",
-      ],
+        ],
       photo: [
         "/pictures/archiveFiles/photo/bala-kondisi-masyarat-1.jpg",
         "/pictures/archiveFiles/photo/bala-kondisi-masyarat.webp",
@@ -42,76 +47,76 @@ export const gameAssets = {
         "/pictures/archiveFiles/photo/su-1-menerima-penyerahan-kedaulatan-indonesia-dari-belanda-di-yogyakarta.png",
         "/pictures/archiveFiles/photo/su-1-monumen-serangan-umum-1-maret.jpg",
         "/pictures/archiveFiles/photo/su-1-tentara memasuki-yogyakarta.png",
-      ],
+        ],
     },
     artwork: [
       "/pictures/artwork/dark-room.svg",
-      "/pictures/artwork/diana-menggambar-peta-indonesia.png",
-      "/pictures/artwork/ruangan-kosong.png",
-      "/pictures/artwork/viska-berada-diruangan.png",
-    ],
+      "/pictures/artwork/ruangan-kosong.webp",
+      ],
     miscellaneous: [
       "/pictures/miscellaneous/kertas-usang.png",
       "/pictures/miscellaneous/peta-persebaran-pahlawan-indonesia.png",
-    ],
+      ],
     pahlawan: [
       "/pictures/pahlawan/jendral-sudirman.png",
       "/pictures/pahlawan/ki-hajar-dewantara.png",
       "/pictures/pahlawan/pangeran-diponegoro.png",
       "/pictures/pahlawan/sukarno.png",
       "/pictures/pahlawan/tuanku-imam-bonjol.png",
-    ],
+      ],
     partners: {
-      diana: [
-        "/pictures/partners/diana/Diana_Appreciated.png",
-        "/pictures/partners/diana/Diana_Disappointed.png",
-        "/pictures/partners/diana/Diana_Impressed.png",
-        "/pictures/partners/diana/Diana_Smile.png",
-        "/pictures/partners/diana/Diana_Thinking.png",
-        "/pictures/partners/diana/diana-card.png",
-      ],
-      fairel: [
-        "/pictures/partners/Fairel/Fairel_Cool.png",
-        "/pictures/partners/Fairel/fairel-card.png",
-      ],
+      aran: [
+        "/pictures/partners/aran/aran-card.webp",
+        "/pictures/partners/aran/aran-love.webp",
+        "/pictures/partners/aran/aran-netral.webp",
+        "/pictures/partners/aran/aran-sad.webp",
+        "/pictures/partners/aran/aran-shocked.webp",
+        "/pictures/partners/aran/aran-smile.webp",
+        "/pictures/partners/aran/aran-smug.webp",
+        "/pictures/partners/aran/aran-suprised.webp",
+        "/pictures/partners/aran/aran-thinking1.webp",
+        "/pictures/partners/aran/aran-thinking2.webp",
+        ],
       root: [
         "/pictures/partners/chibi-mbak-diana-berlari.png",
         "/pictures/partners/mbak-diana-menunjuk.png",
-      ],
-      viska: [
-        "/pictures/partners/viska/Viska_Appreciated.png",
-        "/pictures/partners/viska/Viska_Disappointed.png",
-        "/pictures/partners/viska/Viska_Smile.png",
-        "/pictures/partners/viska/Viska_Thinking.png",
-        "/pictures/partners/viska/viska-card.png",
-      ],
+        ],
+      nara: [
+        "/pictures/partners/nara/nara-card.webp",
+        "/pictures/partners/nara/nara-dissapointed.webp",
+        "/pictures/partners/nara/nara-exicited.webp",
+        "/pictures/partners/nara/nara-happy.webp",
+        "/pictures/partners/nara/nara-love.webp",
+        "/pictures/partners/nara/nara-netral.webp",
+        "/pictures/partners/nara/nara-sad.webp",
+        "/pictures/partners/nara/nara-suprised.webp",
+        "/pictures/partners/nara/nara-thinking1.webp",
+        "/pictures/partners/nara/nara-thinking2.webp",
+        ],
     },
     ui: {
-      button: [
-        "/pictures/ui/button/beranda.svg",
-        "/pictures/ui/button/cara-bermain.svg",
-        "/pictures/ui/button/kredit.svg",
-        "/pictures/ui/button/mulai-bermain.svg",
-        "/pictures/ui/button/peringkat.svg",
-      ],
       root: [
         "/pictures/ui/buku-usang.png",
         "/pictures/ui/kartu-hasil.png",
         "/pictures/ui/kertas-formulir-dekstop.png",
         "/pictures/ui/kertas-formulir-mobile.png",
         "/pictures/ui/papan-reviu.png",
-      ],
+        ],
+      button: [
+        "/pictures/ui/button/beranda.svg",
+        "/pictures/ui/button/cara-bermain.svg",
+        "/pictures/ui/button/kredit.svg",
+        "/pictures/ui/button/mulai-bermain.svg",
+        "/pictures/ui/button/peringkat.svg",
+        ],
     },
   },
-  sFX: [
-    "/SFX/paper-slide.wav",
-    "/SFX/paper-slode.wav",
-  ],
 } as const
 
 /** Semua aset dalam satu array flat — dipakai oleh useAssetManager */
 export const allGameAssets: string[] = [
   "/BGM/PolarLights.wav",
+  "/BGM/forgotten.mp3",
   "/SFX/paper-slide.wav",
   "/SFX/paper-slode.wav",
   "/pictures/archiveFiles/fact/bala-1.png",
@@ -139,9 +144,7 @@ export const allGameAssets: string[] = [
   "/pictures/archiveFiles/photo/su-1-monumen-serangan-umum-1-maret.jpg",
   "/pictures/archiveFiles/photo/su-1-tentara memasuki-yogyakarta.png",
   "/pictures/artwork/dark-room.svg",
-  "/pictures/artwork/diana-menggambar-peta-indonesia.png",
-  "/pictures/artwork/ruangan-kosong.png",
-  "/pictures/artwork/viska-berada-diruangan.png",
+  "/pictures/artwork/ruangan-kosong.webp",
   "/pictures/miscellaneous/kertas-usang.png",
   "/pictures/miscellaneous/peta-persebaran-pahlawan-indonesia.png",
   "/pictures/pahlawan/jendral-sudirman.png",
@@ -149,21 +152,28 @@ export const allGameAssets: string[] = [
   "/pictures/pahlawan/pangeran-diponegoro.png",
   "/pictures/pahlawan/sukarno.png",
   "/pictures/pahlawan/tuanku-imam-bonjol.png",
-  "/pictures/partners/Fairel/Fairel_Cool.png",
-  "/pictures/partners/Fairel/fairel-card.png",
+  "/pictures/partners/aran/aran-card.webp",
+  "/pictures/partners/aran/aran-love.webp",
+  "/pictures/partners/aran/aran-netral.webp",
+  "/pictures/partners/aran/aran-sad.webp",
+  "/pictures/partners/aran/aran-shocked.webp",
+  "/pictures/partners/aran/aran-smile.webp",
+  "/pictures/partners/aran/aran-smug.webp",
+  "/pictures/partners/aran/aran-suprised.webp",
+  "/pictures/partners/aran/aran-thinking1.webp",
+  "/pictures/partners/aran/aran-thinking2.webp",
   "/pictures/partners/chibi-mbak-diana-berlari.png",
-  "/pictures/partners/diana/Diana_Appreciated.png",
-  "/pictures/partners/diana/Diana_Disappointed.png",
-  "/pictures/partners/diana/Diana_Impressed.png",
-  "/pictures/partners/diana/Diana_Smile.png",
-  "/pictures/partners/diana/Diana_Thinking.png",
-  "/pictures/partners/diana/diana-card.png",
   "/pictures/partners/mbak-diana-menunjuk.png",
-  "/pictures/partners/viska/Viska_Appreciated.png",
-  "/pictures/partners/viska/Viska_Disappointed.png",
-  "/pictures/partners/viska/Viska_Smile.png",
-  "/pictures/partners/viska/Viska_Thinking.png",
-  "/pictures/partners/viska/viska-card.png",
+  "/pictures/partners/nara/nara-card.webp",
+  "/pictures/partners/nara/nara-dissapointed.webp",
+  "/pictures/partners/nara/nara-exicited.webp",
+  "/pictures/partners/nara/nara-happy.webp",
+  "/pictures/partners/nara/nara-love.webp",
+  "/pictures/partners/nara/nara-netral.webp",
+  "/pictures/partners/nara/nara-sad.webp",
+  "/pictures/partners/nara/nara-suprised.webp",
+  "/pictures/partners/nara/nara-thinking1.webp",
+  "/pictures/partners/nara/nara-thinking2.webp",
   "/pictures/ui/buku-usang.png",
   "/pictures/ui/button/beranda.svg",
   "/pictures/ui/button/cara-bermain.svg",
@@ -173,5 +183,5 @@ export const allGameAssets: string[] = [
   "/pictures/ui/kartu-hasil.png",
   "/pictures/ui/kertas-formulir-dekstop.png",
   "/pictures/ui/kertas-formulir-mobile.png",
-  "/pictures/ui/papan-reviu.png"
+  "/pictures/ui/papan-reviu.png",
 ]

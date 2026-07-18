@@ -1,5 +1,6 @@
 <!-- GamesPngBoardGameBoard.vue -->
 <script setup lang="ts">
+import type { Expression } from "~/data/types/partners"
 const props = defineProps({ cards: Array as PropType<{ image: string }[]> })
 
 const localCards = ref<{ image: string }[]>([...(props.cards ?? [])])
@@ -23,16 +24,7 @@ const router = useRouter()
 
 const partner = computed(() => gameStore.partners)
 
-// "default" saat normal, ganti sesuai kejadian, lalu kembali ke default
-type Expression = "default" | "smile" | "correct" | "wrong" | "appreciated"
-const partnerExpression = ref<Expression>("default")
-
-function setExpression(expr: Expression, resetAfterMs = 3000) {
-  partnerExpression.value = expr
-  if (resetAfterMs > 0) {
-    setTimeout(() => { partnerExpression.value = "default" }, resetAfterMs)
-  }
-}
+const { partnerExpression, setExpression, getExpressionForEvent } = usePartnerExpression(partner)
 
 // Typewriter effect
 let typewriterTimer: ReturnType<typeof setTimeout> | null = null
@@ -58,7 +50,7 @@ const onTimeUp = () => {
     gameStore.addAnswer(currentCard.value, null, false)
     wrong.value++
     score.value = Math.max(0, score.value - 5)
-    setExpression("wrong")
+    setExpression(getExpressionForEvent("wrong"))
     speak("Waktu habis! -5 poin. Lanjut soal berikutnya.")
     localCards.value.shift()
     drawCard()
@@ -111,11 +103,11 @@ function checkAnswer(answer: string) {
         const pts = getPoints(currentCard.value)
         score.value += pts
         correct.value++
-        setExpression("correct")
+        setExpression(getExpressionForEvent("correct"))
         speak(`Betul! +${pts} poin! 🎉`)
     } else {
         wrong.value++
-        setExpression("wrong")
+        setExpression(getExpressionForEvent("wrong"))
         speak(`Jawabannya adalah ${currentCard.value?.answer}. Semangat ya!`)
     }
     localCards.value.shift()
@@ -127,7 +119,7 @@ function skipCard() {
     if (isAnswering.value) return
     gameStore.addAnswer(currentCard.value!, null, false)
     wrong.value++
-    setExpression("wrong")
+    setExpression(getExpressionForEvent("wrong"))
     speak("Tidak apa-apa, lanjut soal berikutnya!")
     localCards.value.shift()
     drawCard()
@@ -135,7 +127,7 @@ function skipCard() {
 
 function finishGame() {
     gameStore.setResult(score.value, correct.value, wrong.value)
-    setExpression(score.value >= correct.value * getPoints(currentCard.value) * 0.7 ? "appreciated" : "smile", 0)
+    setExpression(getExpressionForEvent(score.value >= correct.value * getPoints(currentCard.value) * 0.7 ? "appreciated" : "smile"), 0)
     router.push("/game/result")
 }
 
@@ -158,11 +150,11 @@ onMounted(() => {
     events.on(GAME_EVENTS.TIME_UP, onTimeUp)
 
     const name = partner.value?.name ?? "Diana"
-    setExpression("smile", 0)
+    setExpression(getExpressionForEvent("smile"), 0)
     typewrite(`Halo, aku ${name}! Siap membantumu dalam kuis ini. Yuk, kita mulai! ✨`, () => {
         setTimeout(() => {
         showIntro.value = false
-        setExpression("default", 0)
+        setExpression(getExpressionForEvent("neutral"), 0)
         startActualGame()
         }, 1500)
     })
@@ -201,10 +193,9 @@ onUnmounted(() => {
                 @click="skipIntro"
             >
                 <div class="flex flex-col lg:flex-row items-center lg:items-end gap-6 lg:gap-0 max-w-2xl w-full px-6">
-                <!-- Partner besar di intro -->
                 <img
                     v-if="partner?.images"
-                    :src="partner?.images[1]?.img"
+                    :src="partner?.images.find(img => img.id === 'netral')?.img ?? partner?.images[0]?.img"
                     :alt="partner?.name"
                     class="object-contain object-bottom drop-shadow-2xl pointer-events-none select-none h-64 lg:h-96"
                 />

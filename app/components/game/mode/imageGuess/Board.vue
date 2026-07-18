@@ -2,6 +2,7 @@
 
 <script setup lang="ts">
 import type { ImageGuessCards } from "~/data/types/cards"
+import type { Expression } from "~/data/types/partners"
 
 const props = defineProps<{
   cards: ImageGuessCards[]
@@ -14,16 +15,14 @@ const correct = ref(0)
 const wrong = ref(0)
 const isAnswering = ref(false)
 
-// "default" saat normal, ganti sesuai kejadian, lalu kembali ke default
-type Expression = "default" | "smile" | "correct" | "wrong" | "appreciated"
-const partnerExpression = ref<Expression>("default")
+const router = useRouter()
+const loop = useGameLoop()
+const events = useGameEvents()
+const gameStore = useGameStore()
+const partner = computed(() => gameStore.partners)
+const playerName = computed(() => gameStore.playerName)
 
-function setExpression(expr: Expression, resetAfterMs = 3000) {
-  partnerExpression.value = expr
-  if (resetAfterMs > 0) {
-    setTimeout(() => { partnerExpression.value = "default" }, resetAfterMs)
-  }
-}
+const { partnerExpression, setExpression, getExpressionForEvent } = usePartnerExpression(partner)
 
 const resultToast = ref({
   show: false,
@@ -50,13 +49,7 @@ const showIntro = ref(true)
 const isSpeaking = ref(false)
 const partnerSpeech = ref("")
 
-const router = useRouter()
-const loop = useGameLoop()
-const events = useGameEvents()
-const gameStore = useGameStore()
 
-const partner = computed(() => gameStore.partners)
-const playerName = computed(() => gameStore.playerName)
 
 let typewriterTimer: ReturnType<typeof setTimeout> | null = null
 
@@ -97,7 +90,7 @@ const onTimeUp = () => {
     gameStore.addAnswer(currentCard.value, null, false)
     wrong.value++
     score.value = Math.max(0, score.value - 5)
-    setExpression("wrong")
+    setExpression(getExpressionForEvent("wrong"))
     speak("Sayang sekali, waktumu udah habis! Semangat untuk soal berikutnya ya!")
     if (currentCard.value) showResultToast(false, currentCard.value)
     localCards.value.shift()
@@ -123,11 +116,11 @@ function checkAnswer({ answer, isCorrect }: { answer: string; isCorrect: boolean
     if (isCorrect) {
         score.value += POINTS
         correct.value++
-        setExpression("correct")
+        setExpression(getExpressionForEvent("correct"))
         speak(`Keren banget kamu ${playerName.value}! Jawabanmu benar. Poin kamu bertambah +${POINTS}! Yuk, lanjut ke soal berikutnya!`)
     } else {
         wrong.value++
-        setExpression("wrong")
+        setExpression(getExpressionForEvent("wrong"))
         speak(`Aduhh sayang sekali ${playerName.value}, jawabannya adalah ${currentCard.value?.name}. Semangat ya!`)
     }
 
@@ -142,7 +135,7 @@ function skipCard() {
     if (isAnswering.value) return
     gameStore.addAnswer(currentCard.value!, null, false)
     wrong.value++
-    setExpression("wrong", 2000)
+    setExpression(getExpressionForEvent("wrong"), 2000)
     speak(`Soal ini dilewati ya, jawabannya adalah ${currentCard.value?.name}. Semangat untuk soal berikutnya, ${playerName.value}!`)
     localCards.value.shift()
     drawCard()
@@ -150,7 +143,7 @@ function skipCard() {
 
 function finishGame() {
     // Kalau skor bagus → appreciated, kalau tidak → smile
-    setExpression(score.value >= correct.value * POINTS * 0.7 ? "appreciated" : "smile", 0)
+    setExpression(getExpressionForEvent(score.value >= correct.value * POINTS * 0.7 ? "appreciated" : "smile"), 0)
     gameStore.setResult(score.value, correct.value, wrong.value)
     router.push("/game/result")
 }
@@ -167,12 +160,12 @@ onMounted(() => {
     events.on(GAME_EVENTS.TIME_UP, onTimeUp)
 
     const name = partner.value?.name ?? "Diana"
-    setExpression("smile", 0)
+    setExpression(getExpressionForEvent("smile"), 0)
 
     typewrite(`Halo, kenalin aku ${name}! Baca deskripsinya dengan teliti, lalu pilih gambar yang tepat. Yuk, mulai ${playerName.value}!`, () => {
         setTimeout(() => {
         showIntro.value = false
-        setExpression("default", 0)
+        setExpression(getExpressionForEvent("neutral"), 0)
         startActualGame()
         }, 1500)
     })
@@ -245,7 +238,7 @@ onUnmounted(() => {
                 <div class="flex flex-col lg:flex-row items-center lg:items-end gap-6 lg:gap-0 max-w-2xl w-full px-6">
                     <img
                         v-if="partner?.images"
-                        :src="partner?.images[1]?.img"
+                        :src="partner?.images.find(img => img.id === 'netral')?.img ?? partner?.images[0]?.img"
                         :alt="partner?.name"
                         class="object-contain object-bottom drop-shadow-2xl pointer-events-none select-none h-64 lg:h-96"
                     />

@@ -29,6 +29,10 @@ const menus = [
     {
         name: "BELAJAR SEJARAH SERU ", 
         to: "/mulai-belajar",
+    },
+    {
+        name: "KREDIT",
+        to: "/game/credits",
     }
 ];
 </script>

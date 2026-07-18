@@ -3,9 +3,8 @@ import { gameAssets } from "~/data/assets"
 
 const { toast, hideToast } = useToast()
 const pageAssets = [
-  ...gameAssets.pictures.partners.diana,
-  ...gameAssets.pictures.partners.fairel,
-  ...gameAssets.pictures.partners.viska,
+  ...gameAssets.pictures.partners.aran,
+  ...gameAssets.pictures.partners.nara,
   ...gameAssets.pictures.archiveFiles.fact,
   ...gameAssets.pictures.archiveFiles.noted,
   ...gameAssets.pictures.archiveFiles.photo,
@@ -13,7 +12,6 @@ const pageAssets = [
   ...gameAssets.pictures.ui.root
 ]
 const { progress, loading, startLoading } = useAssetManager(pageAssets, {
-    minDuration: 1500,
     continueOnError: true,
 })
 

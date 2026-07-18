@@ -3,10 +3,17 @@ import { gameAssets } from "~/data/assets"
 import { gameModes } from "~/data/game/modes"
 import type { Partner } from "~/data/types/partners"
 
-const pageAssets = [...gameAssets.pictures.ui.root]
+const pageAssets = [
+  // UI form
+  ...gameAssets.pictures.ui.root,
+  // Preload semua gambar partner agar sudah siap saat dipilih di form
+  // dan tidak ada flash saat masuk halaman play
+  ...gameAssets.pictures.partners.aran,
+  ...gameAssets.pictures.partners.nara,
+  ...gameAssets.pictures.partners.root,
+]
 
 const { progress, loading, startLoading } = useAssetManager(pageAssets, {
-  minDuration: 1500,
   continueOnError: true,
 })
 

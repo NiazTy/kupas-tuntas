@@ -4,6 +4,7 @@ import { HistoryArchiveNotes, HistoryArchiveFacts, HistoryArchivePeoples, Histor
 import type { PickAndGuessCard } from "~/data/types/cards"
 import type { ImageGuessCards } from "~/data/types/cards"
 import type { ArchiveAssetItem, NoteAssetItem, ScatterPhoto, DroppedPhoto } from "~/data/types/cards"
+import type { Expression } from "~/data/types/partners"
 
 defineProps<{
   cards: PickAndGuessCard[] | ImageGuessCards[]
@@ -109,8 +110,7 @@ const isSpeaking = ref(false)
 let typeTimer: ReturnType<typeof setTimeout> | null = null
 let photoCounter = 0
 
-type Expression = "default" | "smile" | "correct" | "wrong" | "appreciated"
-const partnerExpression = ref<Expression>("default")
+const { partnerExpression, setExpression, getExpressionForEvent } = usePartnerExpression(partner)
 
 // ── Tambah state ini ──
 const levelSelected = ref(false)
@@ -125,9 +125,8 @@ function onLevelSelect(note: NoteAssetItem) {
 
   levelSelected.value = true
 
-  partnerExpression.value = "smile"
+  setExpression("smile", 4000)
   typewrite(`Oke! Kita mulai dengan arsip "${note.category}". Buka kardus dan cocokkan item yang relevan!`)
-  setTimeout(() => { partnerExpression.value = "default" }, 4000)
 }
 
 
@@ -175,8 +174,7 @@ function openBox(box: typeof boxes[number]) {
     scatterPhotos.value = [...scatterPhotos.value, newPhoto]
     activeBox.value = box
 
-    partnerExpression.value = "smile"
-    setTimeout(() => { partnerExpression.value = "default" }, 2000)
+    setExpression("smile", 2000)
 
     const { total } = getPoolData(box.id)
     const remaining = total - count.value
@@ -252,15 +250,13 @@ function commitPhoto(photo: ScatterPhoto) {
     if (isCorrect) {
         score.value += 10
         correct.value++
-        partnerExpression.value = "correct"
-        setTimeout(() => { partnerExpression.value = "default" }, 3000)
+        setExpression("correct", 3000)
         resultToast.value = { show: true, message: "Cocok! +10 poin", isCorrect: true }
         typewrite("Betul! Item ini sesuai dengan arsip yang sedang kamu kerjakan! +10 poin")
     } else {
         score.value = Math.max(0, score.value - 5)
         wrong.value++
-        partnerExpression.value = "wrong"
-        setTimeout(() => { partnerExpression.value = "default" }, 3000)
+        setExpression("wrong", 3000)
         resultToast.value = { show: true, message: "Tidak cocok. -5 poin", isCorrect: false }
         typewrite("Hmm, sepertinya item itu tidak berhubungan dengan arsip ini...")
     }
@@ -284,8 +280,7 @@ function nextNote() {
         noteIndex.value++
         droppedPhotos.value = []
         selectedPhoto.value = null
-        partnerExpression.value = "smile"
-        setTimeout(() => { partnerExpression.value = "default" }, 2000)
+        setExpression("smile", 2000)
         typewrite("Baik, mari kita lihat arsip berikutnya!")
     } else {
         endGame()
@@ -293,16 +288,15 @@ function nextNote() {
 }
 
 function endGame() {
-    partnerExpression.value = score.value >= correct.value * 10 * 0.7 ? "appreciated" : "smile"
+    setExpression(score.value >= correct.value * 10 * 0.7 ? "appreciated" : "smile", 0)
     gameStore.setResult(score.value, correct.value, wrong.value)
     router.push("/game/result")
 }
 
 onMounted(() => {
     gameStore.resetGame()
-    partnerExpression.value = "smile"
+    setExpression("smile", 4000)
     typewrite(`Halo! Aku akan membantumu menyelidiki arsip sejarah. Buka kardus dan cocokkan item dengan arsip yang tepat!`)
-    setTimeout(() => { partnerExpression.value = "default" }, 4000)
 })
 </script>
 

@@ -30,7 +30,7 @@ function selectPartners(partner: Partner) {
                         <div class="absolute bottom-1 left-1 w-3 h-3 border-b border-l border-[#d3b484]/60" />
                         <div class="absolute bottom-1 right-1 w-3 h-3 border-b border-r border-[#d3b484]/60" />
                     </template>
-                    <img :src="partner?.images[0]?.img" class="aspect-4/5 w-full object-contain" :class="modelValue?.id === partner.id ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'" />
+                    <img :src="partner?.images.find(img => img.id === 'card')?.img ?? partner?.images[0]?.img" class="aspect-4/5 w-full object-contain" :class="modelValue?.id === partner.id ? 'opacity-100' : 'opacity-70 group-hover:opacity-90'" />
                     <!-- Tanda centang saat selected -->
                     <div v-if="modelValue?.id === partner.id" class="absolute top-1.5 right-1.5 w-4 h-4 bg-[#810000] flex items-center justify-center">
                         <span class="text-[#d3b484] text-[8px]">✦</span>

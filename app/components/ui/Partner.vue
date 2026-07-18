@@ -1,7 +1,7 @@
 <!-- components/ui/Partner.vue -->
 
 <script setup lang="ts">
-type Expression = "default" | "smile" | "correct" | "wrong" | "appreciated"
+import type { Expression } from '~/data/types/partners'
 
 const props = defineProps<{
     partner: any
@@ -10,51 +10,21 @@ const props = defineProps<{
     expression?: Expression
 }>()
 
-// Map expression → image index per jumlah gambar yang dimiliki partner
+// Map expression → image by ID
 function getImageByExpression(images: any[], expression: Expression): string {
-    // Struktur index images berdasarkan data Partners:
-    // Diana (6 imgs): 0=card, 1=thinking(default), 2=smile, 3=disappointed, 4=appreciated, 5=impressed
-    // Viska (5 imgs): 0=card, 1=thinking(default), 2=smile, 3=disappointed, 4=appreciated
-    // Fairel (2 imgs): 0=card, 1=cool(default)
-
-    const count = images.length
-
-    if (count >= 6) {
-        // Diana
-        const map: Record<Expression, number> = {
-        default: 1,
-        smile: 2,
-        correct: 5,
-        wrong: 3,
-        appreciated: 4,
-        }
-        return images[map[expression]]?.img ?? images[1]?.img
-    }
-
-    if (count >= 5) {
-        // Viska
-        const map: Record<Expression, number> = {
-        default: 1,
-        smile: 2,
-        correct: 2,
-        wrong: 3,
-        appreciated: 4,
-        }
-        return images[map[expression]]?.img ?? images[1]?.img
-    }
-
-    return images[1]?.img ?? images[0]?.img
+    const found = images.find(img => img.id === expression)
+    return found?.img ?? images.find(img => img.id === "netral")?.img ?? images[0]?.img ?? ""
 }
 
 const currentImg = computed(() =>
-    props.partner?.images ? getImageByExpression(props.partner.images, props.expression ?? "default") : null
+    props.partner?.images ? getImageByExpression(props.partner.images, props.expression ?? "netral") : null
 )
 </script>
 
 <template>
     <!-- Desktop -->
     <div
-        v-if="partner?.images?.[1]?.img"
+        v-if="currentImg"
         class="hidden lg:flex fixed right-0 bottom-0 flex-col items-end z-20 pointer-events-none select-none"
         style="width: 320px;"
     >

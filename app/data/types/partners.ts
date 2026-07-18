@@ -6,6 +6,21 @@ export type Partner = {
 }
 
 export type PartnerImages = {
-    id: string
+    id: Expression
     img: any
 }
+
+export type Expression =
+  | "card"
+  | "love"
+  | "netral"
+  | "sad"
+  | "suprised"
+  | "thinking1"
+  | "thinking2"
+  | "shocked"
+  | "smile"
+  | "smug"
+  | "dissapointed"
+  | "exicited"
+  | "happy"

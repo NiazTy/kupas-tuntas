@@ -63,11 +63,13 @@ onMounted(() => {
     else typewrite(`Jangan menyerah, ${store.playerName}! Coba lagi dan aku akan terus membantumu! 💪`)
 })
 
+const { getExpressionForEvent } = usePartnerExpression(partner)
+
 const partnerExpression = computed(() => {
-    if (accuracy.value >= 90) return "appreciated"
-    if (accuracy.value >= 70) return "correct"
-    if (accuracy.value >= 50) return "smile"
-    return "wrong"
+    if (accuracy.value >= 90) return getExpressionForEvent("appreciated")
+    if (accuracy.value >= 70) return getExpressionForEvent("correct")
+    if (accuracy.value >= 50) return getExpressionForEvent("smile")
+    return getExpressionForEvent("wrong")
 })
 
 function playAgain() {
